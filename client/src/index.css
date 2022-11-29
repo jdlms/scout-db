@@ -4,9 +4,7 @@
   line-height: 24px;
   font-weight: 400;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #c2b4b4;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,8 +12,6 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
-
-
 
 body {
   margin: 0;
@@ -29,4 +25,3 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
