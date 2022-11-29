@@ -42,8 +42,11 @@ export function MuiAutocomplete({ onChange, control }) {
     <Controller
       render={({ field }) => (
         <Autocomplete
-          id="asynchronous-demo"
+          id="author-name"
           sx={{ width: 300 }}
+          freeSolo={true}
+          disableClearable={false}
+          clearOnBlur={false}
           open={open}
           onOpen={() => {
             setOpen(true);
