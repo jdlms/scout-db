@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Book } from "./models/Book.model";
+import { Book } from "./models/Book.model.js";
 
 const router = Router();
 
@@ -14,11 +14,18 @@ const router = Router();
 
 router.post("/post", async (req, res) => {
   try {
-    const newBook = await new Book({
+    const newBook = new Book({
       title: req.body.title,
-      author: req.body.author,
+      submissionStatus: req.body.submissionStatus,
+      rightsSold: req.body.rightsSold,
+      details: req.body.details,
+      currentMaterial: req.body.currentMaterial,
+      internalNotes: req.body.internalNotes,
     });
-    await newTitle.save();
+    await newBook.save();
+
+    //Author, agency, pub, editor
+
     return res.json({ message: "Title added!" });
   } catch (error) {
     console.log("There was an error", error);

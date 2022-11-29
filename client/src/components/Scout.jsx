@@ -6,7 +6,16 @@ export function Scout() {
   const { register, handleSubmit, control, reset } = useForm({
     defaultValues: {
       title: "",
-      author: "",
+      firstName: "",
+      lastName: "",
+      submissionStatus: "",
+      agency: "",
+      publisher: "",
+      editor: "",
+      rightsSold: "",
+      details: "",
+      currentMaterial: "",
+      internalNotes: "",
     },
   });
 
@@ -29,34 +38,34 @@ export function Scout() {
         />
         <br />
         {/* <MuiAutocomplete control={control} /> */}
-        <input {...register("title", { required: true, minLength: 1 })} placeholder="First Name" />
-        <br />
-        <input {...register("title", { required: true, minLength: 1 })} placeholder="Last name" />
+        <input {...register("firstName", { required: false })} placeholder="First Name" />
         <br />
         <input
-          {...register("title", { required: true, minLength: 1 })}
+          {...register("lastName", { required: true, minLength: 1 })}
+          placeholder="Last name"
+        />
+        <br />
+        <input
+          {...register("submissionStatus", { required: true, minLength: 1 })}
           placeholder="Submission status"
         />
         <br />
-        <input {...register("title", { required: true, minLength: 1 })} placeholder="Agency" />
+        <input {...register("agency", { required: false })} placeholder="Agency" />
         <br />
-        <input {...register("title", { required: true, minLength: 1 })} placeholder="Publisher" />
+        <input {...register("publisher", { required: false })} placeholder="Publisher" />
         <br />
-        <input {...register("title", { required: true, minLength: 1 })} placeholder="Editor" />
+        <input {...register("editor", { required: false })} placeholder="Editor" />
         <br />
-        <input {...register("title", { required: true, minLength: 1 })} placeholder="Rights sold" />
+        <input {...register("rightsSold", { required: false })} placeholder="Rights sold" />
         <br />
-        <input {...register("title", { required: true, minLength: 1 })} placeholder="Details" />
+        <input {...register("details", { required: true, minLength: 1 })} placeholder="Details" />
         <br />
         <input
-          {...register("title", { required: true, minLength: 1 })}
+          {...register("currentMaterial", { required: true, minLength: 1 })}
           placeholder="Current material"
         />
         <br />
-        <input
-          {...register("title", { required: true, minLength: 1 })}
-          placeholder="Internal notes"
-        />
+        <input {...register("internalNotes", { required: false })} placeholder="Internal notes" />
         <br />
         <button type="submit">Create title</button>
       </form>

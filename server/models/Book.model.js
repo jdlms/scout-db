@@ -11,9 +11,9 @@ const bookSchema = new Schema({
     enum: ["In development", "On submission", "In auction", "Sold", "International submission"],
     require: true,
   },
-  confidential: {
-    type: Boolean,
-  },
+  // confidential: {
+  //   type: Boolean,
+  // },
   agency: [{ type: Schema.Types.ObjectId, ref: "Agency" }],
   publisher: [{ type: Schema.Types.ObjectId, ref: "Publisher" }],
   editor: [{ type: Schema.Types.ObjectId, ref: "Editor" }],
@@ -22,7 +22,7 @@ const bookSchema = new Schema({
   },
   details: {
     type: String,
-    require: True,
+    require: true,
   },
   currentMaterial: {
     type: String,
@@ -34,6 +34,3 @@ const bookSchema = new Schema({
 });
 
 export const Book = model("Book", bookSchema);
-
-
-
