@@ -21,11 +21,36 @@ export function Scout() {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input {...register("title", { required: true, minLength: 1 })} placeholder="Title" />
-        <label>Author</label>
+        <input
+          {...register("title", { required: true, minLength: 1 })}
+          placeholder="Book/Proposal title"
+        />
+
         <MuiAutocomplete control={control} />
+
+        <input {...register("title", { required: true, minLength: 1 })} placeholder="Last name" />
+        <input
+          {...register("title", { required: true, minLength: 1 })}
+          placeholder="Submission status"
+        />
+        <input {...register("title", { required: true, minLength: 1 })} placeholder="Agency" />
+        <input {...register("title", { required: true, minLength: 1 })} placeholder="Publisher" />
+        <input {...register("title", { required: true, minLength: 1 })} placeholder="Editor" />
+        <input {...register("title", { required: true, minLength: 1 })} placeholder="Rights sold" />
+        <input {...register("title", { required: true, minLength: 1 })} placeholder="Details" />
+        <input
+          {...register("title", { required: true, minLength: 1 })}
+          placeholder="Current material"
+        />
+        <input
+          {...register("title", { required: true, minLength: 1 })}
+          placeholder="Internal notes"
+        />
+        <br />
         <input type="submit" onClick={reset()} />
       </form>
     </div>
   );
 }
+
+//confidential radio option needed

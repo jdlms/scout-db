@@ -61,7 +61,7 @@ export function MuiAutocomplete({ onChange, control }) {
           renderInput={(params) => (
             <TextField
               {...params}
-              label="Author name"
+              label="First name"
               InputProps={{
                 ...params.InputProps,
                 endAdornment: (

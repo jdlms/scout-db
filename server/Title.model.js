@@ -1,15 +1,58 @@
 import { model, Schema } from "mongoose";
 
-const titleSchema = new Schema({
+const bookSchema = new Schema({
   title: {
     type: String,
-    unique: true,
     require: true,
   },
-  author: {
+  author: {},
+  submissionStatus: {
     type: String,
+    enum: ["In development", "On submission", "In auction", "Sold", "International submission"],
     require: true,
+  },
+  confidential: {
+    type: Boolean,
+  },
+  agency: {},
+  publisher: {},
+  editor: {},
+  rightsSold: {
+    type: String,
+  },
+  details: {
+    type: String,
+    require: True,
+  },
+  currentMaterial: {
+    type: String,
+    enum: ["None", "Sample pages", "Proposal", "Full ms", "Partial ms"],
+  },
+  internalNotes: {
+    type: String,
   },
 });
 
-export const Title = model("Title", titleSchema);
+export const Book = model("Book", bookSchema);
+
+const authorSchema = new Schema({
+  lastName: {
+    type: String,
+    require: true,
+  },
+  firstName: {
+    type: String,
+    require: false,
+  },
+});
+
+// First name
+// Last name
+// Submission status
+// Agency
+// Publisher
+// Editor
+// Rights sold
+// Details
+// Current material
+// Internal notes
