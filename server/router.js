@@ -1,20 +1,20 @@
 import { Router } from "express";
-import { Title } from "./Title.model.js";
+import { Book } from "./models/Book.model";
 
 const router = Router();
 
-router.get("/author-search", async (req, res) => {
-  try {
-    const authors = await Title.find({}, { author: 1 });
-    res.json(authors);
-  } catch (error) {
-    console.log("There was an error", error);
-  }
-});
+// router.get("/author-search", async (req, res) => {
+//   try {
+//     const authors = await Title.find({}, { author: 1 });
+//     res.json(authors);
+//   } catch (error) {
+//     console.log("There was an error", error);
+//   }
+// });
 
 router.post("/post", async (req, res) => {
   try {
-    const newTitle = new Title({
+    const newBook = await new Book({
       title: req.body.title,
       author: req.body.author,
     });

@@ -5,7 +5,7 @@ const bookSchema = new Schema({
     type: String,
     require: true,
   },
-  author: {},
+  author: [{ type: Schema.Types.ObjectId, ref: "Author" }],
   submissionStatus: {
     type: String,
     enum: ["In development", "On submission", "In auction", "Sold", "International submission"],
@@ -14,9 +14,9 @@ const bookSchema = new Schema({
   confidential: {
     type: Boolean,
   },
-  agency: {},
-  publisher: {},
-  editor: {},
+  agency: [{ type: Schema.Types.ObjectId, ref: "Agency" }],
+  publisher: [{ type: Schema.Types.ObjectId, ref: "Publisher" }],
+  editor: [{ type: Schema.Types.ObjectId, ref: "Editor" }],
   rightsSold: {
     type: String,
   },
@@ -35,24 +35,5 @@ const bookSchema = new Schema({
 
 export const Book = model("Book", bookSchema);
 
-const authorSchema = new Schema({
-  lastName: {
-    type: String,
-    require: true,
-  },
-  firstName: {
-    type: String,
-    require: false,
-  },
-});
 
-// First name
-// Last name
-// Submission status
-// Agency
-// Publisher
-// Editor
-// Rights sold
-// Details
-// Current material
-// Internal notes
+
