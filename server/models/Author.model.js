@@ -1,6 +1,7 @@
 import { model, Schema } from "mongoose";
 
 const authorSchema = new Schema({
+  _id: Schema.Types.ObjectId,
   lastName: {
     type: String,
     require: true,
@@ -10,7 +11,7 @@ const authorSchema = new Schema({
     require: false,
   },
   books: [{ type: Schema.Types.ObjectId, ref: "Book" }],
-  // agency: [{ type: Schema.Types.ObjectId, ref: "Agency" }],
+  agency: [{ type: Schema.Types.ObjectId, ref: "Agency" }],
 });
 
 export const Author = model("Author", authorSchema);

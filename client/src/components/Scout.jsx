@@ -23,7 +23,7 @@ export function Scout() {
     try {
       await axios.post("http://localhost:5000/post", data);
       //for demo purposes only, change this reset call!
-      reset();
+      // reset();
     } catch (error) {
       console.error(error);
     }

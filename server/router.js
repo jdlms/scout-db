@@ -2,6 +2,9 @@ import { Router } from "express";
 import { Book } from "./models/Book.model.js";
 import { Author } from "./models/Author.model.js";
 import { Agency } from "./models/Agency.model.js";
+import mongoose from "mongoose";
+import { Publisher } from "./models/Publisher.model.js";
+import { Editor } from "./models/Editor.model.js";
 
 const router = Router();
 
@@ -29,30 +32,68 @@ router.post("/post", async (req, res) => {
 
     const addAuthor = await Author.findOneAndUpdate(
       {
-        _id: new mongoose.Types.ObjectId(),
         lastName: req.body.lastName,
         firstName: req.body.firstName,
         books: addBook._id,
       },
       {},
-      { upsert: true }
+      { upsert: true, new: true }
     );
-    await addAuthor.save();
 
-    await Agency.findOneAndUpdate(
+    const addAgency = await Agency.findOneAndUpdate(
       {
-        _id: new mongoose.Types.ObjectId(),
         name: req.body.agency,
         authors: addAuthor._id,
         books: addBook._id,
       },
       {},
-      { upsert: true }
+      { upsert: true, new: true }
     );
 
-    //Author, agency, pub, editor
+    const addPublisher = await Publisher.findOneAndUpdate(
+      {
+        name: req.body.publisher,
+        authors: addAuthor._id,
+        books: addBook._id,
+      },
+      {},
+      { upsert: true, new: true }
+    );
 
-    return res.json({ message: "Title added!" });
+    const addEditor = await Editor.findOneAndUpdate(
+      {
+        // name: req.body.editor,
+        authors: addAuthor._id,
+        books: addBook._id,
+        publisher: addPublisher._id,
+      },
+      {},
+      { upsert: true, new: true }
+    );
+
+    await Book.findByIdAndUpdate(
+      addBook._id,
+      {
+        author: addAuthor._id,
+        agency: addAgency._id,
+        editor: addEditor._id,
+        publisher: addPublisher._id,
+      },
+      { new: true }
+    );
+
+    await Author.findByIdAndUpdate(
+      addAuthor._id,
+      {
+        agency: addAgency._id,
+      },
+      { new: true }
+    );
+
+    // book: author, agency, editor, publisher
+    // author: agency
+
+    console.log("Title added!");
   } catch (error) {
     console.log("There was an error", error);
   }
