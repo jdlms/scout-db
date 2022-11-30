@@ -10,7 +10,7 @@ const authorSchema = new Schema({
     require: false,
   },
   books: [{ type: Schema.Types.ObjectId, ref: "Book" }],
-  agency: [{ type: Schema.Types.ObjectId, ref: "Agency" }],
+  // agency: [{ type: Schema.Types.ObjectId, ref: "Agency" }],
 });
 
 export const Author = model("Author", authorSchema);

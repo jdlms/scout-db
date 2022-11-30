@@ -45,7 +45,7 @@ export function MuiAutocomplete({ onChange, control }) {
           id="author-name"
           sx={{ width: 300 }}
           freeSolo={true}
-          disableClearable={false}
+          defaultValue=""
           clearOnBlur={false}
           open={open}
           onOpen={() => {

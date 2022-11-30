@@ -1,5 +1,7 @@
 import { Router } from "express";
 import { Book } from "./models/Book.model.js";
+import { Author } from "./models/Author.model.js";
+import { Agency } from "./models/Agency.model.js";
 
 const router = Router();
 
@@ -14,7 +16,8 @@ const router = Router();
 
 router.post("/post", async (req, res) => {
   try {
-    const newBook = new Book({
+    const addBook = new Book({
+      _id: new mongoose.Types.ObjectId(),
       title: req.body.title,
       submissionStatus: req.body.submissionStatus,
       rightsSold: req.body.rightsSold,
@@ -22,7 +25,30 @@ router.post("/post", async (req, res) => {
       currentMaterial: req.body.currentMaterial,
       internalNotes: req.body.internalNotes,
     });
-    await newBook.save();
+    await addBook.save();
+
+    const addAuthor = await Author.findOneAndUpdate(
+      {
+        _id: new mongoose.Types.ObjectId(),
+        lastName: req.body.lastName,
+        firstName: req.body.firstName,
+        books: addBook._id,
+      },
+      {},
+      { upsert: true }
+    );
+    await addAuthor.save();
+
+    await Agency.findOneAndUpdate(
+      {
+        _id: new mongoose.Types.ObjectId(),
+        name: req.body.agency,
+        authors: addAuthor._id,
+        books: addBook._id,
+      },
+      {},
+      { upsert: true }
+    );
 
     //Author, agency, pub, editor
 
