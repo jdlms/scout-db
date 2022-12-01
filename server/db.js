@@ -11,4 +11,4 @@ export async function connectToMongoose() {
   } catch (err) {
     console.error('Error connecting to mongo: ', err);
   }
-}
+} 

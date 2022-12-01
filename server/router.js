@@ -1,10 +1,12 @@
 import { Router } from "express";
+import bcrypt from "bcryptjs";
 import { Book } from "./models/Book.model.js";
 import { Author } from "./models/Author.model.js";
 import { Agency } from "./models/Agency.model.js";
 import mongoose from "mongoose";
 import { Publisher } from "./models/Publisher.model.js";
 import { Editor } from "./models/Editor.model.js";
+import { User } from "./models/User.model.js";
 
 const router = Router();
 
@@ -102,5 +104,29 @@ router.post("/post", async (req, res) => {
 router.get("/", (req, res) => {
   res.json({ message: "Hello world" });
 });
+
+//auth routes
+
+async function generatePwHash(password) {
+  const salt = await bcrypt.genSalt(10);
+  return bcrypt.hash(password, salt);
+}
+
+router.get("/login", () => {});
+
+router.post("/signup", async (req, res) => {
+  try {
+    console.log(req.body.email);
+    const newUser = new User({
+      email: req.body.email,
+      password: await generatePwHash(req.body.password),
+    });
+    await newUser.save();
+  } catch (error) {
+    console.log("There was an error", error);
+  }
+});
+
+router.get("/logout", () => {});
 
 export default router;
