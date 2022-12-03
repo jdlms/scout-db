@@ -8,7 +8,23 @@ import { fileURLToPath } from "url";
 const app = express();
 const PORT = 5000;
 const CLIENT_ORIGIN = "http://localhost:3000";
-app.use(cors({ origin: CLIENT_ORIGIN }));
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: false,
+    cookie: {
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      secure: process.env.NODE_ENV === "production",
+      httpOnly: true,
+      maxAge: 600000
+    },
+  })
+);
+app.use(cors({ origin: CLIENT_ORIGIN, credentials: true }));
+
+
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -22,6 +38,7 @@ const __dirname = dirname(__filename);
 import { connectToMongoose } from "./db.js";
 
 import router from "./router.js";
+import session from "express-session";
 
 await connectToMongoose();
 

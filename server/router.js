@@ -112,21 +112,44 @@ async function generatePwHash(password) {
   return bcrypt.hash(password, salt);
 }
 
-router.get("/login", () => {});
+router.post("/login", async (req, res) => {
+  try {
+    const savedUserInDb = await User.findOne({
+      email: req.body.email,
+    });
+    const doPasswordsMatch = await bcrypt.compare(req.body.password, savedUserInDb.password);
+    if (!doPasswordsMatch) {
+      throw new Error("Passwords do not match");
+    }
+
+    const user = { username: savedUserInDb.username };
+    req.session.currentUser = user;
+
+    return res.json({ message: "Signup/Login sucessful", user });
+  } catch (error) {
+    return res.status(500).json({ message: "Signup/Login unsucessful", error });
+  }
+});
 
 router.post("/signup", async (req, res) => {
   try {
-    console.log(req.body.email);
     const newUser = new User({
       email: req.body.email,
       password: await generatePwHash(req.body.password),
     });
     await newUser.save();
+    req.session.currentUser = user;
+    return res.json({ message: "Signup/Login sucessful", user });
   } catch (error) {
-    console.log("There was an error", error);
+    return res.status(500).json({ message: "Signup/Login unsucessful.", error });
   }
 });
 
-router.get("/logout", () => {});
+router.post("/logout", (req, res) => {
+  req.session.destroy((err) => {
+    if (err) return next(err);
+    res.json({ Message: "Logged out successfully" });
+  });
+});
 
 export default router;
