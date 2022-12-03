@@ -4,7 +4,7 @@
   line-height: 24px;
   font-weight: 400;
 
-  background-color: #c2b4b4;
+  background-color: #0e0e1d;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -21,7 +21,11 @@ body {
   min-height: 100vh;
 }
 
-h1 {
+h1,
+h2,
+h3,
+h4 {
   font-size: 3.2em;
   line-height: 1.1;
+  color: #f7e7ce;
 }
