@@ -112,6 +112,36 @@ async function generatePwHash(password) {
   return bcrypt.hash(password, salt);
 }
 
+router.post("/signup", async (req, res) => {
+  try {
+    const newUser = new User({
+      email: req.body.email,
+      password: await generatePwHash(req.body.password),
+    });
+    await newUser.save();
+    const user = { email: newUser.email };
+    req.session.currentUser = user;
+    return res.json({ message: "Signup/Login sucessful", user });
+  } catch (error) {
+    return res.status(500).json({ message: "Signup/Login unsucessful.", error });
+  }
+});
+
+router.post("/role", async (req, res) => {
+  try {
+    const role = req.body.role;
+   if (role === 'Scout'){
+    
+   }
+    // const user = { username: savedUserInDb.username };
+    // req.session.currentUser = user;
+
+    // return res.json({ message: "Scout role chosen", role });
+  } catch (error) {
+    return res.status(500).json({ message: "Signup/Login unsucessful", error });
+  }
+});
+
 router.post("/login", async (req, res) => {
   try {
     const savedUserInDb = await User.findOne({
@@ -128,20 +158,6 @@ router.post("/login", async (req, res) => {
     return res.json({ message: "Signup/Login sucessful", user });
   } catch (error) {
     return res.status(500).json({ message: "Signup/Login unsucessful", error });
-  }
-});
-
-router.post("/signup", async (req, res) => {
-  try {
-    const newUser = new User({
-      email: req.body.email,
-      password: await generatePwHash(req.body.password),
-    });
-    await newUser.save();
-    req.session.currentUser = user;
-    return res.json({ message: "Signup/Login sucessful", user });
-  } catch (error) {
-    return res.status(500).json({ message: "Signup/Login unsucessful.", error });
   }
 });
 

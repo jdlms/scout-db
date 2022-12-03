@@ -25,8 +25,10 @@ export function Login() {
 
   const onSubmitSignup = async (data) => {
     try {
-      await axios.post("http://localhost:5000/signup", data);
-      navigate("/scout-landing");
+      const request = await axios.post("http://localhost:5000/signup", data);
+      const response = await request.data;
+      console.log(response);
+      navigate("/choose-role");
     } catch (error) {
       console.error("There was an error!", error);
     }
