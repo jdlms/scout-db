@@ -1,12 +1,16 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext";
 
 //what is formState,
 
 //signup + login same form. enter email and password, if new asked to choose role, if signed up, redirected to dashboard
 
 export function Login() {
+  const { user, addUserToContext } = useContext(UserContext);
+
   const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm({
@@ -25,10 +29,15 @@ export function Login() {
 
   const onSubmitSignup = async (data) => {
     try {
-      const request = await axios.post("http://localhost:5000/signup", data);
+      const request = await axios.post("http://localhost:5000/signup", data, {
+        withCredentials: true,
+      });
       const response = await request.data;
-      console.log(response);
-      navigate("/choose-role");
+      //do something with the response
+      const user = { email: data.email, role: null };
+      addUserToContext(user);
+
+      navigate("/role");
     } catch (error) {
       console.error("There was an error!", error);
     }

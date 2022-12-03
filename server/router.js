@@ -119,8 +119,10 @@ router.post("/signup", async (req, res) => {
       password: await generatePwHash(req.body.password),
     });
     await newUser.save();
+
     const user = { email: newUser.email };
     req.session.currentUser = user;
+
     return res.json({ message: "Signup/Login sucessful", user });
   } catch (error) {
     return res.status(500).json({ message: "Signup/Login unsucessful.", error });
@@ -130,13 +132,13 @@ router.post("/signup", async (req, res) => {
 router.post("/role", async (req, res) => {
   try {
     const role = req.body.role;
-   if (role === 'Scout'){
-    
-   }
+    if (role === "Scout") {
+      await User.findOneAndUpdate({ email: req.body.email }, { role: "Scout" });
+    }
     // const user = { username: savedUserInDb.username };
     // req.session.currentUser = user;
 
-    // return res.json({ message: "Scout role chosen", role });
+    return res.json({ message: "Scout role chosen", role });
   } catch (error) {
     return res.status(500).json({ message: "Signup/Login unsucessful", error });
   }
@@ -151,8 +153,7 @@ router.post("/login", async (req, res) => {
     if (!doPasswordsMatch) {
       throw new Error("Passwords do not match");
     }
-
-    const user = { username: savedUserInDb.username };
+    const user = { email: savedUserInDb.email };
     req.session.currentUser = user;
 
     return res.json({ message: "Signup/Login sucessful", user });
