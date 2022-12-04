@@ -13,9 +13,11 @@ export function Scout() {
       firstName: "",
       lastName: "",
       submissionStatus: "",
+      confidential: "",
       agency: "",
       publisher: "",
-      editor: "",
+      editorFirstName: "",
+      editorLastName: "",
       rightsSold: "",
       details: "",
       currentMaterial: "",
@@ -55,11 +57,24 @@ export function Scout() {
           placeholder="Submission status"
         />
         <br />
+        <input
+          {...register("confidential", { required: true, minLength: 1 })}
+          placeholder="Confidential?"
+        />
+        <br />
         <input {...register("agency", { required: false })} placeholder="Agency" />
         <br />
         <input {...register("publisher", { required: false })} placeholder="Publisher" />
         <br />
-        <input {...register("editor", { required: false })} placeholder="Editor" />
+        <input
+          {...register("editorFirstName", { required: false })}
+          placeholder="Editor first name"
+        />
+        <br />
+        <input
+          {...register("editorLastName", { required: false })}
+          placeholder="Editor last name"
+        />
         <br />
         <input {...register("rightsSold", { required: false })} placeholder="Rights sold" />
         <br />

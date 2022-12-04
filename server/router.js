@@ -21,32 +21,10 @@ const router = Router();
 
 router.post("/create-new-title", async (req, res) => {
   try {
-    const addBook = new Book({
-      _id: new mongoose.Types.ObjectId(),
-      title: req.body.title,
-      submissionStatus: req.body.submissionStatus,
-      rightsSold: req.body.rightsSold,
-      details: req.body.details,
-      currentMaterial: req.body.currentMaterial,
-      internalNotes: req.body.internalNotes,
-    });
-    await addBook.save();
-
     const addAuthor = await Author.findOneAndUpdate(
       {
         lastName: req.body.lastName,
         firstName: req.body.firstName,
-        books: addBook._id,
-      },
-      {},
-      { upsert: true, new: true }
-    );
-
-    const addAgency = await Agency.findOneAndUpdate(
-      {
-        name: req.body.agency,
-        authors: addAuthor._id,
-        books: addBook._id,
       },
       {},
       { upsert: true, new: true }
@@ -55,8 +33,14 @@ router.post("/create-new-title", async (req, res) => {
     const addPublisher = await Publisher.findOneAndUpdate(
       {
         name: req.body.publisher,
-        authors: addAuthor._id,
-        books: addBook._id,
+      },
+      {},
+      { upsert: true, new: true }
+    );
+
+    const addAgency = await Agency.findOneAndUpdate(
+      {
+        name: req.body.agency,
       },
       {},
       { upsert: true, new: true }
@@ -64,36 +48,32 @@ router.post("/create-new-title", async (req, res) => {
 
     const addEditor = await Editor.findOneAndUpdate(
       {
-        // name: req.body.editor,
-        authors: addAuthor._id,
-        books: addBook._id,
-        publisher: addPublisher._id,
+        firstName: req.body.editorFirstName,
+        lastName: req.body.editorLastName,
       },
       {},
       { upsert: true, new: true }
     );
 
-    await Book.findByIdAndUpdate(
-      addBook._id,
+    const confidentialValue = !!req.body.confidential;
+
+    const addBook = await Book.findOneAndUpdate(
       {
+        title: req.body.title,
         author: addAuthor._id,
+        submissionStatus: req.body.submissionStatus,
+        confidential: confidentialValue,
         agency: addAgency._id,
         editor: addEditor._id,
         publisher: addPublisher._id,
+        rightsSold: req.body.rightsSold,
+        currentMaterial: req.body.currentMaterial,
+        details: req.body.details,
+        internalNotes: req.body.internalNotes,
       },
-      { new: true }
+      {},
+      { upsert: true, new: true }
     );
-
-    await Author.findByIdAndUpdate(
-      addAuthor._id,
-      {
-        agency: addAgency._id,
-      },
-      { new: true }
-    );
-
-    // book: author, agency, editor, publisher
-    // author: agency
 
     console.log("Title added!");
   } catch (error) {
