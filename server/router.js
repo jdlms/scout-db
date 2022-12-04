@@ -19,7 +19,7 @@ const router = Router();
 //   }
 // });
 
-router.post("/post", async (req, res) => {
+router.post("/create-new-title", async (req, res) => {
   try {
     const addBook = new Book({
       _id: new mongoose.Types.ObjectId(),

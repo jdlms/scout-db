@@ -11,8 +11,6 @@ const editorSchema = new Schema({
     require: false,
   },
   publisher: [{ type: Schema.Types.ObjectId, ref: "Publisher" }],
-  authors: [{ type: Schema.Types.ObjectId, ref: "Author" }],
-  books: [{ type: Schema.Types.ObjectId, ref: "Book" }],
 });
 
 export const Editor = model("Editor", editorSchema);

@@ -25,7 +25,7 @@ export function Scout() {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post("http://localhost:5000/post", data);
+      await axios.post("http://localhost:5000/create-new-title", data);
       //for demo purposes only, change this reset call!
       // reset();
     } catch (error) {
