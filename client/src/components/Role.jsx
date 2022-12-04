@@ -17,6 +17,9 @@ export function Role() {
       if (role === "Scout") {
         navigate("/scout-landing");
       }
+      if (role === "Client") {
+        navigate("/client-landing");
+      }
       //why is user being changed after the redirect and not on this c.lg?
       console.log(user);
     } catch (error) {

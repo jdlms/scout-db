@@ -9,7 +9,7 @@ import { UserContext } from "../contexts/UserContext";
 //signup + login same form. enter email and password, if new asked to choose role, if signed up, redirected to dashboard
 
 export function Login() {
-  const { user, addUserToContext } = useContext(UserContext);
+  const { addUserToContext } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -44,8 +44,18 @@ export function Login() {
 
   const onSubmitLogin = async (data) => {
     try {
-      console.log(data);
-      await axios.post("http://localhost:5000/login", data, { withCredentials: true });
+      const sendLoginDetails = await axios.post("http://localhost:5000/login", data, {
+        withCredentials: true,
+      });
+      const user = sendLoginDetails.data.userDetails;
+      addUserToContext(user);
+      console.log(user);
+      if (user.role === "Scout") {
+        navigate("/scout-landing");
+      }
+      if (user.role === "Client") {
+        navigate("/client-landing");
+      }
     } catch (error) {
       console.error("There was an error!", error);
     }

@@ -134,6 +134,8 @@ router.post("/role", async (req, res) => {
     const role = req.body.role;
     if (role === "Scout") {
       await User.findOneAndUpdate({ email: req.body.email }, { role: "Scout" });
+    } else if (role === "Client") {
+      await User.findOneAndUpdate({ email: req.body.email }, { role: "Client" });
     }
     // const user = { username: savedUserInDb.username };
     // req.session.currentUser = user;
@@ -157,7 +159,9 @@ router.post("/login", async (req, res) => {
     const user = { email: savedUserInDb.email };
     req.session.currentUser = user;
 
-    return res.json({ message: "Signup/Login sucessful", user });
+    const userDetails = { email: savedUserInDb.email, role: savedUserInDb.role };
+    console.log(userDetails);
+    return res.json({ message: "Signup/Login sucessful", userDetails });
   } catch (error) {
     return res.status(500).json({ message: "Signup/Login unsucessful", error });
   }
