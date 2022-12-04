@@ -34,8 +34,7 @@ export function Login() {
       });
       const response = await request.data;
       //do something with the response
-      const user = { email: data.email, role: null };
-      addUserToContext(user);
+      addUserToContext({ email: data.email, role: undefined });
 
       navigate("/role");
     } catch (error) {

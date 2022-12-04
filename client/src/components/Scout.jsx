@@ -1,8 +1,12 @@
 import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
 import { MuiAutocomplete } from "./MuiAutocomplete";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 export function Scout() {
+  const { user, addUserToContext } = useContext(UserContext);
+
   const { register, handleSubmit, control, reset } = useForm({
     defaultValues: {
       title: "",
@@ -31,6 +35,7 @@ export function Scout() {
 
   return (
     <div>
+      {console.log(user)}
       <form onSubmit={handleSubmit(onSubmit)}>
         <input
           {...register("title", { required: true, minLength: 1 })}
