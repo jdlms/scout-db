@@ -1,10 +1,11 @@
 import "./styles/App.css";
 import { Route, Routes } from "react-router-dom";
 import { Homepage } from "./components/Homepage";
-import { Scout } from "./components/Scout";
+import { CreateTitle } from "./components/CreateTitle";
 import { Client } from "./components/Client";
 import { Login } from "./components/Login";
 import { Role } from "./components/Role";
+import { ScoutLayout } from "./components/ScoutLayout";
 
 function App() {
   return (
@@ -12,7 +13,9 @@ function App() {
       <Route path="/" element={<Login />} />
       <Route path="homepage" element={<Homepage />} />
       <Route path="role" element={<Role />} />
-      <Route path="scout-landing" element={<Scout />} />
+      <Route element={<ScoutLayout />}>
+        <Route path="create-title" element={<CreateTitle />} />
+      </Route>
       <Route path="client-landing" element={<Client />} />
     </Routes>
   );

@@ -7,7 +7,7 @@ export function Homepage() {
       <p>Please choose a role...</p>
       <br />
       <div className="homepage-button-container">
-        <Link to={"scout-landing"}>
+        <Link to={"create-title"}>
           <button>Scout</button>
         </Link>
         <Link to={"client-landing"}>

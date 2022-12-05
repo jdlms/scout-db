@@ -4,7 +4,7 @@ import { MuiAutocomplete } from "./MuiAutocomplete";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
-export function Scout() {
+export function CreateTitle() {
   const { user, addUserToContext } = useContext(UserContext);
 
   const { register, handleSubmit, control, reset } = useForm({
