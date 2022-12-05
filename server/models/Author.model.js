@@ -12,6 +12,9 @@ const authorSchema = new Schema({
   },
   // books: [{ type: Schema.Types.ObjectId, ref: "Book" }],
   agency: [{ type: Schema.Types.ObjectId, ref: "Agency" }],
+},
+{
+  timestamps: true,
 });
 
 export const Author = model("Author", authorSchema);

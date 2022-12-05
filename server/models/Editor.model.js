@@ -1,16 +1,21 @@
 import { model, Schema } from "mongoose";
 
-const editorSchema = new Schema({
-  _id: Schema.Types.ObjectId,
-  lastName: {
-    type: String,
-    require: true,
+const editorSchema = new Schema(
+  {
+    _id: Schema.Types.ObjectId,
+    lastName: {
+      type: String,
+      require: true,
+    },
+    firstName: {
+      type: String,
+      require: false,
+    },
+    publisher: [{ type: Schema.Types.ObjectId, ref: "Publisher" }],
   },
-  firstName: {
-    type: String,
-    require: false,
-  },
-  publisher: [{ type: Schema.Types.ObjectId, ref: "Publisher" }],
-});
+  {
+    timestamps: true,
+  }
+);
 
 export const Editor = model("Editor", editorSchema);

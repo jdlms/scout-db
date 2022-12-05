@@ -74,7 +74,7 @@ router.post("/create-new-title", async (req, res) => {
       {},
       { upsert: true, new: true }
     );
-
+    res.json({ message: "Title sucessfully added." });
     console.log("Title added!");
   } catch (error) {
     console.log("There was an error", error);
