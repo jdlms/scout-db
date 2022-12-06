@@ -51,7 +51,7 @@ export function Login() {
       addUserToContext(user);
       console.log(user);
       if (user.role === "Scout") {
-        navigate("/create-title");
+        navigate("/scout-landing");
       }
       if (user.role === "Client") {
         navigate("/client-landing");

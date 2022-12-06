@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-export function ScoutNav() {
+export function ClientNav() {
   let activeStyle = {
     textDecoration: "underline",
   };
@@ -11,11 +11,11 @@ export function ScoutNav() {
 
   return (
     <nav>
-      <span style={{ display: "inline", fontSize: "30px" }}>🕵️</span>
+      <span style={{ display: "inline", fontSize: "30px" }}>📚</span>
       <ul style={{ display: "inline-flex", flexDirection: "row", justifyContent: "flex-start" }}>
         <li>
           <NavLink
-            to="scout-landing"
+            to="client-landing"
             style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
           >
             Home
@@ -23,15 +23,15 @@ export function ScoutNav() {
         </li>
         <li>
           <NavLink
-            to="create-title"
+            to="saved-titles"
             style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
           >
-            Create title
+            Saved titles
           </NavLink>
         </li>
         <li>
-          <NavLink to="recent" style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}>
-            Recent
+          <NavLink to="Reports" style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}>
+            Reports
           </NavLink>
         </li>
       </ul>

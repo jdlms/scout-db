@@ -5,7 +5,8 @@ import { CreateTitle } from "./components/CreateTitle";
 import { Client } from "./components/Client";
 import { Login } from "./components/Login";
 import { Role } from "./components/Role";
-import { ScoutLayout } from "./components/ScoutLayout";
+import { Layout } from "./components/Layout";
+import { ScoutLanding } from "./components/ScoutLanding";
 
 function App() {
   return (
@@ -13,10 +14,11 @@ function App() {
       <Route path="/" element={<Login />} />
       <Route path="homepage" element={<Homepage />} />
       <Route path="role" element={<Role />} />
-      <Route element={<ScoutLayout />}>
+      <Route element={<Layout />}>
+        <Route path="scout-landing" element={<ScoutLanding />} />
         <Route path="create-title" element={<CreateTitle />} />
+        <Route path="client-landing" element={<Client />} />
       </Route>
-      <Route path="client-landing" element={<Client />} />
     </Routes>
   );
 }

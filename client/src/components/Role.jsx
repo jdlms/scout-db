@@ -15,7 +15,7 @@ export function Role() {
       });
       addUserToContext(userInfo);
       if (role === "Scout") {
-        navigate("/create-title");
+        navigate("/scout-landing");
       }
       if (role === "Client") {
         navigate("/client-landing");

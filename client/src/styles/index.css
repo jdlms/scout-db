@@ -15,17 +15,19 @@
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
+  color: #f7e7ce;
   min-width: 320px;
   min-height: 100vh;
 }
 
-h1,
-h2,
-h3,
-h4 {
-  font-size: 3.2em;
-  line-height: 1.1;
+a {
   color: #f7e7ce;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  margin-right: 30px;
 }
