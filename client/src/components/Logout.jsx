@@ -1,18 +1,21 @@
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext";
 
 export function Logout() {
-  navigate = useNavigate();
+  const { user, addUserToContext } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const logout = async () => {
     try {
       const res = await axios.post("http://localhost:5000/logout", { withCredentials: true });
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error);
-      } else {
-        navigate("/");
-      }
+
+      const data = await res.data;
+      console.log(data);
+
+      addUserToContext({});
+      navigate("/");
     } catch (error) {
       console.error("There was an error!", error);
     }
@@ -20,7 +23,9 @@ export function Logout() {
 
   return (
     <>
-      <button onClick={logout}>Logout</button>
+      <NavLink style={{ textDecoration: "none" }} onClick={logout}>
+        Logout
+      </NavLink>
     </>
   );
 }

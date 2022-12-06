@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { Logout } from "./Logout";
 
 export function ScoutNav() {
   let activeStyle = {
@@ -33,6 +34,9 @@ export function ScoutNav() {
           <NavLink to="recent" style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}>
             Recent
           </NavLink>
+        </li>
+        <li style={{ alignSelf: "flex-end" }}>
+          <Logout />
         </li>
       </ul>
     </nav>

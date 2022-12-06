@@ -9,7 +9,7 @@ import { UserContext } from "../contexts/UserContext";
 //signup + login same form. enter email and password, if new asked to choose role, if signed up, redirected to dashboard
 
 export function Login() {
-  const { addUserToContext } = useContext(UserContext);
+  const { user, addUserToContext } = useContext(UserContext);
 
   const navigate = useNavigate();
 
@@ -84,6 +84,7 @@ export function Login() {
         />
         <button type="submit">Send</button>
       </form>
+      {console.log(user)}
     </div>
   );
 }

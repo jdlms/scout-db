@@ -9,7 +9,7 @@ export function Layout() {
 
   return (
     <div>
-      {user === "Scout" ? <ScoutNav /> : <ClientNav />}
+      {user.role === "Scout" ? <ScoutNav /> : <ClientNav />}
       <main>
         <article>
           <Outlet />

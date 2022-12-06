@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { Logout } from "./Logout";
 
 export function ClientNav() {
   let activeStyle = {
@@ -22,17 +23,17 @@ export function ClientNav() {
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to="saved-titles"
-            style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
-          >
-            Saved titles
+          <NavLink to="saved" style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}>
+            Saved
           </NavLink>
         </li>
         <li>
           <NavLink to="Reports" style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}>
             Reports
           </NavLink>
+        </li>
+        <li >
+          <Logout />
         </li>
       </ul>
     </nav>
