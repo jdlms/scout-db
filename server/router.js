@@ -81,6 +81,16 @@ router.post("/create-new-title", async (req, res) => {
   }
 });
 
+router.get("/recent-titles", async (req, res) => {
+  try {
+    const recentTitles = await Book.find();
+    res.json(recentTitles);
+    console.log(recentTitles);
+  } catch (error) {
+    console.log("There was an error", error);
+  }
+});
+
 router.get("/", (req, res) => {
   res.json({ message: "Hello world" });
 });

@@ -7,6 +7,7 @@ import { Login } from "./components/Login";
 import { Role } from "./components/Role";
 import { Layout } from "./components/Layout";
 import { ScoutLanding } from "./components/ScoutLanding";
+import { RecentTitles } from "./components/RecentTitles";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Route element={<Layout />}>
         <Route path="scout-landing" element={<ScoutLanding />} />
         <Route path="create-title" element={<CreateTitle />} />
+        <Route path="recent" element={<RecentTitles />} />
         <Route path="client-landing" element={<Client />} />
       </Route>
     </Routes>

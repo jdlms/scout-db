@@ -35,7 +35,7 @@ export function ScoutNav() {
             Recent
           </NavLink>
         </li>
-        <li style={{ alignSelf: "flex-end" }}>
+        <li>
           <Logout />
         </li>
       </ul>
