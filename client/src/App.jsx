@@ -1,7 +1,7 @@
 import "./styles/App.css";
 import { Route, Routes } from "react-router-dom";
 import { Homepage } from "./components/Homepage";
-import { CreateTitle } from "./components/CreateTitle";
+import { AddTitle } from "./components/AddTitle";
 import { Client } from "./components/Client";
 import { Login } from "./components/Login";
 import { Role } from "./components/Role";
@@ -17,7 +17,7 @@ function App() {
       <Route path="role" element={<Role />} />
       <Route element={<Layout />}>
         <Route path="scout-landing" element={<ScoutLanding />} />
-        <Route path="create-title" element={<CreateTitle />} />
+        <Route path="add-title" element={<AddTitle />} />
         <Route path="recent" element={<RecentTitles />} />
         <Route path="client-landing" element={<Client />} />
       </Route>

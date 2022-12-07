@@ -1,8 +1,5 @@
-import { Router } from "express";
 import bcrypt from "bcryptjs";
 import { User } from "../models/User.model.js";
-
-const router = Router();
 
 export const login = async (req, res) => {
   try {

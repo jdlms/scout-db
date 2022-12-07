@@ -4,7 +4,7 @@ import { MuiAutocomplete } from "./MuiAutocomplete";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
-export function CreateTitle() {
+export function AddTitle() {
   const { user, addUserToContext } = useContext(UserContext);
 
   const { register, handleSubmit, control, reset } = useForm({
@@ -27,7 +27,7 @@ export function CreateTitle() {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post("http://localhost:5000/create-new-title", data);
+      await axios.post("http://localhost:5000/add-title", data);
       //for demo purposes only, change this reset call!
       // reset();
     } catch (error) {
@@ -87,7 +87,7 @@ export function CreateTitle() {
         <br />
         <input {...register("internalNotes", { required: false })} placeholder="Internal notes" />
         <br />
-        <button type="submit">Create title</button>
+        <button type="submit">Add title</button>
       </form>
     </div>
   );

@@ -24,10 +24,10 @@ export function ScoutNav() {
         </li>
         <li>
           <NavLink
-            to="create-title"
+            to="add-title"
             style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
           >
-            Create title
+            Add title
           </NavLink>
         </li>
         <li>
