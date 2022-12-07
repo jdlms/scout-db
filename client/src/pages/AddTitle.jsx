@@ -1,6 +1,6 @@
 import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
-import { MuiAutocomplete } from "./MuiAutocomplete";
+import { MuiAutocomplete } from "../components/MuiAutocomplete";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
