@@ -6,6 +6,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { connectToMongoose } from "./db.js";
 import session from "express-session";
+import { userPresent } from "./middleware/sessions.middleware.js";
 
 const app = express();
 const PORT = 5000;
