@@ -1,4 +1,6 @@
 import express from "express";
+import { Router } from "express";
+
 import cors from "cors";
 
 import path from "path";
@@ -18,13 +20,11 @@ app.use(
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
       secure: process.env.NODE_ENV === "production",
       httpOnly: true,
-      maxAge: 600000
+      maxAge: 600000,
     },
   })
 );
 app.use(cors({ origin: CLIENT_ORIGIN, credentials: true }));
-
-
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");
@@ -32,12 +32,14 @@ app.use(function (req, res, next) {
   next();
 });
 
+const router = Router();
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
 import { connectToMongoose } from "./db.js";
 
-import router from "./router.js";
+// import router from "./router.js";
 import session from "express-session";
 
 await connectToMongoose();
@@ -53,3 +55,6 @@ app.use(router);
 app.listen(PORT, () => {
   console.log("Listening on PORT", PORT);
 });
+
+import { login } from "./routes/login.js";
+app.post("/login", login);
