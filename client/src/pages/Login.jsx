@@ -4,10 +4,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 
-//what is formState,
-
-//signup + login same form. enter email and password, if new asked to choose role, if signed up, redirected to dashboard
-
 export function Login() {
   const { user, addUserToContext } = useContext(UserContext);
 
@@ -33,8 +29,10 @@ export function Login() {
         withCredentials: true,
       });
       const response = await request.data;
+      const userObjFromSession = response.user;
+      console.log(userObjFromSession);
       //do something with the response
-      addUserToContext({ email: data.email, role: undefined });
+      addUserToContext(userObjFromSession);
 
       navigate("/role");
     } catch (error) {
@@ -47,9 +45,12 @@ export function Login() {
       const sendLoginDetails = await axios.post("http://localhost:5000/login", data, {
         withCredentials: true,
       });
-      const user = sendLoginDetails.data.userDetails;
-      addUserToContext(user);
+      const user = sendLoginDetails.data.user;
+
       console.log(user);
+
+      addUserToContext(user);
+
       if (user.role === "Scout") {
         navigate("/scout-landing");
       }
@@ -84,7 +85,6 @@ export function Login() {
         />
         <button type="submit">Send</button>
       </form>
-      {console.log(user)}
     </div>
   );
 }

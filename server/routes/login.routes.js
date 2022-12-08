@@ -3,20 +3,21 @@ import { User } from "../models/User.model.js";
 
 export const login = async (req, res) => {
   try {
-    const savedUserInDb = await User.findOne({
-      email: req.body.email,
-    });
-    const doPasswordsMatch = await bcrypt.compare(req.body.password, savedUserInDb.password);
+    const userFromDb = await User.findOne(
+      {
+        email: req.body.email,
+      },
+      { email: 1, role: 1, password: 1 }
+    );
+    const doPasswordsMatch = await bcrypt.compare(req.body.password, userFromDb.password);
     //add error handling here, 400 response if pws do not match
     if (!doPasswordsMatch) {
       throw new Error("Passwords do not match");
     }
-    const user = { email: savedUserInDb.email };
+    const user = { email: userFromDb.email, role: userFromDb.role };
     req.session.currentUser = user;
 
-    const userDetails = { email: savedUserInDb.email, role: savedUserInDb.role };
-    console.log(userDetails);
-    return res.json({ message: "Signup/Login sucessful", userDetails });
+    return res.json({ message: "Signup/Login sucessful", user });
   } catch (error) {
     return res.status(500).json({ message: "Signup/Login unsucessful", error });
   }

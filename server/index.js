@@ -6,7 +6,12 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { connectToMongoose } from "./db.js";
 import session from "express-session";
+import { MONGO_URI } from "./config.js";
 import { userPresent } from "./middleware/sessions.middleware.js";
+
+// const MongoDBStore = require("connect-mongodb-session")(session);
+import pkg from "connect-mongodb-session";
+const MongoStore = pkg(session);
 
 const app = express();
 const PORT = 5000;
@@ -17,6 +22,10 @@ const __dirname = dirname(__filename);
 const publicFolderLocation = path.join(__dirname, "public");
 
 await connectToMongoose();
+
+const store = new MongoStore({ uri: MONGO_URI, collection: "sessions" });
+
+app.use(cors({ origin: CLIENT_ORIGIN, credentials: true }));
 
 app.use(
   session({
@@ -29,9 +38,9 @@ app.use(
       httpOnly: true,
       maxAge: 600000,
     },
+    store: store,
   })
 );
-app.use(cors({ origin: CLIENT_ORIGIN, credentials: true }));
 
 app.use(function (req, res, next) {
   res.header("Access-Control-Allow-Origin", "http://localhost:3000");

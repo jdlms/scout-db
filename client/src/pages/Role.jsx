@@ -21,7 +21,7 @@ export function Role() {
         navigate("/client-landing");
       }
       //why is user being changed after the redirect and not on this c.lg?
-      console.log(user);
+      // console.log(user);
     } catch (error) {
       console.error("There was an error:", error);
     }

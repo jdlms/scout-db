@@ -3,15 +3,13 @@ import { User } from "../models/User.model.js";
 export const role = async (req, res) => {
   try {
     const role = req.body.role;
-    if (role === "Scout") {
-      await User.findOneAndUpdate({ email: req.body.email }, { role: "Scout" });
-    } else if (role === "Client") {
-      await User.findOneAndUpdate({ email: req.body.email }, { role: "Client" });
-    }
-    // const user = { username: savedUserInDb.username };
-    // req.session.currentUser = user;
 
-    return res.json({ message: "Scout role chosen", role });
+    const user = await User.findOneAndUpdate({ email: req.body.email }, { role: role });
+    const userObjForSession = { email: user.email, role: req.body.role };
+    //set in session cookie
+    req.session.currentUser = userObjForSession;
+
+    return res.json({ message: `${role} choosen.` });
   } catch (error) {
     return res.status(500).json({ message: "Signup/Login unsucessful", error });
   }
