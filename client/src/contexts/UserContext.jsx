@@ -1,10 +1,13 @@
 import { useEffect } from "react";
 import { createContext, useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext();
 
 export function UserContextProvider({ children }) {
   const [user, setUser] = useState({});
+  const navigate = useNavigate();
 
   const removeUserFromContext = () => {
     setUser(null);
@@ -16,10 +19,13 @@ export function UserContextProvider({ children }) {
         const request = await axios.get("http://localhost:5000/refresh-user", {
           withCredentials: true,
         });
-        console.log(request.data);
-        setUser(request.data.user);
+    
+        if (request.data.user) {
+          setUser(request.data.user);
+          navigate(request.data.user.role === "Scout" ? "/scout-landing" : "/user-landing");
+        }
       } catch (error) {
-        console.error("There was an error!", error);
+        console.error("There was an error!");
       }
     };
     checkForUser();

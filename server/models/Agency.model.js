@@ -7,7 +7,7 @@ const agencySchema = new Schema(
       type: String,
       require: true,
     },
-    authors: [{ type: Schema.Types.ObjectId, ref: "Author" }],
+    // authors: [{ type: Schema.Types.ObjectId, ref: "Author" }],
   },
   {
     timestamps: true,

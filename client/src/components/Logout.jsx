@@ -9,7 +9,7 @@ export function Logout() {
 
   const logout = async () => {
     try {
-      const res = await axios.post("http://localhost:5000/logout", { withCredentials: true });
+      const res = await axios.post("http://localhost:5000/logout", {}, { withCredentials: true });
 
       const data = await res.data;
       console.log(data);

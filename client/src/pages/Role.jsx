@@ -10,7 +10,7 @@ export function Role() {
   const chooseRole = async (role) => {
     try {
       const userInfo = { email: user.email, role: role };
-      const request = await axios.post("http://localhost:5000/choose-role", userInfo, {
+      await axios.post("http://localhost:5000/role", userInfo, {
         withCredentials: true,
       });
       addUserToContext(userInfo);
@@ -20,8 +20,6 @@ export function Role() {
       if (role === "Client") {
         navigate("/client-landing");
       }
-      //why is user being changed after the redirect and not on this c.lg?
-      // console.log(user);
     } catch (error) {
       console.error("There was an error:", error);
     }

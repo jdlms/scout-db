@@ -1,10 +1,17 @@
 import { Router } from "express";
 const router = Router();
 
-export const refreshUser = async (req, res) => {
+router.get("/refresh-user", async (req, res) => {
   try {
     console.log(req.session);
+    if (!req.session.currentUser) {
+      return res.json({ message: "No live user" });
+    }
+    return res.json({ user: req.session.currentUser });
   } catch (error) {
-    return res.status(500).json({ message: "Signup/Login unsucessful", error });
+    console.log(error);
+    return res.status(403).json({ error: "There was an error" });
   }
-};
+});
+
+export default router;

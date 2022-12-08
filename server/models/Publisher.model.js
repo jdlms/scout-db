@@ -7,7 +7,7 @@ const publisherSchema = new Schema(
       type: String,
       require: true,
     },
-    editors: [{ type: Schema.Types.ObjectId, ref: "Editor" }],
+    // editors: [{ type: Schema.Types.ObjectId, ref: "Editor" }],
   },
   {
     timestamps: true,

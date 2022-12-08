@@ -1,6 +1,8 @@
 import { User } from "../../models/User.model.js";
+import { Router } from "express";
+const router = Router();
 
-export const role = async (req, res) => {
+router.post("/role", async (req, res) => {
   try {
     const role = req.body.role;
 
@@ -13,4 +15,6 @@ export const role = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ message: "Signup/Login unsucessful", error });
   }
-};
+});
+
+export default router;

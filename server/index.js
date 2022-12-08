@@ -30,7 +30,7 @@ app.use(cors({ origin: CLIENT_ORIGIN, credentials: true }));
 app.use(
   session({
     secret: process.env.SESSION_SECRET,
-    resave: true,
+    resave: false,
     saveUninitialized: false,
     cookie: {
       sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
@@ -59,10 +59,8 @@ app.listen(PORT, () => {
   console.log("Listening on PORT", PORT);
 });
 
-import authRouter from "./routes/auth";
-app.use("/auth", authRouter);
-
-
+import authRouter from "./routes/auth/index.js";
+app.use(authRouter);
 
 import { addTitle } from "./routes/add.title.routes.js";
 app.post("/add-title", addTitle);
