@@ -59,20 +59,15 @@ app.listen(PORT, () => {
   console.log("Listening on PORT", PORT);
 });
 
-import { login } from "./routes/login.routes.js";
-app.post("/login", login);
+import authRouter from "./routes/auth";
+app.use("/auth", authRouter);
 
-import { logout } from "./routes/logout.routes.js";
-app.post("/logout", logout);
 
-import { role } from "./routes/role.routes.js";
-app.post("/choose-role", role);
-
-import { signup } from "./routes/signup.routes.js";
-app.post("/signup", signup);
 
 import { addTitle } from "./routes/add.title.routes.js";
 app.post("/add-title", addTitle);
 
 import { recentTitles } from "./routes/recent.titles.routes.js";
 app.get("/recent-titles", recentTitles);
+
+//#todo rxjs <--check it out

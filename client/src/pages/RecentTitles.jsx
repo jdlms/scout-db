@@ -1,7 +1,11 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useQuery } from "react-query";
+import { UserContext } from "../contexts/UserContext";
 
 export function RecentTitles() {
+  const { checkForUser } = useContext(UserContext);
+
   const { isLoading, error, data, isFetching } = useQuery(
     ["recentTitles"],
     async () =>
@@ -15,6 +19,8 @@ export function RecentTitles() {
   if (isLoading) return "Loading...";
 
   if (error) return "An error has occurred: " + error.message;
+
+  checkForUser;
 
   return (
     <>

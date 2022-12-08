@@ -1,7 +1,12 @@
 import bcrypt from "bcryptjs";
-import { User } from "../models/User.model.js";
+import { User } from "../../models/User.model.js";
 
-export const login = async (req, res) => {
+import { Router } from "express";
+const router = Router();
+
+//learn you a haskell for great good <-- book rec from Rico
+
+router.post("/login", async (req, res) => {
   try {
     const userFromDb = await User.findOne(
       {
@@ -21,4 +26,6 @@ export const login = async (req, res) => {
   } catch (error) {
     return res.status(500).json({ message: "Signup/Login unsucessful", error });
   }
-};
+});
+
+export default router;
