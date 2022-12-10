@@ -62,6 +62,9 @@ app.listen(PORT, () => {
 import authRouter from "./routes/auth/index.js";
 app.use(authRouter);
 
+import searchRouter from "./routes/search/index.js";
+app.use("/search", searchRouter);
+
 import { addTitle } from "./routes/add.title.routes.js";
 app.post("/add-title", addTitle);
 

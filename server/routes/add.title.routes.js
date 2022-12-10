@@ -1,18 +1,15 @@
-
-
 import { Agency } from "../models/Agency.model.js";
 import { Author } from "../models/Author.model.js";
 import { Book } from "../models/Book.model.js";
 import { Editor } from "../models/Editor.model.js";
 import { Publisher } from "../models/Publisher.model.js";
 
-
 export const addTitle = async (req, res) => {
   try {
     const addAuthor = await Author.findOneAndUpdate(
       {
-        lastName: req.body.lastName,
-        firstName: req.body.firstName,
+        lastName: req.body.authorLastName,
+        firstName: req.body.authorFirstName,
       },
       {},
       { upsert: true, new: true }
@@ -36,8 +33,7 @@ export const addTitle = async (req, res) => {
 
     const addEditor = await Editor.findOneAndUpdate(
       {
-        firstName: req.body.editorFirstName,
-        lastName: req.body.editorLastName,
+        name: req.body.editor,
       },
       {},
       { upsert: true, new: true }

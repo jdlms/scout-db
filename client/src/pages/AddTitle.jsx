@@ -1,8 +1,9 @@
 import { Controller, useForm } from "react-hook-form";
 import axios from "axios";
-import { MuiAutocomplete } from "../components/MuiAutocomplete";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { AutocompleteField } from "../components/forms/AutocompleteField";
+import { Text } from "../components/forms/Text";
 
 export function AddTitle() {
   const { user, addUserToContext } = useContext(UserContext);
@@ -10,14 +11,13 @@ export function AddTitle() {
   const { register, handleSubmit, control, reset } = useForm({
     defaultValues: {
       title: "",
-      firstName: "",
-      lastName: "",
+      authorFirstName: "",
+      authorLastName: "",
       submissionStatus: "",
       confidential: "",
       agency: "",
       publisher: "",
-      editorFirstName: "",
-      editorLastName: "",
+      editor: "",
       rightsSold: "",
       details: "",
       currentMaterial: "",
@@ -30,6 +30,7 @@ export function AddTitle() {
       await axios.post("http://localhost:5000/add-title", data);
       //for demo purposes only, change this reset call!
       // reset();
+      console.log(data);
     } catch (error) {
       console.error(error);
     }
@@ -39,18 +40,44 @@ export function AddTitle() {
     <div>
       {console.log(user)}
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input
-          {...register("title", { required: true, minLength: 1 })}
-          placeholder="Book/Proposal title"
+        <br />
+
+        <AutocompleteField control={control} name={"title"} url={"title"} label={"Title"} />
+        <br />
+        <AutocompleteField
+          control={control}
+          name={"authorFirstName"}
+          url={"author-first-name"}
+          label={"First name"}
+        />
+        <AutocompleteField
+          control={control}
+          name={"authorLastName"}
+          url={"author-last-name"}
+          label={"Last name"}
         />
         <br />
-        {/* <MuiAutocomplete control={control} /> */}
-        <input {...register("firstName", { required: false })} placeholder="First Name" />
+        <AutocompleteField control={control} name={"agency"} url={"agency-name"} label={"Agency"} />
         <br />
-        <input
-          {...register("lastName", { required: true, minLength: 1 })}
-          placeholder="Last name"
+        <AutocompleteField
+          control={control}
+          name={"publisher"}
+          url={"publisher-name"}
+          label={"Publisher"}
         />
+        <AutocompleteField control={control} name={"editor"} url={"editor-name"} label={"Editor"} />
+        <br />
+        <Text control={control} name={"details"} label={"Details"} />
+        <br />
+        <Text control={control} name={"rightsSold"} label={"Rights sold"} />
+        <br />
+
+        <input
+          {...register("currentMaterial", { required: true, minLength: 1 })}
+          placeholder="Current material"
+        />
+        <br />
+        <input {...register("internalNotes", { required: false })} placeholder="Internal notes" />
         <br />
         <input
           {...register("submissionStatus", { required: true, minLength: 1 })}
@@ -61,38 +88,11 @@ export function AddTitle() {
           {...register("confidential", { required: true, minLength: 1 })}
           placeholder="Confidential?"
         />
-        <br />
-        <input {...register("agency", { required: false })} placeholder="Agency" />
-        <br />
-        <input {...register("publisher", { required: false })} placeholder="Publisher" />
-        <br />
-        <input
-          {...register("editorFirstName", { required: false })}
-          placeholder="Editor first name"
-        />
-        <br />
-        <input
-          {...register("editorLastName", { required: false })}
-          placeholder="Editor last name"
-        />
-        <br />
-        <input {...register("rightsSold", { required: false })} placeholder="Rights sold" />
-        <br />
-        <input {...register("details", { required: true, minLength: 1 })} placeholder="Details" />
-        <br />
-        <input
-          {...register("currentMaterial", { required: true, minLength: 1 })}
-          placeholder="Current material"
-        />
-        <br />
-        <input {...register("internalNotes", { required: false })} placeholder="Internal notes" />
-        <br />
         <button type="submit">Add title</button>
       </form>
     </div>
   );
 }
 
-//confidential radio option needed
-//agent needed
-//imprint needed
+//#todo add imprint
+//@todo make rights sold field able to accept publisher names and save them in correct territories, auto search each time after comma?

@@ -4,8 +4,6 @@
   line-height: 24px;
   font-weight: 400;
 
-  background-color: #0e0e1d;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -15,7 +13,7 @@
 
 body {
   margin: 0;
-  color: #f7e7ce;
+  /* color: #f7e7ce; */
   min-width: 320px;
   min-height: 100vh;
 }
@@ -31,4 +29,3 @@ ul {
 li {
   margin-right: 30px;
 }
-
