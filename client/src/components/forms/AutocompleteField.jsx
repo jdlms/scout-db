@@ -5,7 +5,7 @@ import axios from "axios";
 import { Controller } from "react-hook-form";
 import { useEffect, useState } from "react";
 
-export function AutocompleteField({ onChange, control, url, name, label }) {
+export function AutocompleteField({ onChange: ignored, control, url, name, label }) {
   const [options, setOptions] = useState([]);
   const [open, setOpen] = useState(false);
   const loading = open && options.length === 0;
@@ -40,11 +40,57 @@ export function AutocompleteField({ onChange, control, url, name, label }) {
   }, [open]);
 
   return (
+    // <Controller
+    //   render={({ props }) => (
+    //     <Autocomplete
+    //       id={name}
+    //       sx={{ width: 300 }}
+    //       freeSolo
+    //       autoSelect
+    //       open={open}
+    //       onOpen={() => {
+    //         setOpen(true);
+    //       }}
+    //       onClose={() => {
+    //         setOpen(false);
+    //       }}
+    //       isOptionEqualToValue={(option, value) => option === value}
+    //       options={options}
+    //       loading={loading}
+    //       renderInput={(params) => (
+    //         <TextField
+    //           {...params}
+    //           label={label}
+    //           InputProps={{
+    //             ...params.InputProps,
+    //             endAdornment: (
+    //               <>
+    //                 {loading ? <CircularProgress color="inherit" size={20} /> : null}
+    //                 {params.InputProps.endAdornment}
+    //               </>
+    //             ),
+    //           }}
+    //         />
+    //       )}
+    //     />
+    //   )}
+    //   onChange={([, data]) => data}
+    //   name={name}
+    //   control={control}
+    // />
+
     <Controller
+      name="autocomplete"
+      control={control}
+      onChange={([, data]) => data}
+      // onChange={([e, data, reason]) => handleChange(e, data, reason)}
+      // onInputChange={(e, data) => handleInputChange(e, data)}
+      defaultValue={""}
       render={({ onChange, ...props }) => (
         <Autocomplete
-          options={options}
-          getOptionLabel={(options) => options}
+          id="autocomplete"
+          freeSolo
+          autoSelect
           open={open}
           onOpen={() => {
             setOpen(true);
@@ -52,59 +98,14 @@ export function AutocompleteField({ onChange, control, url, name, label }) {
           onClose={() => {
             setOpen(false);
           }}
-          renderOption={(props, options) => <span>{options}</span>}
-          renderInput={(params) => <TextField {...params} label={label} variant="outlined" />}
-          onChange={(e, data) => onChange(data)}
-          {...props}
+          loading={loading}
+          options={options}
+          renderInput={(params) => (
+            <TextField {...params} label="freeSolo" margin="normal" variant="outlined" />
+          )}
         />
       )}
-      onChange={([, data]) => data}
-      defaultValue={""}
-      name={name}
-      control={control}
+     
     />
   );
-
-  // return (
-  //   <Controller
-  //     render={({ props }) => (
-  //       <Autocomplete
-  //         id={name}
-  //         sx={{ width: 300 }}
-  //         freeSolo={true}
-  //         defaultValue=""
-  //         clearOnBlur={false}
-  //         open={open}
-  //         onOpen={() => {
-  //           setOpen(true);
-  //         }}
-  //         onClose={() => {
-  //           setOpen(false);
-  //         }}
-  //         isOptionEqualToValue={(option, value) => option.author === value.author}
-  //         options={options}
-  //         loading={loading}
-  //         renderInput={(params) => (
-  //           <TextField
-  //             {...params}
-  //             label={label}
-  //             InputProps={{
-  //               ...params.InputProps,
-  //               endAdornment: (
-  //                 <>
-  //                   {loading ? <CircularProgress color="inherit" size={20} /> : null}
-  //                   {params.InputProps.endAdornment}
-  //                 </>
-  //               ),
-  //             }}
-  //           />
-  //         )}
-  //         onChange={(_, data) => props.onChange(data)}
-  //       />
-  //     )}
-  //     onChange={([, data]) => data}
-  //     name={name}
-  //     control={control}
-  //   />
-  // );
 }
