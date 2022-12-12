@@ -12,11 +12,11 @@ const bookSchema = new Schema(
     submissionStatus: {
       type: String,
       enum: ["In development", "On submission", "In auction", "Sold", "International submission"],
-      require: true,
+      // require: true,
     },
-    confidential: {
-      type: Boolean,
-    },
+    // confidential: {
+    //   type: Boolean,
+    // },
     agency: [{ type: Schema.Types.ObjectId, ref: "Agency", autopopulate: true }],
     publisher: [{ type: Schema.Types.ObjectId, ref: "Publisher", autopopulate: true }],
     editor: [{ type: Schema.Types.ObjectId, ref: "Editor", autopopulate: true }],
@@ -29,7 +29,7 @@ const bookSchema = new Schema(
     },
     details: {
       type: String,
-      require: true,
+      // require: true,
     },
     internalNotes: {
       type: String,

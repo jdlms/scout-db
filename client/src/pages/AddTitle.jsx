@@ -5,31 +5,18 @@ import { UserContext } from "../contexts/UserContext";
 import { AutocompleteField } from "../components/forms/AutocompleteField";
 import { Text } from "../components/forms/Text";
 
+const initialValues = [];
+
 export function AddTitle() {
   const { user, addUserToContext } = useContext(UserContext);
 
-  const { register, handleSubmit, control, reset } = useForm({
-    defaultValues: {
-      title: "",
-      authorFirstName: "",
-      authorLastName: "",
-      submissionStatus: "",
-      confidential: "",
-      agency: "",
-      publisher: "",
-      editor: "",
-      rightsSold: "",
-      details: "",
-      currentMaterial: "",
-      internalNotes: "",
-    },
+  const { register, handleSubmit, control } = useForm({
+   
   });
 
-  const onSubmit = async (data) => {
+  const onSubmit = (data) => {
     try {
-      await axios.post("http://localhost:5000/add-title", data);
-      //for demo purposes only, change this reset call!
-      // reset();
+      // await axios.post("http://localhost:5000/add-title", data);
       console.log(data);
     } catch (error) {
       console.error(error);
@@ -38,13 +25,12 @@ export function AddTitle() {
 
   return (
     <div>
-      {console.log(user)}
       <form onSubmit={handleSubmit(onSubmit)}>
         <br />
 
-        <AutocompleteField control={control} name={"title"} url={"title"} label={"Title"} />
+        <AutocompleteField control={control} name={"title"} url={"title"} placeholder={"Title"} />
         <br />
-        <AutocompleteField
+        {/* <AutocompleteField
           control={control}
           name={"authorFirstName"}
           url={"author-first-name"}
@@ -86,8 +72,8 @@ export function AddTitle() {
         <br />
         <input
           {...register("confidential", { required: true, minLength: 1 })}
-          placeholder="Confidential?"
-        />
+          placeholder="Confidential?" */}
+        {/* /> */}
         <button type="submit">Add title</button>
       </form>
     </div>
