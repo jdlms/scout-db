@@ -50,8 +50,8 @@ export function AutocompleteField({ onChange: ignored, control, url, name, label
           options={options}
           // value={selectedItems}
           sx={{ width: 300 }}
-          // freeSolo
-          // autoSelect
+          freeSolo
+          autoSelect
           open={open}
           onOpen={() => {
             setOpen(true);
