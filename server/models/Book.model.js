@@ -6,13 +6,11 @@ const bookSchema = new Schema(
     _id: Schema.Types.ObjectId,
     title: {
       type: String,
-      // require: true,
     },
     author: [{ type: Schema.Types.ObjectId, ref: "Author", autopopulate: true }],
-    submissionStatus: {
+    status: {
       type: String,
       enum: ["In development", "On submission", "In auction", "Sold", "International submission"],
-      // require: true,
     },
     confidential: {
       type: Boolean,
@@ -25,11 +23,10 @@ const bookSchema = new Schema(
     },
     currentMaterial: {
       type: String,
-      enum: ["None", "Sample pages", "Proposal", "Full ms", "Partial ms"],
+      enum: ["None", "Sample pages", "Proposal", "Full ms.", "Partial ms."],
     },
     details: {
       type: String,
-      // require: true,
     },
     internalNotes: {
       type: String,
@@ -44,4 +41,6 @@ bookSchema.plugin(mongooseAutoPopulate);
 
 export const Book = model("Book", bookSchema);
 
-//book model needs: times reported on, date added/updated (can replace), territories sold, publishers sold, rights contact, optional: film agent
+//#todo book model needs: times reported on, date added/updated (can replace), territories sold, publishers sold, rights contact, optional: film agent
+
+//todo chip field for rights sold

@@ -1,27 +1,28 @@
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import axios from "axios";
-import { useContext } from "react";
-import { UserContext } from "../contexts/UserContext";
 import { AutocompleteField } from "../components/forms/AutocompleteField";
 import { Text } from "../components/forms/Text";
+import { MaterialSelect } from "../components/forms/MaterialSelect";
+import { MultilineText } from "../components/forms/MultilineText";
+import { StatusSelect } from "../components/forms/StatusSelect";
+import { SwitchConfidential } from "../components/forms/SwitchConfidential";
+import { Button } from "@mui/material";
 
 export function AddTitle() {
-  const { user, addUserToContext } = useContext(UserContext);
-
   const { register, handleSubmit, control, reset } = useForm({
     defaultValues: {
       title: "",
       authorFirstName: "",
       authorLastName: "",
-      submissionStatus: "",
-      // confidential: "",
       agency: "",
       publisher: "",
       editor: "",
-      rightsSold: "",
       details: "",
+      rightsSold: "",
       currentMaterial: "",
       internalNotes: "",
+      status: "",
+      confidential: "",
     },
   });
 
@@ -38,61 +39,63 @@ export function AddTitle() {
 
   return (
     <div>
-  
       <form onSubmit={handleSubmit(onSubmit)}>
         <br />
 
         <AutocompleteField control={control} name={"title"} url={"title"} label={"Title"} />
-        <br />
+
         <AutocompleteField
           control={control}
           name={"authorFirstName"}
           url={"author-first-name"}
           label={"First name"}
         />
+
         <AutocompleteField
           control={control}
           name={"authorLastName"}
           url={"author-last-name"}
           label={"Last name"}
         />
-        <br />
         <AutocompleteField control={control} name={"agency"} url={"agency-name"} label={"Agency"} />
-        <br />
+
         <AutocompleteField
           control={control}
           name={"publisher"}
           url={"publisher-name"}
           label={"Publisher"}
         />
-        <AutocompleteField control={control} name={"editor"} url={"editor-name"} label={"Editor"} />
-        <br />
-        <Text control={control} name={"details"} label={"Details"} />
-        <br />
-        <Text control={control} name={"rightsSold"} label={"Rights sold"} />
-        <br />
 
-        <input
-          {...register("currentMaterial", { required: false, minLength: 1 })}
-          placeholder="Current material"
-        />
-        <br />
-        <input {...register("internalNotes", { required: false })} placeholder="Internal notes" />
-        <br />
-        <input
-          {...register("submissionStatus", { required: false, minLength: 1 })}
-          placeholder="Submission status"
-        />
-        <br />
-        <input
-          {...register("confidential", { required: false, minLength: 1 })}
-          placeholder="Confidential?"
-        />
-        <button type="submit">Add title</button>
+        <AutocompleteField control={control} name={"editor"} url={"editor-name"} label={"Editor"} />
+
+        <MultilineText control={control} name={"details"} label={"Details"} />
+
+        <Text control={control} name={"rightsSold"} label={"Rights sold"} />
+
+        <MaterialSelect control={control} name={"currentMaterial"} label={"Current material"} />
+
+        <StatusSelect control={control} name={"status"} label={"Status"} />
+
+        <MultilineText control={control} name={"internalNotes"} label={"Internal notes"} />
+
+        <fieldset
+          style={{
+            display: "inline",
+            borderColor: "rgba(255, 255, 255, 0.12)",
+            borderWidth: "1.5px",
+            borderRadius: "2px",
+          }}
+        >
+          <legend>Confidential</legend>
+          <SwitchConfidential control={control} name={"confidential"} label={"Confidential"} />
+        </fieldset>
+        <Button type="submit" size="large" variant="outlined">
+          Add
+        </Button>
       </form>
     </div>
   );
 }
 
 //#todo add imprint
-//@todo make rights sold field able to accept publisher names and save them in correct territories, auto search each time after comma?
+//#todo make rights sold field able to accept publisher names and save them in correct territories, auto search each time after comma?

@@ -45,7 +45,7 @@ export const addTitle = async (req, res) => {
       {
         title: req.body.title,
         author: addAuthor._id,
-        submissionStatus: req.body.submissionStatus,
+        status: req.body.status,
         confidential: confidentialValue,
         agency: addAgency._id,
         editor: addEditor._id,

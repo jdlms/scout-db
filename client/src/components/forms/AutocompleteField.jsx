@@ -81,36 +81,5 @@ export function AutocompleteField({ onChange: ignored, control, url, name, label
         />
       )}
     />
-
-    //     <Controller
-    //       name="autocomplete"
-    //       control={control}
-    //       defaultValue={""}
-    //       render={({ onChange, value }) => (
-    //         <Autocomplete
-    //           options={options}
-    //           getOptionLabel={(option) => option}
-    //           value={selectedItems}
-    //           onChange={(e, newValue) => {
-    //             setSelectedItems(newValue);
-    //             onChange(newValue);
-    //           }}
-    //           freeSolo
-    //           autoSelect
-    //           open={open}
-    //           onOpen={() => {
-    //             setOpen(true);
-    //           }}
-    //           onClose={() => {
-    //             setOpen(false);
-    //           }}
-    //           renderInput={(params) => (
-    //             <TextField {...params} label={label} margin="normal" variant="outlined" />
-    //           )}
-    //         />
-    //       )}
-    //     />
-    //   );
-    // }
   );
 }
