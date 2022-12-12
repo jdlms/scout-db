@@ -14,7 +14,7 @@ export function AddTitle() {
       authorFirstName: "",
       authorLastName: "",
       submissionStatus: "",
-      confidential: "",
+      // confidential: "",
       agency: "",
       publisher: "",
       editor: "",
@@ -38,7 +38,7 @@ export function AddTitle() {
 
   return (
     <div>
-      {console.log(user)}
+  
       <form onSubmit={handleSubmit(onSubmit)}>
         <br />
 
@@ -73,19 +73,19 @@ export function AddTitle() {
         <br />
 
         <input
-          {...register("currentMaterial", { required: true, minLength: 1 })}
+          {...register("currentMaterial", { required: false, minLength: 1 })}
           placeholder="Current material"
         />
         <br />
         <input {...register("internalNotes", { required: false })} placeholder="Internal notes" />
         <br />
         <input
-          {...register("submissionStatus", { required: true, minLength: 1 })}
+          {...register("submissionStatus", { required: false, minLength: 1 })}
           placeholder="Submission status"
         />
         <br />
         <input
-          {...register("confidential", { required: true, minLength: 1 })}
+          {...register("confidential", { required: false, minLength: 1 })}
           placeholder="Confidential?"
         />
         <button type="submit">Add title</button>

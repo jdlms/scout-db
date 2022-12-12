@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 export function AutocompleteField({ onChange: ignored, control, url, name, label }) {
   const [options, setOptions] = useState([]);
   const [open, setOpen] = useState(false);
+  const [selectedItems, setSelectedItems] = useState([]);
   const loading = open && options.length === 0;
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export function AutocompleteField({ onChange: ignored, control, url, name, label
         withCredentials: true,
       });
       let requestedData = request.data;
-      console.log(requestedData);
+      console.log(request.data);
       if (active) {
         setOptions([...requestedData]);
       }
@@ -40,57 +41,17 @@ export function AutocompleteField({ onChange: ignored, control, url, name, label
   }, [open]);
 
   return (
-    // <Controller
-    //   render={({ props }) => (
-    //     <Autocomplete
-    //       id={name}
-    //       sx={{ width: 300 }}
-    //       freeSolo
-    //       autoSelect
-    //       open={open}
-    //       onOpen={() => {
-    //         setOpen(true);
-    //       }}
-    //       onClose={() => {
-    //         setOpen(false);
-    //       }}
-    //       isOptionEqualToValue={(option, value) => option === value}
-    //       options={options}
-    //       loading={loading}
-    //       renderInput={(params) => (
-    //         <TextField
-    //           {...params}
-    //           label={label}
-    //           InputProps={{
-    //             ...params.InputProps,
-    //             endAdornment: (
-    //               <>
-    //                 {loading ? <CircularProgress color="inherit" size={20} /> : null}
-    //                 {params.InputProps.endAdornment}
-    //               </>
-    //             ),
-    //           }}
-    //         />
-    //       )}
-    //     />
-    //   )}
-    //   onChange={([, data]) => data}
-    //   name={name}
-    //   control={control}
-    // />
-
     <Controller
-      name="autocomplete"
+      name={name}
       control={control}
-      onChange={([, data]) => data}
-      // onChange={([e, data, reason]) => handleChange(e, data, reason)}
-      // onInputChange={(e, data) => handleInputChange(e, data)}
-      defaultValue={""}
-      render={({ onChange, ...props }) => (
+      render={({ field: { onChange, value } }) => (
         <Autocomplete
-          id="autocomplete"
-          freeSolo
-          autoSelect
+          getOptionLabel={(option) => option}
+          options={options}
+          // value={selectedItems}
+          sx={{ width: 300 }}
+          // freeSolo
+          // autoSelect
           open={open}
           onOpen={() => {
             setOpen(true);
@@ -98,14 +59,58 @@ export function AutocompleteField({ onChange: ignored, control, url, name, label
           onClose={() => {
             setOpen(false);
           }}
-          loading={loading}
-          options={options}
+          onChange={(e, newValue) => {
+            setSelectedItems(newValue);
+            onChange(newValue);
+          }}
           renderInput={(params) => (
-            <TextField {...params} label="freeSolo" margin="normal" variant="outlined" />
+            <TextField
+              {...params}
+              label={label}
+              InputProps={{
+                ...params.InputProps,
+                endAdornment: (
+                  <>
+                    {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                    {params.InputProps.endAdornment}
+                  </>
+                ),
+              }}
+            />
           )}
         />
       )}
-     
     />
+
+    //     <Controller
+    //       name="autocomplete"
+    //       control={control}
+    //       defaultValue={""}
+    //       render={({ onChange, value }) => (
+    //         <Autocomplete
+    //           options={options}
+    //           getOptionLabel={(option) => option}
+    //           value={selectedItems}
+    //           onChange={(e, newValue) => {
+    //             setSelectedItems(newValue);
+    //             onChange(newValue);
+    //           }}
+    //           freeSolo
+    //           autoSelect
+    //           open={open}
+    //           onOpen={() => {
+    //             setOpen(true);
+    //           }}
+    //           onClose={() => {
+    //             setOpen(false);
+    //           }}
+    //           renderInput={(params) => (
+    //             <TextField {...params} label={label} margin="normal" variant="outlined" />
+    //           )}
+    //         />
+    //       )}
+    //     />
+    //   );
+    // }
   );
 }

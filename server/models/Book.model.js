@@ -6,13 +6,13 @@ const bookSchema = new Schema(
     _id: Schema.Types.ObjectId,
     title: {
       type: String,
-      require: true,
+      // require: true,
     },
     author: [{ type: Schema.Types.ObjectId, ref: "Author", autopopulate: true }],
     submissionStatus: {
       type: String,
       enum: ["In development", "On submission", "In auction", "Sold", "International submission"],
-      require: true,
+      // require: true,
     },
     confidential: {
       type: Boolean,
@@ -29,7 +29,7 @@ const bookSchema = new Schema(
     },
     details: {
       type: String,
-      require: true,
+      // require: true,
     },
     internalNotes: {
       type: String,
