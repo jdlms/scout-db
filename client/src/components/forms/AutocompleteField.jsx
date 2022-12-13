@@ -45,6 +45,18 @@ export function AutocompleteField({ onChange: ignored, control, url, name, label
   //   }
   // }, [open]);
 
+  useEffect(() => {
+    (async () => {
+      const request = await axios.get("http://localhost:5000/search/" + url, {
+        withCredentials: true,
+      });
+      let requestedData = request.data;
+      console.log(request.data);
+
+      setOptions(requestedData);
+    })();
+  }, []);
+
   console.log(options);
 
   return (
@@ -54,71 +66,49 @@ export function AutocompleteField({ onChange: ignored, control, url, name, label
       // render={({ field: { onChange, value } }) => (
 
       render={({ field }) => {
-        return <MuiAutoComplete {...{ field, url, label }} />;
+        console.log(field);
+        return (
+          <Autocomplete
+            {...field}
+            // getOptionLabel={(option) => {
+            //   console.log(option);
+            //   return option.label || "";
+            // }}
+            // renderOption={(option) => <span>{option.label || ""}</span>}
+            options={options}
+            sx={{ width: 300 }}
+            freeSolo
+            onChange={(_, data) => field.onChange(data)}
+            // autoSelect
+            // open={open}
+            // onOpen={() => {
+            //   setOpen(true);
+            // }}
+            // onClose={() => {
+            //   setOpen(false);
+            // }}
+            // onChange={(e, newValue) => {
+            //   onChange(newValue);
+            // }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label={label}
+                variant="outlined"
+                InputProps={{
+                  ...params.InputProps,
+                  // endAdornment: (
+                  //   <>
+                  //     {loading ? <CircularProgress color="inherit" size={20} /> : null}
+                  //     {params.InputProps.endAdornment}
+                  //   </>
+                  // ),
+                }}
+              />
+            )}
+          />
+        );
       }}
-    />
-  );
-}
-
-function MuiAutoComplete({ field, url, label }) {
-  const [options, setOptions] = useState([
-    "Carol Janeway",
-    "Emmet Merlin",
-    "Jane Williams",
-    "Tony Judt",
-  ]);
-
-  useEffect(() => {
-    (async () => {
-      const request = await axios.get("http://localhost:5000/search/" + url, {
-        withCredentials: true,
-      });
-      let requestedData = request.data;
-      console.log(request.data);
-
-      setOptions(requestedData.map((label) => ({ label })));
-    })();
-  }, []);
-  console.log(field);
-  return (
-    <Autocomplete
-      {...field}
-      // getOptionLabel={(option) => {
-      //   console.log(option);
-      //   return option.label || "";
-      // }}
-      // renderOption={(option) => <span>{option.label || ""}</span>}
-      options={options.map(({ label }) => label)}
-      sx={{ width: 300 }}
-      freeSolo
-      onChange={(_, data) => field.onChange(data)}
-      // autoSelect
-      // open={open}
-      // onOpen={() => {
-      //   setOpen(true);
-      // }}
-      // onClose={() => {
-      //   setOpen(false);
-      // }}
-      // onChange={(e, newValue) => {
-      //   onChange(newValue);
-      // }}
-      renderInput={(params) => (
-        <TextField
-          {...params}
-          variant="outlined"
-          label={label}
-          InputProps={{
-            ...params.InputProps,
-            // endAdornment: (
-            //   <>
-            //     {loading ? <CircularProgress color="inherit" size={20} /> : null}
-            //     {params.InputProps.endAdornment}
-            //   </>
-            // ),
-          }}
-        />
-      )}
     />
   );
 }

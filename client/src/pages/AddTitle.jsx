@@ -9,6 +9,7 @@ import { SwitchConfidential } from "../components/forms/SwitchConfidential";
 import { Button } from "@mui/material";
 import { useState } from "react";
 import { useEffect } from "react";
+import { Example } from "../components/forms/Example";
 
 const defaultValues = {
   title: "",
@@ -52,6 +53,7 @@ export function AddTitle() {
   return (
     <div>
       <button onClick={() => reset(defaultValues)}>Reset</button>
+      {/* <Example /> */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <br />
 
