@@ -65,3 +65,4 @@ export default function Reports() {
 //#todo add unique ideas to all listed items
 //#todo snackbars for errors
 //#todo you should not be able to add more than 1 book with the same title
+//#todo learn how to use mui box layouts

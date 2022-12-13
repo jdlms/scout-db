@@ -7,32 +7,42 @@ import { MultilineText } from "../components/forms/MultilineText";
 import { StatusSelect } from "../components/forms/StatusSelect";
 import { SwitchConfidential } from "../components/forms/SwitchConfidential";
 import { Button } from "@mui/material";
+import { useState } from "react";
+import { useEffect } from "react";
+
+const defaultValues = {
+  title: "",
+  authorFirstName: "",
+  authorLastName: "",
+  agency: "",
+  publisher: "",
+  editor: "",
+  details: "",
+  rightsSold: "",
+  currentMaterial: "",
+  internalNotes: "",
+  status: "",
+  confidential: false,
+};
 
 export function AddTitle() {
+  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
+
   const { register, handleSubmit, control, reset } = useForm({
-    defaultValues: {
-      title: "",
-      authorFirstName: "",
-      authorLastName: "",
-      agency: "",
-      publisher: "",
-      editor: "",
-      details: "",
-      rightsSold: "",
-      currentMaterial: "",
-      internalNotes: "",
-      status: "",
-      confidential: "",
-    },
+    defaultValues,
   });
+
+  useEffect(() => {
+    reset(defaultValues);
+    console.log("hi");
+  }, [isSubmitSuccessful]);
 
   const onSubmit = async (data) => {
     try {
       await axios.post("http://localhost:5000/add-title", data, {
         withCredentials: true,
       });
-      //for demo purposes only, change this reset call!
-      reset();
+      setIsSubmitSuccessful(true);
       console.log(data);
     } catch (error) {
       console.error(error);
@@ -41,6 +51,7 @@ export function AddTitle() {
 
   return (
     <div>
+      <button onClick={() => reset(defaultValues)}>Reset</button>
       <form onSubmit={handleSubmit(onSubmit)}>
         <br />
 
