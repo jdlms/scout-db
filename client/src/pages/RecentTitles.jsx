@@ -7,10 +7,10 @@ export function RecentTitles() {
   const { checkForUser } = useContext(UserContext);
 
   const { isLoading, error, data, isFetching } = useQuery(
-    ["recentTitles"],
+    ["recentReports"],
     async () =>
       await axios
-        .get("http://localhost:5000/recent-titles", data, {
+        .get("http://localhost:5000/recent-titles", {
           withCredentials: true,
         })
         .then((res) => res.data)

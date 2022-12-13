@@ -36,6 +36,11 @@ export function ScoutNav() {
           </NavLink>
         </li>
         <li>
+          <NavLink to="reports" style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}>
+            Reports
+          </NavLink>
+        </li>
+        <li>
           <Logout />
         </li>
       </ul>

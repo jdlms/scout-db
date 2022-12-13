@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { Report } from "../../models/Report.model";
+import { Report } from "../../models/Report.model.js";
 const router = Router();
 
 router.post("/create-report", async (req, res) => {
@@ -46,9 +46,11 @@ router.post("/add-book-to-report", async (req, res) => {
   }
 });
 
-router.got("/released-reports", async (req, res) => {
+//#todo create remove book from report route
+
+router.get("/reports", async (req, res) => {
   try {
-    const releasedReports = await Report.find({ released: true }).distinct("title");
+    const releasedReports = await Report.find();
     res.json(releasedReports);
     console.log(releasedReports);
   } catch (error) {
@@ -56,19 +58,14 @@ router.got("/released-reports", async (req, res) => {
   }
 });
 
-router.got("/unreleased-reports", async (req, res) => {
-  try {
-    const unreleasedReports = await Report.find({ released: false }).distinct("title");
-    res.json(unreleasedReports);
-    console.log(unreleasedReports);
-  } catch (error) {
-    console.log("There was an error", error);
-  }
-});
+// router.get("/unreleased-reports", async (req, res) => {
+//   try {
+//     const unreleasedReports = await Report.find({ released: false });
+//     res.json(unreleasedReports);
+//     console.log(unreleasedReports);
+//   } catch (error) {
+//     console.log("There was an error", error);
+//   }
+// });
 
 export default router;
-
-// newUser.save((err, res) => {
-//         if (err) return handleError(err);
-//         else return console.log("Result: ", res)
-//     });

@@ -64,7 +64,7 @@ app.use(authRouter);
 import searchRouter from "./routes/search/index.js";
 app.use("/search", searchRouter);
 
-import scoutRouter from "./routes/search/index.js";
+import scoutRouter from "./routes/scout/index.js";
 app.use("/scout", scoutRouter);
 
 import { addTitle } from "./routes/add.title.routes.js";

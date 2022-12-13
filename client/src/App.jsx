@@ -8,6 +8,7 @@ import { Role } from "./pages/Role";
 import { RecentTitles } from "./pages/RecentTitles";
 import { ScoutLanding } from "./pages/ScoutLanding";
 import { ClientLayout } from "./components/ClientLayout";
+import Reports from "./pages/Reports";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="scout-landing" element={<ScoutLanding />} />
         <Route path="add-title" element={<AddTitle />} />
         <Route path="recent" element={<RecentTitles />} />
+        <Route path="reports" element={<Reports />} />
       </Route>
       <Route element={<ClientLayout />}>
         <Route path="client-landing" element={<Client />} />

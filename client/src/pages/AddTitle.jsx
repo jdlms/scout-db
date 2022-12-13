@@ -28,7 +28,9 @@ export function AddTitle() {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post("http://localhost:5000/add-title", data);
+      await axios.post("http://localhost:5000/add-title", data, {
+        withCredentials: true,
+      });
       //for demo purposes only, change this reset call!
       reset();
       console.log(data);
