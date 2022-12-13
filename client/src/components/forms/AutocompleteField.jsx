@@ -34,6 +34,8 @@ export function AutocompleteField({ onChange: ignored, control, url, name, label
     };
   }, [loading]);
 
+ 
+
   useEffect(() => {
     if (!open) {
       setOptions([]);
@@ -48,7 +50,6 @@ export function AutocompleteField({ onChange: ignored, control, url, name, label
         <Autocomplete
           getOptionLabel={(option) => option}
           options={options}
-          // value={selectedItems}
           sx={{ width: 300 }}
           freeSolo
           autoSelect

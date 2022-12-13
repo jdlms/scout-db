@@ -30,7 +30,7 @@ export function AddTitle() {
     try {
       await axios.post("http://localhost:5000/add-title", data);
       //for demo purposes only, change this reset call!
-      // reset();
+      reset();
       console.log(data);
     } catch (error) {
       console.error(error);

@@ -9,7 +9,6 @@ import session from "express-session";
 import { MONGO_URI } from "./config.js";
 import { userPresent } from "./middleware/sessions.middleware.js";
 
-// const MongoDBStore = require("connect-mongodb-session")(session);
 import pkg from "connect-mongodb-session";
 const MongoStore = pkg(session);
 
@@ -65,10 +64,11 @@ app.use(authRouter);
 import searchRouter from "./routes/search/index.js";
 app.use("/search", searchRouter);
 
+import scoutRouter from "./routes/search/index.js";
+app.use("/scout", scoutRouter);
+
 import { addTitle } from "./routes/add.title.routes.js";
 app.post("/add-title", addTitle);
 
 import { recentTitles } from "./routes/recent.titles.routes.js";
 app.get("/recent-titles", recentTitles);
-
-//#todo rxjs <--check it out
