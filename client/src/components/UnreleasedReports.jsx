@@ -11,6 +11,7 @@ export function UnreleasedReports({ data, viewDetails, setViewDetails }) {
     }
     if (divClicked !== null && divClicked === index) {
       setViewDetails(!viewDetails);
+      setDivClicked(null);
     }
   };
 
