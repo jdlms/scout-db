@@ -13,7 +13,6 @@ export function AutocompleteSelect({ control, url, name, label }) {
       const requestedData = await axios.get("http://localhost:5000/search/" + url, {
         withCredentials: true,
       });
-      console.log(requestedData.data);
       setOptions(requestedData.data);
     })();
   }, []);
@@ -30,6 +29,9 @@ export function AutocompleteSelect({ control, url, name, label }) {
           onChange={(_, data) => {
             field.onChange(data);
           }}
+          isOptionEqualToValue={(option, value) =>
+            value === undefined || value === "" || option.id === value.id
+          }
           renderInput={(params) => (
             <TextField
               {...params}

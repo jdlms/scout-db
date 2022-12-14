@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { useQuery } from "react-query";
 import { UserContext } from "../contexts/UserContext";
+import { addId } from "../utils/addId";
 
 export function RecentTitles() {
   const { checkForUser } = useContext(UserContext);
@@ -28,6 +29,7 @@ export function RecentTitles() {
       {data.map((title) => {
         return (
           <div
+            key={addId()}
             style={{
               backgroundColor: "#f7e7ce",
               height: "150px",
@@ -45,7 +47,6 @@ export function RecentTitles() {
           </div>
         );
       })}
-      {console.log(data)}
     </>
   );
 }

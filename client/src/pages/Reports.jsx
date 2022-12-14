@@ -2,13 +2,16 @@ import { Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Text } from "../components/forms/Text";
-import { ReleasedReports } from "../components/ReleasedReports";
-import { useContext } from "react";
+import { UnreleasedReports } from "../components/UnreleasedReports";
+import { ReportDetails } from "../components/ReportDetails";
+import { useContext, useState } from "react";
 import { useQuery } from "react-query";
 import { UserContext } from "../contexts/UserContext";
 
 export default function Reports() {
   const { checkForUser } = useContext(UserContext);
+
+  const [viewDetails, setViewDetails] = useState(false);
 
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
@@ -34,13 +37,11 @@ export default function Reports() {
 
   const onSubmit = async (data) => {
     try {
-      console.log(data);
       await axios.post("http://localhost:5000/scout/create-report", data, {
         withCredentials: true,
       });
       reset();
       await refetch();
-      console.log(data);
     } catch (error) {
       console.error(error);
     }
@@ -55,7 +56,10 @@ export default function Reports() {
         </Button>
       </form>
       <br />
-      <ReleasedReports data={data} />
+
+      <UnreleasedReports data={data} viewDetails={viewDetails} setViewDetails={setViewDetails} />
+      <br />
+      <ReportDetails viewDetails={viewDetails} setViewDetails={setViewDetails} />
     </div>
   );
 }
