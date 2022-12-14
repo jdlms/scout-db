@@ -5,14 +5,15 @@ import axios from "axios";
 import { Controller } from "react-hook-form";
 import { useEffect, useState } from "react";
 
-export function AutocompleteField({ control, url, name, label }) {
+export function AutocompleteSelect({ control, url, name, label }) {
   const [options, setOptions] = useState([]);
 
   useEffect(() => {
     (async () => {
-      const requestedData = await axios.get("http://localhost:5000/search/" + url, {
+      const requestedData = await axios.get("http://localhost:5000/scout/" + url, {
         withCredentials: true,
       });
+      console.log(requestedData.data);
       setOptions(requestedData.data);
     })();
   }, []);
@@ -25,8 +26,9 @@ export function AutocompleteField({ control, url, name, label }) {
         <Autocomplete
           {...field}
           options={options}
-          freeSolo
-          autoSelect
+          //   freeSolo
+          //   autoSelect
+
           sx={{ width: 300 }}
           onChange={(_, data) => {
             field.onChange(data);

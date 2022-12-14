@@ -1,15 +1,13 @@
 import { useForm } from "react-hook-form";
 import axios from "axios";
-import { AutocompleteField } from "../components/forms/AutocompleteField";
+import { AutocompleteForm } from "../components/forms/AutocompleteForm";
 import { Text } from "../components/forms/Text";
 import { MaterialSelect } from "../components/forms/MaterialSelect";
 import { MultilineText } from "../components/forms/MultilineText";
 import { StatusSelect } from "../components/forms/StatusSelect";
+import { AutocompleteSelect } from "../components/forms/AutocompleteSelect";
 import { SwitchConfidential } from "../components/forms/SwitchConfidential";
 import { Button } from "@mui/material";
-import { useState } from "react";
-import { useEffect } from "react";
-import { Example } from "../components/forms/Example";
 
 const defaultValues = {
   title: "",
@@ -24,6 +22,7 @@ const defaultValues = {
   internalNotes: "",
   status: "",
   confidential: false,
+  addToReport: "",
 };
 
 export function AddTitle() {
@@ -48,31 +47,31 @@ export function AddTitle() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <br />
 
-        <AutocompleteField control={control} name={"title"} url={"title"} label={"Title"} />
+        <AutocompleteForm control={control} name={"title"} url={"title"} label={"Title"} />
 
-        <AutocompleteField
+        <AutocompleteForm
           control={control}
           name={"authorFirstName"}
           url={"author-first-name"}
           label={"First name"}
         />
 
-        <AutocompleteField
+        <AutocompleteForm
           control={control}
           name={"authorLastName"}
           url={"author-last-name"}
           label={"Last name"}
         />
-        <AutocompleteField control={control} name={"agency"} url={"agency-name"} label={"Agency"} />
+        <AutocompleteForm control={control} name={"agency"} url={"agency-name"} label={"Agency"} />
 
-        <AutocompleteField
+        <AutocompleteForm
           control={control}
           name={"publisher"}
           url={"publisher-name"}
           label={"Publisher"}
         />
 
-        <AutocompleteField control={control} name={"editor"} url={"editor-name"} label={"Editor"} />
+        <AutocompleteForm control={control} name={"editor"} url={"editor-name"} label={"Editor"} />
 
         <MultilineText control={control} name={"details"} label={"Details"} />
 
@@ -95,6 +94,14 @@ export function AddTitle() {
           <legend>Confidential</legend>
           <SwitchConfidential control={control} name={"confidential"} label={"Confidential"} />
         </fieldset>
+
+        <AutocompleteSelect
+          control={control}
+          name={"reportTitle"}
+          url={"unreleased-reports"}
+          label={"Add to Report"}
+        />
+
         <Button type="submit" size="large" variant="outlined">
           Add
         </Button>

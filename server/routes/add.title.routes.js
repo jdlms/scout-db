@@ -3,6 +3,7 @@ import { Author } from "../models/Author.model.js";
 import { Book } from "../models/Book.model.js";
 import { Editor } from "../models/Editor.model.js";
 import { Publisher } from "../models/Publisher.model.js";
+import { Report } from "../models/Report.model.js";
 
 export const addTitle = async (req, res) => {
   try {
@@ -58,6 +59,15 @@ export const addTitle = async (req, res) => {
       {},
       { upsert: true, new: true }
     );
+
+    if (req.body.reportTitle.length > 1) {
+      const addBookToReport = await Report.findOneAndUpdate(
+        { title: req.body.reportTitle },
+        { books: addBook._id },
+        { upsert: false }
+      );
+    }
+
     res.json({ message: "Title sucessfully added." });
     console.log("Title added!");
   } catch (error) {

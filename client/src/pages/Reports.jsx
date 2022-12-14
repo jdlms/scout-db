@@ -2,7 +2,7 @@ import { Button } from "@mui/material";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { Text } from "../components/forms/Text";
-import { RecentReports } from "../components/RecentReports";
+import { ReleasedReports } from "../components/ReleasedReports";
 import { useContext } from "react";
 import { useQuery } from "react-query";
 import { UserContext } from "../contexts/UserContext";
@@ -20,7 +20,7 @@ export default function Reports() {
     ["recentTitles"],
     async () =>
       await axios
-        .get("http://localhost:5000/scout/reports", {
+        .get("http://localhost:5000/scout/unreleased-reports", {
           withCredentials: true,
         })
         .then((res) => res.data)
@@ -38,8 +38,6 @@ export default function Reports() {
       await axios.post("http://localhost:5000/scout/create-report", data, {
         withCredentials: true,
       });
-      //for demo purposes only, change this reset call!
-
       reset();
       await refetch();
       console.log(data);
@@ -57,7 +55,7 @@ export default function Reports() {
         </Button>
       </form>
       <br />
-      <RecentReports data={data} />
+      <ReleasedReports data={data} />
     </div>
   );
 }

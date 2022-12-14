@@ -1,7 +1,8 @@
-export function RecentReports({ data }) {
+export function ReleasedReports({ data }) {
   return (
     <>
-      <div>Recent Reports</div>
+      {console.log(data)}
+      <div>Released Reports</div>
       {data.map((title) => {
         return (
           <div
