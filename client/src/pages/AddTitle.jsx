@@ -27,23 +27,16 @@ const defaultValues = {
 };
 
 export function AddTitle() {
-  const [isSubmitSuccessful, setIsSubmitSuccessful] = useState(false);
-
   const { register, handleSubmit, control, reset } = useForm({
     defaultValues,
   });
-
-  useEffect(() => {
-    reset(defaultValues);
-    console.log("hi");
-  }, [isSubmitSuccessful]);
 
   const onSubmit = async (data) => {
     try {
       await axios.post("http://localhost:5000/add-title", data, {
         withCredentials: true,
       });
-      setIsSubmitSuccessful(true);
+      reset(defaultValues);
       console.log(data);
     } catch (error) {
       console.error(error);
@@ -52,8 +45,6 @@ export function AddTitle() {
 
   return (
     <div>
-      <button onClick={() => reset(defaultValues)}>Reset</button>
-      {/* <Example /> */}
       <form onSubmit={handleSubmit(onSubmit)}>
         <br />
 
