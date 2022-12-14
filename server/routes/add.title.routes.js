@@ -60,9 +60,9 @@ export const addTitle = async (req, res) => {
       { upsert: true, new: true }
     );
 
-    if (req.body.reportTitle.length > 1) {
+    if (req.body.addToReport.length > 1) {
       const addBookToReport = await Report.findOneAndUpdate(
-        { title: req.body.reportTitle },
+        { title: req.body.addToReport },
         { books: addBook._id },
         { upsert: false }
       );

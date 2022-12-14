@@ -20,7 +20,7 @@ export default function Reports() {
     ["recentTitles"],
     async () =>
       await axios
-        .get("http://localhost:5000/scout/unreleased-reports", {
+        .get("http://localhost:5000/scout/unreleased-reports-obj", {
           withCredentials: true,
         })
         .then((res) => res.data)

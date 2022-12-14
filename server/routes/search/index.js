@@ -16,5 +16,7 @@ router.use(publisher);
 import editor from "./editor.routes.js";
 router.use(editor);
 
+import reports from "./report.routes.js";
+router.use(reports);
 
 export default router;

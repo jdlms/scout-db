@@ -14,6 +14,7 @@ export function StatusSelect({ control, name, label }) {
             <MenuItem value={"On submission"}>On submission</MenuItem>
             <MenuItem value={"In auction"}>In auction</MenuItem>
             <MenuItem value={"Sold"}>Sold</MenuItem>
+            <MenuItem value={"Sold"}>Published</MenuItem>
             <MenuItem value={"International submission"}>International submission</MenuItem>
           </Select>
         </FormControl>

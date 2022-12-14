@@ -10,7 +10,7 @@ export function AutocompleteSelect({ control, url, name, label }) {
 
   useEffect(() => {
     (async () => {
-      const requestedData = await axios.get("http://localhost:5000/scout/" + url, {
+      const requestedData = await axios.get("http://localhost:5000/search/" + url, {
         withCredentials: true,
       });
       console.log(requestedData.data);
@@ -26,9 +26,6 @@ export function AutocompleteSelect({ control, url, name, label }) {
         <Autocomplete
           {...field}
           options={options}
-          //   freeSolo
-          //   autoSelect
-
           sx={{ width: 300 }}
           onChange={(_, data) => {
             field.onChange(data);

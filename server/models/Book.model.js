@@ -10,7 +10,14 @@ const bookSchema = new Schema(
     author: [{ type: Schema.Types.ObjectId, ref: "Author", autopopulate: true }],
     status: {
       type: String,
-      enum: ["In development", "On submission", "In auction", "Sold", "International submission"],
+      enum: [
+        "In development",
+        "On submission",
+        "In auction",
+        "Sold",
+        "Published",
+        "International submission",
+      ],
     },
     confidential: {
       type: Boolean,

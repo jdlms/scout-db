@@ -58,25 +58,15 @@ router.get("/reports", async (req, res) => {
   }
 });
 
-router.get("/unreleased-reports", async (req, res) => {
+router.get("/unreleased-reports-obj", async (req, res) => {
   try {
-    const unreleasedReports = await Report.find({ released: false }).distinct("title");
+    const unreleasedReports = await Report.find({ released: false });
+    // .distinct("title");
     res.json(unreleasedReports);
     console.log(unreleasedReports);
   } catch (error) {
     console.log("There was an error", error);
   }
 });
-
-// router.get("/unreleased-reports", async (req, res) => {
-//   try {
-//     const unreleasedReports = await Report.find({ released: false });
-//     // .distinct("title");
-//     res.json(unreleasedReports);
-//     console.log(unreleasedReports);
-//   } catch (error) {
-//     console.log("There was an error", error);
-//   }
-// });
 
 export default router;
