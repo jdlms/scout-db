@@ -27,7 +27,8 @@ export default function Reports() {
         .get("http://localhost:5000/scout/unreleased-reports-obj", {
           withCredentials: true,
         })
-        .then((res) => res.data)
+        .then((res) => res.data),
+    { staleTime: 1000 * 10 }
   );
 
   if (isLoading) return "Loading...";

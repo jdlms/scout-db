@@ -11,7 +11,6 @@ import CssBaseline from "@mui/material/CssBaseline";
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
-      staleTime: 1000 * 10,
       refetchOnMount: true,
     },
   },
