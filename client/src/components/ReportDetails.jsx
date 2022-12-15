@@ -1,14 +1,47 @@
-export function ReportDetails({ viewDetails, setViewDetails }) {
-  const details = () => {
-    if (viewDetails) {
-      return <h1>Hi!</h1>;
-    }
-  };
+import { addId } from "../utils/addId";
 
+export function ReportDetails({ data, divClicked }) {
+  const report = data[divClicked];
+
+  console.log(report.books);
   return (
     <div>
-      <h1>Test</h1>
-      {details()}
+      <h2>{report.title}</h2>
+      {report.books.map((book) => {
+        return (
+          <div
+            key={addId()}
+            style={{
+              backgroundColor: "#f7e7ce",
+              height: "50px",
+              width: "400px",
+              display: "flex",
+              flexDirection: "column",
+              color: "#0e0e1d",
+              margin: "4px",
+              borderRadius: "2%",
+            }}
+          >
+            <span>
+              {book.title} by{" "}
+              {book.author.map((author) => `${author.firstName} ${author.lastName}`)}
+            </span>
+            <div
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <span>{`${book.publisher[0].name} / ${book.agency[0].name}`}</span>
+              <span style={{ alignSelf: "flex-end" }}>Status: {book.status}</span>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
+
+//#todo map over all titles, for each status, make header and list books under it
+
+//#todo add mui basic dialog to allow setting report header for each title "on submision" ect.

@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { addId } from "../utils/addId";
 
-export function UnreleasedReports({ data, viewDetails, setViewDetails }) {
-  const [divClicked, setDivClicked] = useState(null);
-
+export function UnreleasedReports({
+  data,
+  viewDetails,
+  setViewDetails,
+  divClicked,
+  setDivClicked,
+}) {
   const handleClick = (event, index) => {
     if (divClicked === null) {
       setViewDetails(!viewDetails);
@@ -21,6 +25,7 @@ export function UnreleasedReports({ data, viewDetails, setViewDetails }) {
       {data.map((title, index) => {
         return (
           <div
+            className="Reports-Div"
             onClick={(event) => handleClick(event, index)}
             key={addId()}
             style={{

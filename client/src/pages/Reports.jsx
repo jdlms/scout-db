@@ -12,6 +12,7 @@ export default function Reports() {
   const { checkForUser } = useContext(UserContext);
 
   const [viewDetails, setViewDetails] = useState(false);
+  const [divClicked, setDivClicked] = useState(null);
 
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
@@ -57,9 +58,15 @@ export default function Reports() {
       </form>
       <br />
 
-      <UnreleasedReports data={data} viewDetails={viewDetails} setViewDetails={setViewDetails} />
+      <UnreleasedReports
+        data={data}
+        viewDetails={viewDetails}
+        setViewDetails={setViewDetails}
+        divClicked={divClicked}
+        setDivClicked={setDivClicked}
+      />
       <br />
-      <ReportDetails viewDetails={viewDetails} setViewDetails={setViewDetails} />
+      {viewDetails ? <ReportDetails data={data} divClicked={divClicked} /> : undefined}
     </div>
   );
 }

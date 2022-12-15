@@ -50,3 +50,5 @@ export function GetTitles({ title, url }) {
     </>
   );
 }
+
+//#todo add fiction/nonfiction
