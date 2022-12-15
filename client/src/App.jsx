@@ -9,6 +9,7 @@ import { RecentTitles } from "./pages/RecentTitles";
 import { ScoutLanding } from "./pages/ScoutLanding";
 import { ClientLayout } from "./components/ClientLayout";
 import Reports from "./pages/Reports";
+import { TitleDetails } from "./pages/TitleDetails";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
       <Route element={<ScoutLayout />}>
         <Route path="scout-landing" element={<ScoutLanding />} />
         <Route path="add-title" element={<AddTitle />} />
+        <Route exact path="title-details/:id" element={<TitleDetails />} />
         <Route path="recent" element={<RecentTitles />} />
         <Route path="reports" element={<Reports />} />
       </Route>

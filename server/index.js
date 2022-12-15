@@ -67,6 +67,9 @@ app.use("/search", searchRouter);
 import scoutRouter from "./routes/scout/index.js";
 app.use("/scout", scoutRouter);
 
+import titlesRouter from "./routes/titles/index.js";
+app.use("/title-details", titlesRouter);
+
 import { addTitle } from "./routes/add.title.routes.js";
 app.post("/add-title", addTitle);
 

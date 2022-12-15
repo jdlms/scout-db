@@ -36,7 +36,6 @@ export function AddTitle() {
         withCredentials: true,
       });
       reset(defaultValues);
-      console.log(data);
     } catch (error) {
       console.error(error);
     }

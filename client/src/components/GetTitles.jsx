@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext } from "react";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { addId } from "../utils/addId";
 
@@ -23,28 +24,35 @@ export function GetTitles({ title, url }) {
 
   checkForUser;
 
+  //#todo write util to make url id title-lastName-year
+
   return (
     <>
       <div>{title}</div>
       {data.map((title) => {
         return (
-          <div
+          <Link
             key={addId()}
-            style={{
-              backgroundColor: "#f7e7ce",
-              height: "150px",
-              width: "400px",
-              display: "flex",
-              color: "#0e0e1d",
-              margin: "4px",
-              borderRadius: "2%",
-            }}
+            style={{ textDecoration: "none", color: "black" }}
+            to={`/title-details/${title._id}`}
           >
-            <h3>
-              {title.title} by{" "}
-              {title.author.map((author) => `${author.firstName} ${author.lastName}`)}
-            </h3>
-          </div>
+            <div
+              style={{
+                backgroundColor: "#f7e7ce",
+                height: "150px",
+                width: "400px",
+                display: "flex",
+                color: "#0e0e1d",
+                margin: "4px",
+                borderRadius: "2%",
+              }}
+            >
+              <h3>
+                {title.title} by{" "}
+                {title.author.map((author) => `${author.firstName} ${author.lastName}`)}
+              </h3>
+            </div>
+          </Link>
         );
       })}
     </>
