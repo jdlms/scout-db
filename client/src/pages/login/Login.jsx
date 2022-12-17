@@ -3,16 +3,33 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 export function Login() {
   const { user, addUserToContext } = useContext(UserContext);
   const navigate = useNavigate();
 
-  const { register: register2, handleSubmit: handleSubmit2 } = useForm({
+  const validationSchema = Yup.object().shape({
+    email: Yup.string().required("Email is required").email("Email is invalid"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .required("Password is required"),
+    // confirmPassword: Yup.string()
+    //     .oneOf([Yup.ref('password'), null], 'Passwords must match')
+    //     .required('Confirm Password is required'),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       email: "",
       password: "",
     },
+    resolver: yupResolver(validationSchema),
   });
 
   const onSubmitLogin = async (data) => {
@@ -40,13 +57,16 @@ export function Login() {
   return (
     <div>
       <h4>Login</h4>
-      <form key={2} onSubmit={handleSubmit2(onSubmitLogin)}>
-        <input {...register2("email", { required: true, minLength: 1 })} placeholder="email" />
+      <form key={2} onSubmit={handleSubmit(onSubmitLogin)}>
+        <input {...register("email", { required: true, minLength: 1 })} placeholder="email" />
+        <div className="invalid-feedback">{errors.email?.message}</div>
         <input
           type="password"
-          {...register2("password", { required: true, minLength: 1 })}
+          {...register("password", { required: true, minLength: 1 })}
           placeholder="password"
         />
+        <div className="invalid-feedback">{errors.password?.message}</div>
+        {console.log(errors)}
         <button type="submit">Send</button>
       </form>
     </div>
