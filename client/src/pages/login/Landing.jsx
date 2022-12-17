@@ -1,25 +1,14 @@
 import { Button, ButtonGroup } from "@mui/material";
-import axios from "axios";
 import { useState } from "react";
-import { useContext } from "react";
-import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../contexts/UserContext";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
 
 export function Landing() {
-  const { user, addUserToContext } = useContext(UserContext);
-  const navigate = useNavigate();
-
   const [signupState, setSignupState] = useState(false);
   const [loginState, setLoginState] = useState(false);
 
   const handleLoginClick = () => setLoginState(!loginState);
   const handleSignupClick = () => setSignupState(!signupState);
-
-  
-
 
   return (
     <div>
@@ -35,9 +24,6 @@ export function Landing() {
       {loginState && <Login />}
 
       {signupState && <Signup />}
-
-
- 
     </div>
   );
 }
