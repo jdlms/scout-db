@@ -24,7 +24,7 @@ export default function Reports() {
     ["recentTitles"],
     async () =>
       await axios
-        .get("http://localhost:5000/scout/unreleased-reports-obj", {
+        .get(BASE_URL + "scout/unreleased-reports-obj", {
           withCredentials: true,
         })
         .then((res) => res.data),
@@ -39,7 +39,7 @@ export default function Reports() {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post("http://localhost:5000/scout/create-report", data, {
+      await axios.post(BASE_URL + "scout/create-report", data, {
         withCredentials: true,
       });
       reset();

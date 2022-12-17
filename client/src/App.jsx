@@ -20,7 +20,7 @@ function App() {
       <Route element={<ScoutLayout />}>
         <Route path="scout-landing" element={<ScoutLanding />} />
         <Route path="add-title" element={<AddTitle />} />
-        <Route path="title-details/:id" element={<TitleDetails />} />
+        <Route path="title-details/:id" element={<TitleDetails />} /> 
         <Route path="edit-title/:id" element={<EditTitle />} />
         <Route path="recent" element={<RecentTitles />} />
         <Route path="reports" element={<Reports />} />

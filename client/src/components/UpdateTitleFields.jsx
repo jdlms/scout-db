@@ -22,7 +22,7 @@ export function UpdateTitleFields({ data, defaultValues, id }) {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post("http://localhost:5000/title-details/edit/" + `${id}`, data, {
+      await axios.post(BASE_URL + `titles/edit/${id}`, data, {
         withCredentials: true,
       });
       //redirect back to last location via local storage?
@@ -37,26 +37,16 @@ export function UpdateTitleFields({ data, defaultValues, id }) {
       <form onSubmit={handleSubmit(onSubmit)}>
         <br />
 
-        <Text control={control} name="title" url={"title"} label={"Title"} />
+        <Text control={control} name="title" label={"Title"} />
 
-        <Text
-          control={control}
-          name={"authorFirstName"}
-          url={"author-first-name"}
-          label={"First name"}
-        />
+        <Text control={control} name={"authorFirstName"} label={"First name"} />
 
-        <Text
-          control={control}
-          name={"authorLastName"}
-          url={"author-last-name"}
-          label={"Last name"}
-        />
-        <Text control={control} name={"agency"} url={"agency-name"} label={"Agency"} />
+        <Text control={control} name={"authorLastName"} label={"Last name"} />
+        <Text control={control} name={"agency"} label={"Agency"} />
 
-        <Text control={control} name={"publisher"} url={"publisher-name"} label={"Publisher"} />
+        <Text control={control} name={"publisher"} label={"Publisher"} />
 
-        <Text control={control} name={"editor"} url={"editor-name"} label={"Editor"} />
+        <Text control={control} name={"editor"} label={"Editor"} />
 
         <MultilineText control={control} name={"details"} label={"Details"} />
 

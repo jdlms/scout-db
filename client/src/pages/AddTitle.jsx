@@ -32,7 +32,7 @@ export function AddTitle() {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post("http://localhost:5000/add-title", data, {
+      await axios.post(BASE_URL + "titles/add", data, {
         withCredentials: true,
       });
       reset(defaultValues);
@@ -46,31 +46,31 @@ export function AddTitle() {
       <form onSubmit={handleSubmit(onSubmit)}>
         <br />
 
-        <AutocompleteForm control={control} name={"title"} url={"title"} label={"Title"} />
+        <AutocompleteForm control={control} name={"title"} url={"/title"} label={"Title"} />
 
         <AutocompleteForm
           control={control}
           name={"authorFirstName"}
-          url={"author-first-name"}
+          url={"/author-first-name"}
           label={"First name"}
         />
 
         <AutocompleteForm
           control={control}
           name={"authorLastName"}
-          url={"author-last-name"}
+          url={"/author-last-name"}
           label={"Last name"}
         />
-        <AutocompleteForm control={control} name={"agency"} url={"agency-name"} label={"Agency"} />
+        <AutocompleteForm control={control} name={"agency"} url={"/agency-name"} label={"Agency"} />
 
         <AutocompleteForm
           control={control}
           name={"publisher"}
-          url={"publisher-name"}
+          url={"/publisher-name"}
           label={"Publisher"}
         />
 
-        <AutocompleteForm control={control} name={"editor"} url={"editor-name"} label={"Editor"} />
+        <AutocompleteForm control={control} name={"editor"} url={"/editor-name"} label={"Editor"} />
 
         <MultilineText control={control} name={"details"} label={"Details"} />
 
@@ -97,7 +97,7 @@ export function AddTitle() {
         <AutocompleteSelect
           control={control}
           name={"addToReport"}
-          url={"unreleased-reports"}
+          url={"/unreleased-reports"}
           label={"Add to Report"}
         />
 

@@ -10,7 +10,7 @@ export function EditTitle() {
     ["titleDetails"],
     async () =>
       await axios
-        .get("http://localhost:5000/title-details/" + `${id}`, {
+        .get(BASE_URL + `titles/single/${id}`, {
           withCredentials: true,
         })
         .then((res) => res.data)

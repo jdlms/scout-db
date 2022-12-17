@@ -25,7 +25,7 @@ export function Login() {
 
   const onSubmitSignup = async (data) => {
     try {
-      const request = await axios.post("http://localhost:5000/signup", data, {
+      const request = await axios.post(BASE_URL + "signup", data, {
         withCredentials: true,
       });
       const response = await request.data;
@@ -42,7 +42,7 @@ export function Login() {
 
   const onSubmitLogin = async (data) => {
     try {
-      const sendLoginDetails = await axios.post("http://localhost:5000/login", data, {
+      const sendLoginDetails = await axios.post(BASE_URL + "login", data, {
         withCredentials: true,
       });
       const user = sendLoginDetails.data.user;

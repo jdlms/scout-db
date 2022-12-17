@@ -10,7 +10,7 @@ export function Role() {
   const chooseRole = async (role) => {
     try {
       const userInfo = { email: user.email, role: role };
-      await axios.post("http://localhost:5000/role", userInfo, {
+      await axios.post(BASE_URL + "role", userInfo, {
         withCredentials: true,
       });
       addUserToContext(userInfo);

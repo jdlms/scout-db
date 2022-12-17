@@ -3,14 +3,15 @@ import { Book } from "../../models/Book.model.js";
 
 const router = Router();
 
-router.get("/single/:id", async (req, res) => {
+router.get("/recent", async (req, res) => {
   try {
-    const title = await Book.findById({ _id: `${req.params.id}` });
-    console.log(title);
-    res.json(title);
+    const recentTitles = await Book.find();
+    res.json(recentTitles);
   } catch (error) {
     console.log("There was an error", error);
   }
 });
 
 export default router;
+
+//#todo this search needs to be refinded and not simply get all books

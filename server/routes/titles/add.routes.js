@@ -1,11 +1,14 @@
-import { Agency } from "../models/Agency.model.js";
-import { Author } from "../models/Author.model.js";
-import { Book } from "../models/Book.model.js";
-import { Editor } from "../models/Editor.model.js";
-import { Publisher } from "../models/Publisher.model.js";
-import { Report } from "../models/Report.model.js";
+import { Router } from "express";
+import { Agency } from "../../models/Agency.model.js";
+import { Author } from "../../models/Author.model.js";
+import { Book } from "../../models/Book.model.js";
+import { Editor } from "../../models/Editor.model.js";
+import { Publisher } from "../../models/Publisher.model.js";
+import { Report } from "../../models/Report.model.js";
 
-export const addTitle = async (req, res) => {
+const router = Router();
+
+router.post("/add", async (req, res) => {
   try {
     const addAuthor = await Author.findOneAndUpdate(
       {
@@ -73,4 +76,6 @@ export const addTitle = async (req, res) => {
   } catch (error) {
     console.log("There was an error", error);
   }
-};
+});
+
+export default router;
