@@ -73,8 +73,25 @@ export function Login() {
               value={value}
               ref={ref}
               error={errors.email ? true : false}
-              helperText={errors.email ? errors.email.message :undefined}
+              helperText={errors.email ? errors.email.message : undefined}
               label={"Email"}
+              sx={{ width: 300 }}
+            />
+          )}
+        />
+        <Controller
+          name={"password"}
+          control={control}
+          // render={({ field: { onChange, value } }) => (
+          render={({ field: { onChange, value, ref }, fieldState }) => (
+            <TextField
+              onChange={onChange}
+              value={value}
+              ref={ref}
+              type={"password"}
+              error={errors.password ? true : false}
+              helperText={errors.password ? errors.password.message : undefined}
+              label={"Password"}
               sx={{ width: 300 }}
             />
           )}
