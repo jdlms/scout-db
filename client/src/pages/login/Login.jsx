@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useContext } from "react";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { Text } from "../../components/forms/Text";
+import { TextField } from "@mui/material";
 
 export function Login() {
   const { user, addUserToContext } = useContext(UserContext);
@@ -23,6 +25,7 @@ export function Login() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -57,15 +60,31 @@ export function Login() {
   return (
     <div>
       <h4>Login</h4>
-      <form key={2} onSubmit={handleSubmit(onSubmitLogin)}>
-        <input {...register("email", { required: true, minLength: 1 })} placeholder="email" />
-        <div className="invalid-feedback">{errors.email?.message}</div>
-        <input
+      <form onSubmit={handleSubmit(onSubmitLogin)}>
+        {/* <input {...register("email", { required: true, minLength: 1 })} placeholder="email" />
+        <div className="invalid-feedback">{errors.email?.message}</div> */}
+        <Controller
+          name={"email"}
+          control={control}
+          // render={({ field: { onChange, value } }) => (
+          render={({ field: { onChange, value, ref }, fieldState }) => (
+            <TextField
+              onChange={onChange}
+              value={value}
+              ref={ref}
+              error={errors.email ? true : false}
+              helperText={errors.email ? errors.email.message :undefined}
+              label={"Email"}
+              sx={{ width: 300 }}
+            />
+          )}
+        />
+        {/* <input
           type="password"
           {...register("password", { required: true, minLength: 1 })}
           placeholder="password"
         />
-        <div className="invalid-feedback">{errors.password?.message}</div>
+        <div className="invalid-feedback">{errors.password?.message}</div> */}
         {console.log(errors)}
         <button type="submit">Send</button>
       </form>
