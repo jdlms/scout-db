@@ -67,7 +67,7 @@ router.post("/add", async (req, res) => {
       const addBookToReport = await Report.findOneAndUpdate(
         { title: req.body.addToReport },
         { books: addBook._id },
-        { upsert: false }
+        { upsert: true }
       );
     }
 

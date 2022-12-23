@@ -10,7 +10,6 @@ const router = Router();
 router.post("/edit/:id", async (req, res) => {
   try {
     const title = await Book.findById({ _id: `${req.params.id}` });
-    console.log(title._id);
     const updateAuthor = await Author.findOneAndUpdate(
       { _id: title.author._id },
 
@@ -65,12 +64,10 @@ router.post("/edit/:id", async (req, res) => {
       { upsert: true, new: true }
     );
 
-    if (req.body.addToReport) {
-      const addBookToReport = await Report.findOneAndUpdate(
-        { title: req.body.addToReport },
-        { books: title._id },
-        { upsert: true }
-      );
+    if (req.body.addToReport.length > 1) {
+      const report = await Report.findOne({ title: req.body.addToReport });
+      report.books.push(title._id);
+      await report.save();
     }
 
     res.json({ message: "Title sucessfully updated." });
