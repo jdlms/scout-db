@@ -40,7 +40,7 @@ export function AutocompleteForm({ control, url, name, label }) {
                 ...params.InputProps,
                 endAdornment: (
                   <>
-                    {options.length === 0 ? <CircularProgress color="inherit" size={20} /> : null}
+                    {/* {options.length === 0 ? <CircularProgress color="inherit" size={10} /> : null} */}
                     {params.InputProps.endAdornment}
                   </>
                 ),
