@@ -67,7 +67,9 @@ export default function Reports() {
         setDivClicked={setDivClicked}
       />
       <br />
-      {viewDetails ? <ReportDetails data={data} divClicked={divClicked} /> : undefined}
+      {viewDetails ? (
+        <ReportDetails data={data} divClicked={divClicked} refetch={refetch} />
+      ) : undefined}
     </div>
   );
 }
