@@ -33,7 +33,7 @@ export function EditTitle() {
     currentMaterial: data.currentMaterial,
     internalNotes: data.currentMaterial,
     status: data.status,
-    confidential: data.confidential,
+    confidential: data.confidential, 
     addToReport: "",
   };
 

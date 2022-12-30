@@ -67,7 +67,7 @@ router.post("/edit/:id", async (req, res) => {
     if (req.body.addToReport.length > 1) {
       const report = await Report.findOne({ title: req.body.addToReport });
       report.books.push(title._id);
-      await report.save();
+      await report.save(); 
     }
 
     res.json({ message: "Title sucessfully updated." });

@@ -97,7 +97,7 @@ export function AddTitle() {
         <AutocompleteSelect
           control={control}
           name={"addToReport"}
-          url={"/unreleased-reports"}
+          url={"unreleased-reports"}
           label={"Add to Report"}
         />
 

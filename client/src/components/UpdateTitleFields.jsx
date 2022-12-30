@@ -11,8 +11,7 @@ import axios from "axios";
 import { DeleteTitle } from "./DeleteTitle";
 
 export function UpdateTitleFields({ data, defaultValues, id }) {
-
-  const { register, handleSubmit, control, reset } = useForm({
+  const { handleSubmit, control, reset } = useForm({
     defaultValues,
   });
 
