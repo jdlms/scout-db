@@ -10,6 +10,9 @@ router.use(add);
 import edit from "./edit.routes.js";
 router.use(edit);
 
+import remove from "./delete.routes.js";
+router.use(remove);
+
 import recent from "./recent.routes.js";
 router.use(recent);
 

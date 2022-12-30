@@ -64,11 +64,9 @@ router.post("/add", async (req, res) => {
     );
 
     if (req.body.addToReport.length > 1) {
-      const addBookToReport = await Report.findOneAndUpdate(
-        { title: req.body.addToReport },
-        { books: addBook._id },
-        { upsert: true }
-      );
+      const report = await Report.findOne({ title: req.body.addToReport });
+      report.books.push(title._id);
+      await report.save();
     }
 
     res.json({ message: "Title sucessfully added." });
