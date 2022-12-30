@@ -6,7 +6,6 @@ const router = Router();
 router.get("/single/:id", async (req, res) => {
   try {
     const title = await Book.findById({ _id: `${req.params.id}` });
-    console.log(title);
     res.json(title);
   } catch (error) {
     console.log("There was an error", error);

@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { Book } from "../../models/Book.model";
+import { Book } from "../../models/Book.model.js";
 const router = Router();
 
-router.post("/delete/:id", async (req, res) => {
+router.get("/delete/:id", async (req, res) => {
   try {
     const titleToDelete = await Book.findOneAndDelete({ _id: `${req.params.id}` });
     res.json({ message: "Title sucessfully deleted." });

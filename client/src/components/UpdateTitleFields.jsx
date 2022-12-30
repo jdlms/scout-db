@@ -8,9 +8,9 @@ import { useForm } from "react-hook-form";
 import { AutocompleteSelect } from "./forms/AutocompleteSelect";
 import { useEffect } from "react";
 import axios from "axios";
+import { DeleteTitle } from "./DeleteTitle";
 
 export function UpdateTitleFields({ data, defaultValues, id }) {
-  console.log(data);
 
   const { register, handleSubmit, control, reset } = useForm({
     defaultValues,
@@ -80,6 +80,7 @@ export function UpdateTitleFields({ data, defaultValues, id }) {
         <Button type="submit" size="large" variant="outlined">
           Update
         </Button>
+        <DeleteTitle id={id} />
       </form>
     </div>
   );

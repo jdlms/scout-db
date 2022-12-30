@@ -39,7 +39,6 @@ export function TitleDetails() {
         </h3>
         <br />
         <Link style={{ textDecoration: "none", color: "Red" }} to={`/edit-title/${id}`}>
-          {console.log(id)}
           Edit
         </Link>
       </div>
