@@ -1,11 +1,10 @@
 import { Button } from "@mui/material";
 import axios from "axios";
 
-export function DeleteReport({ title, refetch }) {
+export function ReleaseReport({ title, refetch }) {
   const handleClick = async () => {
     try {
-      console.log(title);
-      await axios.post(BASE_URL + `scout/delete-report`, title, { withCredentials: true });
+      await axios.post(BASE_URL + `scout/release-report/`, title, { withCredentials: true });
 
       await refetch();
     } catch (error) {
@@ -15,7 +14,7 @@ export function DeleteReport({ title, refetch }) {
 
   return (
     <Button variant="contained" size="small" onClick={handleClick}>
-      Delete
+      Release
     </Button>
   );
 }

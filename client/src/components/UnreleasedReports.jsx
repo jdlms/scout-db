@@ -1,5 +1,6 @@
 import { addId } from "../utils/addId";
 import { DeleteReport } from "./DeleteReport";
+import { ReleaseReport } from "./ReleaseReport";
 
 export function UnreleasedReports({
   data,
@@ -41,6 +42,7 @@ export function UnreleasedReports({
               <h3>{title.title}</h3>
             </div>
             <DeleteReport title={title} refetch={refetch} />
+            <ReleaseReport title={title} refetch={refetch} />
           </div>
         );
       })}
