@@ -1,5 +1,5 @@
-import { useState } from "react";
 import { addId } from "../utils/addId";
+import { DeleteReport } from "./DeleteReport";
 
 export function UnreleasedReports({
   data,
@@ -7,6 +7,7 @@ export function UnreleasedReports({
   setViewDetails,
   divClicked,
   setDivClicked,
+  refetch,
 }) {
   const handleClick = (event, index) => {
     if (divClicked === null) {
@@ -24,21 +25,22 @@ export function UnreleasedReports({
       <div>Unreleased Reports</div>
       {data.map((title, index) => {
         return (
-          <div
-            className="Reports-Div"
-            onClick={(event) => handleClick(event, index)}
-            key={addId()}
-            style={{
-              backgroundColor: "#f7e7ce",
-              height: "65px",
-              width: "350px",
-              display: "flex",
-              color: "#0e0e1d",
-              margin: "4px",
-              borderRadius: "2%",
-            }}
-          >
-            <h3>{title.title}</h3>
+          <div key={addId()}>
+            <div
+              className="Reports-Div"
+              onClick={(event) => handleClick(event, index)}
+              style={{
+                backgroundColor: "#f7e7ce",
+                height: "65px",
+                width: "350px",
+                color: "#0e0e1d",
+                margin: "4px",
+                borderRadius: "2%",
+              }}
+            >
+              <h3>{title.title}</h3>
+            </div>
+            <DeleteReport title={title} refetch={refetch} />
           </div>
         );
       })}

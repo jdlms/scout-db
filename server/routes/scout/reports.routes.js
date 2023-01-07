@@ -18,6 +18,7 @@ router.post("/create-report", async (req, res) => {
 
 router.post("/delete-report", async (req, res) => {
   try {
+    console.log(req.body);
     await Report.deleteOne({ title: req.body.title });
     res.json("Report deleted");
     console.log("Report deleted");

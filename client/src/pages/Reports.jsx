@@ -65,6 +65,7 @@ export default function Reports() {
         setViewDetails={setViewDetails}
         divClicked={divClicked}
         setDivClicked={setDivClicked}
+        refetch={refetch}
       />
       <br />
       {viewDetails ? (
