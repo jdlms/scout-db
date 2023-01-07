@@ -1,13 +1,10 @@
+import axios from "axios";
 import { useState } from "react";
 import { useQuery } from "react-query";
 import { addId } from "../utils/addId";
-import { DeleteReport } from "./DeleteReport";
-import { ReleaseReport } from "./ReleaseReport";
 import { ReportDetails } from "./ReportDetails";
-import axios from "axios";
-import { CreateReport } from "./CreateReport";
 
-export function UnreleasedReports() {
+export function ReleasedReports() {
   const [viewDetails, setViewDetails] = useState(false);
   const [divClicked, setDivClicked] = useState(null);
 
@@ -23,10 +20,10 @@ export function UnreleasedReports() {
   };
 
   const { isLoading, error, data, refetch } = useQuery(
-    ["recentTitles"],
+    ["Released Reports"],
     async () =>
       await axios
-        .get(BASE_URL + "scout/unreleased-reports-obj", {
+        .get(BASE_URL + "scout/released-reports", {
           withCredentials: true,
         })
         .then((res) => res.data),
@@ -39,7 +36,6 @@ export function UnreleasedReports() {
 
   return (
     <>
-      <CreateReport refetch={refetch} />
       {data.map((title, index) => {
         return (
           <div key={addId()}>
@@ -57,8 +53,6 @@ export function UnreleasedReports() {
             >
               <h3>{title.title}</h3>
             </div>
-            <DeleteReport title={title} refetch={refetch} />
-            <ReleaseReport title={title} refetch={refetch} />
           </div>
         );
       })}
