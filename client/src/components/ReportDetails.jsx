@@ -4,7 +4,6 @@ import { ReportRemoveTitle } from "./ReportRemoveTitle";
 
 export function ReportDetails({ data, divClicked, refetch }) {
   const report = data[divClicked];
-  console.log(report);
 
   return (
     <div>
