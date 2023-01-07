@@ -11,29 +11,11 @@ import { UserContext } from "../contexts/UserContext";
 export default function Reports() {
   const { checkForUser } = useContext(UserContext);
 
-  const [viewDetails, setViewDetails] = useState(false);
-  const [divClicked, setDivClicked] = useState(null);
-
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       title: "",
     },
   });
-
-  const { isLoading, error, data, refetch } = useQuery(
-    ["recentTitles"],
-    async () =>
-      await axios
-        .get(BASE_URL + "scout/unreleased-reports-obj", {
-          withCredentials: true,
-        })
-        .then((res) => res.data),
-    { staleTime: 1000 * 10 }
-  );
-
-  if (isLoading) return "Loading...";
-
-  if (error) return "An error has occurred: " + error.message;
 
   checkForUser;
 
@@ -59,18 +41,7 @@ export default function Reports() {
       </form>
       <br />
 
-      <UnreleasedReports
-        data={data}
-        viewDetails={viewDetails}
-        setViewDetails={setViewDetails}
-        divClicked={divClicked}
-        setDivClicked={setDivClicked}
-        refetch={refetch}
-      />
-      <br />
-      {viewDetails ? (
-        <ReportDetails data={data} divClicked={divClicked} refetch={refetch} />
-      ) : undefined}
+      <UnreleasedReports />
     </div>
   );
 }

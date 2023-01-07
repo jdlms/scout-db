@@ -1,15 +1,15 @@
+import { useState } from "react";
+import { useQuery } from "react-query";
 import { addId } from "../utils/addId";
 import { DeleteReport } from "./DeleteReport";
 import { ReleaseReport } from "./ReleaseReport";
+import { ReportDetails } from "./ReportDetails";
+import axios from "axios";
 
-export function UnreleasedReports({
-  data,
-  viewDetails,
-  setViewDetails,
-  divClicked,
-  setDivClicked,
-  refetch,
-}) {
+export function UnreleasedReports() {
+  const [viewDetails, setViewDetails] = useState(false);
+  const [divClicked, setDivClicked] = useState(null);
+
   const handleClick = (event, index) => {
     if (divClicked === null) {
       setViewDetails(!viewDetails);
@@ -20,6 +20,21 @@ export function UnreleasedReports({
       setDivClicked(null);
     }
   };
+
+  const { isLoading, error, data, refetch } = useQuery(
+    ["recentTitles"],
+    async () =>
+      await axios
+        .get(BASE_URL + "scout/unreleased-reports-obj", {
+          withCredentials: true,
+        })
+        .then((res) => res.data),
+    { staleTime: 1000 * 10 }
+  );
+
+  if (isLoading) return "Loading...";
+
+  if (error) return "An error has occurred: " + error.message;
 
   return (
     <>
@@ -46,6 +61,10 @@ export function UnreleasedReports({
           </div>
         );
       })}
+      <br />
+      {viewDetails ? (
+        <ReportDetails data={data} divClicked={divClicked} refetch={refetch} />
+      ) : undefined}
     </>
   );
 }

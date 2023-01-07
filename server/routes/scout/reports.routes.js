@@ -75,7 +75,7 @@ router.get("/released-reports", async (req, res) => {
     console.log(releasedReports);
   } catch (error) {
     console.log("There was an error", error);
-  }
+  } 
 });
 
 export default router;
