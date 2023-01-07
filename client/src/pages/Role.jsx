@@ -18,7 +18,7 @@ export function Role() {
         navigate("/scout-landing");
       }
       if (role === "Client") {
-        navigate("/client-landing");
+        navigate("/client/landing");
       }
     } catch (error) {
       console.error("There was an error:", error);
@@ -33,6 +33,5 @@ export function Role() {
     </div>
   );
 }
-
 
 //#todo create mouse over event to change image, one for scout and one for client...

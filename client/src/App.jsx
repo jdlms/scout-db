@@ -2,7 +2,7 @@ import "./styles/App.css";
 import { Route, Routes } from "react-router-dom";
 import { ScoutLayout } from "./components/ScoutLayout";
 import { AddTitle } from "./pages/AddTitle";
-import { Client } from "./pages/Client";
+import { Client } from "./pages/client/Client";
 import { Landing } from "./pages/login/Landing";
 import { Role } from "./pages/Role";
 import { RecentTitles } from "./pages/RecentTitles";
@@ -11,6 +11,9 @@ import { ClientLayout } from "./components/ClientLayout";
 import Reports from "./pages/Reports";
 import { TitleDetails } from "./pages/TitleDetails";
 import { EditTitle } from "./pages/EditTitle";
+import { Tracked } from "./pages/client/Tracked";
+import { Titles } from "./pages/client/Titles";
+import { ClientReports } from "./pages/client/ClientReports";
 
 function App() {
   return (
@@ -26,7 +29,10 @@ function App() {
         <Route path="reports" element={<Reports />} />
       </Route>
       <Route element={<ClientLayout />}>
-        <Route path="client-landing" element={<Client />} />
+        <Route path="client/landing" element={<Client />} />
+        <Route path="client/tracked" element={<Tracked />} />
+        <Route path="client/titles" element={<Titles />} />
+        <Route path="client/reports" element={<ClientReports />} />
       </Route>
     </Routes>
   );

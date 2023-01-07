@@ -50,7 +50,7 @@ export function Login() {
         navigate("/scout-landing");
       }
       if (user.role === "Client") {
-        navigate("/client-landing");
+        navigate("/client/landing");
       }
     } catch (error) {
       console.error("There was an error!", error);

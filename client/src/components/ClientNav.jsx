@@ -16,23 +16,39 @@ export function ClientNav() {
       <ul style={{ display: "inline-flex", flexDirection: "row", justifyContent: "flex-start" }}>
         <li>
           <NavLink
-            to="client-landing"
+            to="client/landing"
             style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
           >
             Home
           </NavLink>
         </li>
         <li>
-          <NavLink to="saved" style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}>
-            Saved
+          <NavLink
+            to="client/tracked"
+            style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
+          >
+            Tracked
+          </NavLink>
+        </li>
+
+        <li>
+          <NavLink
+            to="client/titles"
+            style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
+          >
+            Titles
           </NavLink>
         </li>
         <li>
-          <NavLink to="Reports" style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}>
+          <NavLink
+            to="client/reports"
+            style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
+          >
             Reports
           </NavLink>
         </li>
-        <li >
+
+        <li>
           <Logout />
         </li>
       </ul>
