@@ -47,12 +47,11 @@ router.post("/add-book-to-report", async (req, res) => {
   }
 });
 
-
 router.get("/reports", async (req, res) => {
   try {
-    const releasedReports = await Report.find();
-    res.json(releasedReports);
-    console.log(releasedReports);
+    const reports = await Report.find();
+    res.json(reports);
+    console.log(reports);
   } catch (error) {
     console.log("There was an error", error);
   }
@@ -64,6 +63,16 @@ router.get("/unreleased-reports-obj", async (req, res) => {
     // .distinct("title");
     res.json(unreleasedReports);
     console.log(unreleasedReports);
+  } catch (error) {
+    console.log("There was an error", error);
+  }
+});
+
+router.get("/released-reports", async (req, res) => {
+  try {
+    const releasedReports = await Report.find({ released: true });
+    res.json(releasedReports);
+    console.log(releasedReports);
   } catch (error) {
     console.log("There was an error", error);
   }
