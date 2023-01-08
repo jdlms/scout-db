@@ -30,6 +30,16 @@ router.post("/delete-report", async (req, res) => {
 router.post("/release-report", async (req, res) => {
   try {
     const report = await Report.findOneAndUpdate({ title: req.body.title }, { released: true });
+    const books = report.books;
+
+    console.log(report);
+    for (const book of books) {
+      console.log(book.title);
+    }
+    //#todo for each book in report, 'reported' must be set to 'true'
+    //get the books array and then loop through changing reported to true
+    //#todo each book in report must have report name added to 'reports' array
+
     res.json("Report released");
     console.log("Report released");
   } catch (error) {
@@ -75,7 +85,7 @@ router.get("/released-reports", async (req, res) => {
     console.log(releasedReports);
   } catch (error) {
     console.log("There was an error", error);
-  } 
+  }
 });
 
 export default router;

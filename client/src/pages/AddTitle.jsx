@@ -23,6 +23,7 @@ const defaultValues = {
   status: "",
   confidential: false,
   addToReport: "",
+  reported: false,
 };
 
 export function AddTitle() {
