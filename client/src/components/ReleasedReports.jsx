@@ -59,7 +59,7 @@ export function ReleasedReports() {
       <br />
       {viewDetails ? (
         <ReportDetails data={data} divClicked={divClicked} refetch={refetch} />
-      ) : undefined}
+      ) : undefined} 
     </>
   );
 }

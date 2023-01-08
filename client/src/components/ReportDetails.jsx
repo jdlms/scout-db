@@ -1,8 +1,11 @@
 import { addId } from "../utils/addId";
 import { Link } from "react-router-dom";
 import { ReportRemoveTitle } from "./ReportRemoveTitle";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 export function ReportDetails({ data, divClicked, refetch }) {
+  const { user } = useContext(UserContext);
   const report = data[divClicked];
 
   return (
@@ -42,7 +45,9 @@ export function ReportDetails({ data, divClicked, refetch }) {
                 </div>
               </div>
             </Link>
-            <ReportRemoveTitle report={report} id={book._id} refetch={refetch} />
+            {user.role === "Scout" ? (
+              <ReportRemoveTitle report={report} id={book._id} refetch={refetch} />
+            ) : undefined}
           </div>
         );
       })}

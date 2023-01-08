@@ -22,7 +22,7 @@ export function UserContextProvider({ children }) {
 
         if (request.data.user) {
           setUser(request.data.user);
-          navigate(request.data.user.role === "Scout" ? "/scout-landing" : "/user-landing");
+          navigate(request.data.user.role === "Scout" ? "/scout-landing" : "/client/landing");
         }
       } catch (error) {
         console.error("There was an error!");

@@ -5,7 +5,7 @@ import { UserContext } from "../contexts/UserContext";
 import { ReleasedReports } from "../components/ReleasedReports";
 
 export default function Reports() {
-  const { checkForUser } = useContext(UserContext);
+  const { checkForUser, user } = useContext(UserContext);
 
   const [releasedReports, setReleasedReports] = useState(false);
 
