@@ -1,35 +1,51 @@
-import { AppBar, IconButton, Menu, MenuItem, Toolbar, Typography } from "@mui/material";
+import { AppBar, IconButton, styled, Toolbar, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { Logout } from "./Logout";
+
+const CustomButton = styled(IconButton)(({ theme }) => ({
+  color: "white",
+  fontSize: 15.5,
+  fontFamily: "Chivo",
+}));
 
 export function ScoutNav() {
   return (
     <Toolbar>
-      <AppBar sx={{ height: 60, background: "#0e0e1d" }}>
+      <AppBar sx={{ height: 55, background: "#0e0e1d" }}>
         <Toolbar>
+          <Typography sx={{ display: "flex" }} variant="h5">
+            🕵️
+          </Typography>
           <ul
-            style={{ display: "inline-flex", flexDirection: "row", justifyContent: "flex-start" }}
+            style={{
+              display: "inline-flex",
+              flexDirection: "row",
+              flexGrow: 1,
+              justifyContent: "flex-start",
+            }}
           >
             <li>
               <NavLink to="scout-landing">
-                <IconButton size="small">Home</IconButton>
+                <CustomButton size="small">Home</CustomButton>
               </NavLink>
             </li>
             <li>
               <NavLink to="add-title">
-                <IconButton size="small">Add title</IconButton>
+                <CustomButton size="small">Add title</CustomButton>
               </NavLink>
             </li>
             <li>
               <NavLink to="recent">
-                <IconButton size="small">Recent</IconButton>
+                <CustomButton size="small">Recent</CustomButton>
               </NavLink>
             </li>
             <li>
               <NavLink to="reports">
-                <IconButton size="small">Reports</IconButton>
+                <CustomButton size="small">Reports</CustomButton>
               </NavLink>
             </li>
+          </ul>
+          <ul>
             <li>
               <Logout />
             </li>
@@ -37,39 +53,7 @@ export function ScoutNav() {
         </Toolbar>
       </AppBar>
     </Toolbar>
-    // <nav>
-    //   <span style={{ display: "inline", fontSize: "30px" }}>🕵️</span>
-    //   <ul style={{ display: "inline-flex", flexDirection: "row", justifyContent: "flex-start" }}>
-    //     <li>
-    //       <NavLink
-    //         to="scout-landing"
-    //         style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
-    //       >
-    //         Home
-    //       </NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink
-    //         to="add-title"
-    //         style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
-    //       >
-    //         Add title
-    //       </NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to="recent" style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}>
-    //         Recent
-    //       </NavLink>
-    //     </li>
-    //     <li>
-    //       <NavLink to="reports" style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}>
-    //         Reports
-    //       </NavLink>
-    //     </li>
-    //     <li>
-    //       <Logout />
-    //     </li>
-    //   </ul>
-    // </nav>
   );
 }
+
+
