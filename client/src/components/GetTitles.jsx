@@ -28,7 +28,6 @@ export function GetTitles({ title, url }) {
 
   return (
     <>
-      <div>{title}</div>
       {data.map((title) => {
         return (
           <Link

@@ -53,14 +53,12 @@ export function AddTitle() {
 
   return (
     <div>
-
       {/* <Typography variant="h6" component="h2">
         Add title
       </Typography> */}
       <Container>
         <Paper
           elevation={6}
-
           style={{
             padding: 20,
             width: "80%",
@@ -154,11 +152,7 @@ export function AddTitle() {
             <div>
               <FormControl margin="dense">
                 <FormGroup row>
-                  <MaterialSelect
-                    control={control}
-                    name={"currentMaterial"}
-                    label={"Current material"}
-                  />
+                  <MaterialSelect control={control} name={"currentMaterial"} label={"Material"} />
 
                   <fieldset
                     style={{
