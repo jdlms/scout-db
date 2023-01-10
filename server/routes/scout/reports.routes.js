@@ -18,6 +18,7 @@ router.post("/create-report", async (req, res) => {
 
 router.post("/delete-report", async (req, res) => {
   try {
+    console.log(req.body);
     await Report.deleteOne({ title: req.body.title });
     res.json("Report deleted");
     console.log("Report deleted");
@@ -29,8 +30,18 @@ router.post("/delete-report", async (req, res) => {
 router.post("/release-report", async (req, res) => {
   try {
     const report = await Report.findOneAndUpdate({ title: req.body.title }, { released: true });
-    res.json("Report released");
+    const books = report.books;
+
     console.log(report);
+    for (const book of books) {
+      console.log(book.title);
+    }
+    //#todo for each book in report, 'reported' must be set to 'true'
+    //get the books array and then loop through changing reported to true
+    //#todo each book in report must have report name added to 'reports' array
+
+    res.json("Report released");
+    console.log("Report released");
   } catch (error) {
     console.log("There was an error", error);
   }
@@ -40,19 +51,17 @@ router.post("/add-book-to-report", async (req, res) => {
   try {
     const report = await Report.findOneAndUpdate({ title: req.body.title }, { book: req.body._id });
     res.json("Book added to report");
-    console.log(report);
+    console.log("Book added to report");
   } catch (error) {
     console.log("There was an error", error);
   }
 });
 
-//#todo create remove book from report route
-
 router.get("/reports", async (req, res) => {
   try {
-    const releasedReports = await Report.find();
-    res.json(releasedReports);
-    console.log(releasedReports);
+    const reports = await Report.find();
+    res.json(reports);
+    console.log(reports);
   } catch (error) {
     console.log("There was an error", error);
   }
@@ -64,6 +73,16 @@ router.get("/unreleased-reports-obj", async (req, res) => {
     // .distinct("title");
     res.json(unreleasedReports);
     console.log(unreleasedReports);
+  } catch (error) {
+    console.log("There was an error", error);
+  }
+});
+
+router.get("/released-reports", async (req, res) => {
+  try {
+    const releasedReports = await Report.find({ released: true });
+    res.json(releasedReports);
+    console.log(releasedReports);
   } catch (error) {
     console.log("There was an error", error);
   }

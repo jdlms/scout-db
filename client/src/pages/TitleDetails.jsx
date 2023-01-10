@@ -9,7 +9,7 @@ export function TitleDetails() {
     ["titleDetails"],
     async () =>
       await axios
-        .get("http://localhost:5000/title-details/" + `${id}`, {
+        .get(BASE_URL + `titles/single/${id}`, {
           withCredentials: true,
         })
         .then((res) => res.data)
@@ -39,7 +39,6 @@ export function TitleDetails() {
         </h3>
         <br />
         <Link style={{ textDecoration: "none", color: "Red" }} to={`/edit-title/${id}`}>
-          {console.log(id)}
           Edit
         </Link>
       </div>

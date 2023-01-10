@@ -32,6 +32,7 @@ const defaultValues = {
   status: "",
   confidential: false,
   addToReport: "",
+  reported: false,
 };
 
 export function AddTitle() {
@@ -41,7 +42,7 @@ export function AddTitle() {
 
   const onSubmit = async (data) => {
     try {
-      await axios.post("http://localhost:5000/add-title", data, {
+      await axios.post(BASE_URL + "titles/add", data, {
         withCredentials: true,
       });
       reset(defaultValues);
@@ -52,12 +53,14 @@ export function AddTitle() {
 
   return (
     <div>
+
       {/* <Typography variant="h6" component="h2">
         Add title
       </Typography> */}
       <Container>
         <Paper
           elevation={6}
+
           style={{
             padding: 20,
             width: "80%",

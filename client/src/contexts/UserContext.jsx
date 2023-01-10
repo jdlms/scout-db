@@ -16,13 +16,13 @@ export function UserContextProvider({ children }) {
   useEffect(() => {
     const checkForUser = async () => {
       try {
-        const request = await axios.get("http://localhost:5000/refresh-user", {
+        const request = await axios.get(BASE_URL + "refresh-user", {
           withCredentials: true,
         });
-    
+
         if (request.data.user) {
           setUser(request.data.user);
-          navigate(request.data.user.role === "Scout" ? "/scout-landing" : "/user-landing");
+          navigate(request.data.user.role === "Scout" ? "/scout-landing" : "/client/landing");
         }
       } catch (error) {
         console.error("There was an error!");

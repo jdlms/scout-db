@@ -10,6 +10,7 @@ const CustomButton = styled(IconButton)(({ theme }) => ({
 
 export function ClientNav() {
   return (
+
     <Toolbar>
       <AppBar sx={{ height: 55, background: "#0e0e1d" }}>
         <Toolbar>
@@ -48,5 +49,6 @@ export function ClientNav() {
         </Toolbar>
       </AppBar>
     </Toolbar>
+
   );
 }

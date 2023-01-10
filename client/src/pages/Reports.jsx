@@ -1,73 +1,31 @@
-import { Button } from "@mui/material";
-import { useForm } from "react-hook-form";
-import axios from "axios";
-import { Text } from "../components/forms/Text";
+import { Button, ButtonGroup } from "@mui/material";
 import { UnreleasedReports } from "../components/UnreleasedReports";
-import { ReportDetails } from "../components/ReportDetails";
 import { useContext, useState } from "react";
-import { useQuery } from "react-query";
 import { UserContext } from "../contexts/UserContext";
+import { ReleasedReports } from "../components/ReleasedReports";
 
 export default function Reports() {
-  const { checkForUser } = useContext(UserContext);
+  const { checkForUser, user } = useContext(UserContext);
 
-  const [viewDetails, setViewDetails] = useState(false);
-  const [divClicked, setDivClicked] = useState(null);
+  const [releasedReports, setReleasedReports] = useState(false);
 
-  const { handleSubmit, control, reset } = useForm({
-    defaultValues: {
-      title: "",
-    },
-  });
+  const unreleasedClick = () => {
+    setReleasedReports(false);
+  };
 
-  const { isLoading, error, data, refetch } = useQuery(
-    ["recentTitles"],
-    async () =>
-      await axios
-        .get("http://localhost:5000/scout/unreleased-reports-obj", {
-          withCredentials: true,
-        })
-        .then((res) => res.data),
-    { staleTime: 1000 * 10 }
-  );
-
-  if (isLoading) return "Loading...";
-
-  if (error) return "An error has occurred: " + error.message;
+  const releasedClick = () => {
+    setReleasedReports(true);
+  };
 
   checkForUser;
 
-  const onSubmit = async (data) => {
-    try {
-      await axios.post("http://localhost:5000/scout/create-report", data, {
-        withCredentials: true,
-      });
-      reset();
-      await refetch();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <Text control={control} name={"title"} label={"Report title"} />
-        <Button type="submit" size="small" variant="outlined">
-          Create report
-        </Button>
-      </form>
-      <br />
-
-      <UnreleasedReports
-        data={data}
-        viewDetails={viewDetails}
-        setViewDetails={setViewDetails}
-        divClicked={divClicked}
-        setDivClicked={setDivClicked}
-      />
-      <br />
-      {viewDetails ? <ReportDetails data={data} divClicked={divClicked} /> : undefined}
+      <ButtonGroup variant="text" aria-label="text button group">
+        <Button onClick={unreleasedClick}>Unreleased</Button>
+        <Button onClick={releasedClick}>Released</Button>
+      </ButtonGroup>
+      {releasedReports ? <ReleasedReports /> : <UnreleasedReports />}
     </div>
   );
 }

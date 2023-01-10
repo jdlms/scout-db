@@ -10,7 +10,7 @@ export function Role() {
   const chooseRole = async (role) => {
     try {
       const userInfo = { email: user.email, role: role };
-      await axios.post("http://localhost:5000/role", userInfo, {
+      await axios.post(BASE_URL + "role", userInfo, {
         withCredentials: true,
       });
       addUserToContext(userInfo);
@@ -18,7 +18,7 @@ export function Role() {
         navigate("/scout-landing");
       }
       if (role === "Client") {
-        navigate("/client-landing");
+        navigate("/client/landing");
       }
     } catch (error) {
       console.error("There was an error:", error);
@@ -33,3 +33,5 @@ export function Role() {
     </div>
   );
 }
+
+//#todo create mouse over event to change image, one for scout and one for client...

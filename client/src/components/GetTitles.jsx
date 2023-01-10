@@ -12,7 +12,7 @@ export function GetTitles({ title, url }) {
     ["recentReports"],
     async () =>
       await axios
-        .get("http://localhost:5000/" + url, {
+        .get(BASE_URL + url, {
           withCredentials: true,
         })
         .then((res) => res.data)

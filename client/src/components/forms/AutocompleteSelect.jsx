@@ -10,7 +10,7 @@ export function AutocompleteSelect({ control, url, name, label }) {
 
   useEffect(() => {
     (async () => {
-      const requestedData = await axios.get("http://localhost:5000/search/" + url, {
+      const requestedData = await axios.get(BASE_URL + "search/" + url, {
         withCredentials: true,
       });
       setOptions(requestedData.data);
@@ -39,7 +39,7 @@ export function AutocompleteSelect({ control, url, name, label }) {
               variant="outlined"
               InputProps={{
                 ...params.InputProps,
-       
+
               }}
             />
           )}

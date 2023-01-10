@@ -10,7 +10,7 @@ export function AutocompleteForm({ control, url, name, label }) {
 
   useEffect(() => {
     (async () => {
-      const requestedData = await axios.get("http://localhost:5000/search/" + url, {
+      const requestedData = await axios.get(BASE_URL + "search/" + url, {
         withCredentials: true,
       });
       setOptions(requestedData.data);
@@ -40,7 +40,7 @@ export function AutocompleteForm({ control, url, name, label }) {
                 ...params.InputProps,
                 endAdornment: (
                   <>
-                    {options.length === 0 ? <CircularProgress color="inherit" size={20} /> : null}
+                    {/* {options.length === 0 ? <CircularProgress color="inherit" size={10} /> : null} */}
                     {params.InputProps.endAdornment}
                   </>
                 ),

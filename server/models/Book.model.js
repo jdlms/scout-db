@@ -38,6 +38,8 @@ const bookSchema = new Schema(
     internalNotes: {
       type: String,
     },
+    reported: { type: Boolean },
+    reportedIn: [{ type: Schema.Types.ObjectId, ref: "Report", autopopulate: true }],
   },
   {
     timestamps: true,

@@ -1,12 +1,11 @@
 import { Router } from "express";
 import { Book } from "../../models/Book.model.js";
-
 const router = Router();
 
-router.get("/single/:id", async (req, res) => {
+router.get("/delete/:id", async (req, res) => {
   try {
-    const title = await Book.findById({ _id: `${req.params.id}` });
-    res.json(title);
+    const titleToDelete = await Book.findOneAndDelete({ _id: `${req.params.id}` });
+    res.json({ message: "Title sucessfully deleted." });
   } catch (error) {
     console.log("There was an error", error);
   }
