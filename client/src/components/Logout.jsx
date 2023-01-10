@@ -1,6 +1,7 @@
+import { IconButton, styled } from "@mui/material";
 import axios from "axios";
 import { useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 
 export function Logout() {
@@ -21,11 +22,17 @@ export function Logout() {
     }
   };
 
+  const CustomButton = styled(IconButton)(({ theme }) => ({
+    color: "white",
+    fontSize: 15.5,
+    fontFamily: "Chivo",
+  }));
+
   return (
     <>
-      <NavLink style={{ textDecoration: "none" }} onClick={logout}>
+      <CustomButton size="small" onClick={logout}>
         Logout
-      </NavLink>
+      </CustomButton>
     </>
   );
 }

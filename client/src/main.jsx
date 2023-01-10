@@ -16,15 +16,9 @@ const queryClient = new QueryClient({
   },
 });
 
-const darkTheme = createTheme({
+const myTheme = createTheme({
   palette: {
-    // primary: {
-    //   main: "#f7e7ce",
-    // },
-    mode: "dark",
-    background: {
-      default: "#0e0e1d",
-    },
+    type: "dark",
   },
 });
 
@@ -32,7 +26,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <UserContextProvider>
-        <ThemeProvider theme={darkTheme}>
+        <ThemeProvider theme={myTheme}>
           <CssBaseline />
           <App />
         </ThemeProvider>

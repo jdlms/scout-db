@@ -1,57 +1,54 @@
+import { AppBar, IconButton, styled, Toolbar, Typography } from "@mui/material";
 import { NavLink } from "react-router-dom";
 import { Logout } from "./Logout";
 
+const CustomButton = styled(IconButton)(({ theme }) => ({
+  color: "white",
+  fontSize: 15.5,
+  fontFamily: "Chivo",
+}));
+
 export function ClientNav() {
-  let activeStyle = {
-    textDecoration: "underline",
-  };
-
-  let inactiveStyle = {
-    textDecoration: "none",
-  };
-
   return (
-    <nav>
-      <span style={{ display: "inline", fontSize: "30px" }}>📚</span>
-      <ul style={{ display: "inline-flex", flexDirection: "row", justifyContent: "flex-start" }}>
-        <li>
-          <NavLink
-            to="client/landing"
-            style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
-          >
-            Home
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="client/tracked"
-            style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
-          >
-            Tracked
-          </NavLink>
-        </li>
 
-        <li>
-          <NavLink
-            to="client/titles"
-            style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
+    <Toolbar>
+      <AppBar sx={{ height: 55, background: "#0e0e1d" }}>
+        <Toolbar>
+          <Typography sx={{ display: "flex" }} variant="h5">
+            📚
+          </Typography>
+          <ul
+            style={{
+              display: "inline-flex",
+              flexDirection: "row",
+              flexGrow: 1,
+              justifyContent: "flex-start",
+            }}
           >
-            Titles
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to="client/reports"
-            style={({ isActive }) => (isActive ? activeStyle : inactiveStyle)}
-          >
-            Reports
-          </NavLink>
-        </li>
+            <li>
+              <NavLink to="scout-landing">
+                <CustomButton size="small">Home</CustomButton>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="add-title">
+                <CustomButton size="small">Saved</CustomButton>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="recent">
+                <CustomButton size="small">Reports</CustomButton>
+              </NavLink>
+            </li>
+          </ul>
+          <ul>
+            <li>
+              <Logout />
+            </li>
+          </ul>
+        </Toolbar>
+      </AppBar>
+    </Toolbar>
 
-        <li>
-          <Logout />
-        </li>
-      </ul>
-    </nav>
   );
 }
