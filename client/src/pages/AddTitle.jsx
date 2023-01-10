@@ -7,7 +7,7 @@ import { MultilineText } from "../components/forms/MultilineText";
 import { StatusSelect } from "../components/forms/StatusSelect";
 import { AutocompleteSelect } from "../components/forms/AutocompleteSelect";
 import { SwitchConfidential } from "../components/forms/SwitchConfidential";
-import { Button } from "@mui/material";
+import { Button, Divider, FormControl, FormGroup, FormLabel, Typography } from "@mui/material";
 
 const defaultValues = {
   title: "",
@@ -43,44 +43,94 @@ export function AddTitle() {
 
   return (
     <div>
+      <Typography variant="h6" component="h2">
+        Add title
+      </Typography>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <br />
+        <div>
+          <FormControl margin="dense">
+            <AutocompleteForm control={control} name={"title"} url={"title"} label={"Title"} />
+          </FormControl>
+        </div>
 
-        <AutocompleteForm control={control} name={"title"} url={"title"} label={"Title"} />
+        <div>
+          <FormControl margin="dense">
+            <FormGroup row>
+              <AutocompleteForm
+                control={control}
+                name={"authorFirstName"}
+                url={"author-first-name"}
+                label={"First name"}
+              />
 
-        <AutocompleteForm
-          control={control}
-          name={"authorFirstName"}
-          url={"author-first-name"}
-          label={"First name"}
-        />
+              <AutocompleteForm
+                control={control}
+                name={"authorLastName"}
+                url={"author-last-name"}
+                label={"Last name"}
+              />
+            </FormGroup>
+          </FormControl>
+        </div>
 
-        <AutocompleteForm
-          control={control}
-          name={"authorLastName"}
-          url={"author-last-name"}
-          label={"Last name"}
-        />
-        <AutocompleteForm control={control} name={"agency"} url={"agency-name"} label={"Agency"} />
+        <div>
+          <FormControl margin="dense">
+            <FormGroup row>
+              <AutocompleteForm
+                control={control}
+                name={"agency"}
+                url={"agency-name"}
+                label={"Agency"}
+              />
+              <FormControl>
+                <FormGroup column>
+                  <AutocompleteForm
+                    control={control}
+                    name={"publisher"}
+                    url={"publisher-name"}
+                    label={"Publisher"}
+                  />
 
-        <AutocompleteForm
-          control={control}
-          name={"publisher"}
-          url={"publisher-name"}
-          label={"Publisher"}
-        />
+                  <AutocompleteForm
+                    control={control}
+                    name={"editor"}
+                    url={"editor-name"}
+                    label={"Editor"}
+                  />
+                </FormGroup>
+              </FormControl>
+            </FormGroup>
+          </FormControl>
 
-        <AutocompleteForm control={control} name={"editor"} url={"editor-name"} label={"Editor"} />
+<FormControl></FormControl>
+          <MultilineText
+            sx={{
+              width: 600,
+            }}
 
-        <MultilineText control={control} name={"details"} label={"Details"} />
+            control={control}
+            name={"details"}
+            label={"Description"}
+          />
+        </div>
 
         <Text control={control} name={"rightsSold"} label={"Rights sold"} />
 
+        <div>
+          <FormControl margin="dense">
+            <StatusSelect control={control} name={"status"} label={"Status"} />
+          </FormControl>
+        </div>
+
         <MaterialSelect control={control} name={"currentMaterial"} label={"Current material"} />
 
-        <StatusSelect control={control} name={"status"} label={"Status"} />
-
         <MultilineText control={control} name={"internalNotes"} label={"Internal notes"} />
+        <div>
+          <FormControl>
+            <FormLabel component="legend">Tracking</FormLabel>
+            <Divider />
+          </FormControl>
+        </div>
 
         <fieldset
           style={{

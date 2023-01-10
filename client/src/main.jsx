@@ -19,51 +19,6 @@ const queryClient = new QueryClient({
 const myTheme = createTheme({
   palette: {
     type: "dark",
-    primary: {
-      main: "#ffca80",
-    },
-    secondary: {
-      main: "#9580ff",
-    },
-    background: {
-      default: "#21222c",
-      paper: "#282a36",
-    },
-    text: {
-      primary: "#f8f8f2",
-    },
-    error: {
-      main: "#ff9580",
-    },
-  },
-  components: {
-    MuiTextField: {
-      styleOverrides: {
-        root: {
-          "& label": {
-            color: "#3E68A8",
-          },
-          "& label.Mui-focused": {
-            color: "#3E68A8",
-          },
-          "& .MuiInput-underline:after": {
-            borderBottomColor: "#3E68A8",
-          },
-          "& .MuiOutlinedInput-root": {
-            "& fieldset": {
-              borderColor: "#3E68A8",
-            },
-            "&:hover fieldset": {
-              borderColor: "#3E68A8",
-              borderWidth: "0.15rem",
-            },
-            "&.Mui-focused fieldset": {
-              borderColor: "#3E68A8",
-            },
-          },
-        },
-      },
-    },
   },
 });
 
