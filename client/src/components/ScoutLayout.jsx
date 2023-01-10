@@ -1,17 +1,19 @@
+import { Box } from "@mui/system";
 import { Outlet } from "react-router-dom";
 import { ScoutNav } from "./ScoutNav";
 
 export function ScoutLayout() {
   return (
-    <div>
+    <Box
+      style={{ height: "100vh", width: "100vw" }}
+      sx={{ bgcolor: (theme) => (theme.palette.mode === "dark" ? "#101010" : "grey.100") }}
+    >
       <ScoutNav />
-      <main>
-        <article>
-          <Outlet />
-        </article>
-      </main>
+   
+        <Outlet />
+
       {/* <Footer /> */}
-    </div>
+    </Box>
   );
 }
 

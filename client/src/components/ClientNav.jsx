@@ -25,17 +25,22 @@ export function ClientNav() {
             }}
           >
             <li>
-              <NavLink to="scout-landing">
+              <NavLink to="client/landing">
                 <CustomButton size="small">Home</CustomButton>
               </NavLink>
             </li>
             <li>
-              <NavLink to="add-title">
+              <NavLink to="client/tracked">
                 <CustomButton size="small">Saved</CustomButton>
               </NavLink>
             </li>
             <li>
-              <NavLink to="recent">
+              <NavLink to="client/titles">
+                <CustomButton size="small">Titles</CustomButton>
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="client/reports">
                 <CustomButton size="small">Reports</CustomButton>
               </NavLink>
             </li>

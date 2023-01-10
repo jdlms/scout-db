@@ -8,7 +8,7 @@ import { addId } from "../utils/addId";
 export function GetTitles({ title, url }) {
   const { checkForUser } = useContext(UserContext);
 
-  const { isLoading, error, data, isFetching } = useQuery(
+  const { isLoading, error, data } = useQuery(
     ["recentReports"],
     async () =>
       await axios
