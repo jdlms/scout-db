@@ -16,6 +16,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
+import { Container } from "@mui/system";
 
 const defaultValues = {
   title: "",
@@ -54,139 +55,141 @@ export function AddTitle() {
       {/* <Typography variant="h6" component="h2">
         Add title
       </Typography> */}
-      <Paper
-        elevation={6}
-        style={{
-          padding: 20,
-          width: "80%",
-        }}
-      >
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <FormControl margin="dense">
-              <AutocompleteForm control={control} name={"title"} url={"title"} label={"Title"} />
-            </FormControl>
-          </div>
+      <Container>
+        <Paper
+          elevation={6}
+          style={{
+            padding: 20,
+            width: "80%",
+          }}
+        >
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div>
+              <FormControl margin="dense">
+                <AutocompleteForm control={control} name={"title"} url={"title"} label={"Title"} />
+              </FormControl>
+            </div>
 
-          <div>
-            <FormControl margin="dense">
-              <FormGroup row>
-                <AutocompleteForm
-                  control={control}
-                  name={"authorFirstName"}
-                  url={"author-first-name"}
-                  label={"First name"}
-                />
-
-                <AutocompleteForm
-                  control={control}
-                  name={"authorLastName"}
-                  url={"author-last-name"}
-                  label={"Last name"}
-                />
-              </FormGroup>
-            </FormControl>
-          </div>
-
-          <div>
-            <FormControl margin="dense">
-              <FormGroup row>
-                <FormGroup>
+            <div>
+              <FormControl margin="dense">
+                <FormGroup row>
                   <AutocompleteForm
                     control={control}
-                    name={"agency"}
-                    url={"agency-name"}
-                    label={"Agency"}
-                  />
-                  <Text control={control} name={"rightsSold"} label={"Rights sold"} />
-                </FormGroup>
-                <FormGroup>
-                  <AutocompleteForm
-                    control={control}
-                    name={"publisher"}
-                    url={"publisher-name"}
-                    label={"Publisher"}
+                    name={"authorFirstName"}
+                    url={"author-first-name"}
+                    label={"First name"}
                   />
 
                   <AutocompleteForm
                     control={control}
-                    name={"editor"}
-                    url={"editor-name"}
-                    label={"Editor"}
+                    name={"authorLastName"}
+                    url={"author-last-name"}
+                    label={"Last name"}
                   />
                 </FormGroup>
-              </FormGroup>
-            </FormControl>
-          </div>
-          <div>
-            <FormGroup>
-              <div>
-                <FormControl margin="dense">
-                  <MultilineText
-                    rows={10}
-                    control={control}
-                    name={"details"}
-                    label={"Description"}
-                  />
-                </FormControl>
-              </div>
-              <div>
-                <FormControl margin="dense">
-                  <FormGroup row>
-                    <StatusSelect control={control} name={"status"} label={"Status"} />
-                    <AutocompleteSelect
+              </FormControl>
+            </div>
+
+            <div>
+              <FormControl margin="dense">
+                <FormGroup row>
+                  <FormGroup>
+                    <AutocompleteForm
                       control={control}
-                      name={"addToReport"}
-                      url={"unreleased-reports"}
-                      label={"Add to Report"}
+                      name={"agency"}
+                      url={"agency-name"}
+                      label={"Agency"}
+                    />
+                    <Text control={control} name={"rightsSold"} label={"Rights sold"} />
+                  </FormGroup>
+                  <FormGroup>
+                    <AutocompleteForm
+                      control={control}
+                      name={"publisher"}
+                      url={"publisher-name"}
+                      label={"Publisher"}
+                    />
+
+                    <AutocompleteForm
+                      control={control}
+                      name={"editor"}
+                      url={"editor-name"}
+                      label={"Editor"}
                     />
                   </FormGroup>
-                </FormControl>
-              </div>
-            </FormGroup>
-          </div>
-
-          <div>
-            <FormControl margin="dense">
-              <FormGroup row>
-                <MaterialSelect
-                  control={control}
-                  name={"currentMaterial"}
-                  label={"Current material"}
-                />
-
-                <fieldset
-                  style={{
-                    display: "inline",
-                    borderColor: "rgba(255, 255, 255, 0.12)",
-                    borderWidth: "1.5px",
-                    borderRadius: "2px",
-                  }}
-                >
-                  <legend style={{ color: "#676767" }}>Confidential</legend>
-                  <SwitchConfidential
-                    control={control}
-                    name={"confidential"}
-                    label={"Confidential"}
-                  />
-                </fieldset>
+                </FormGroup>
+              </FormControl>
+            </div>
+            <div>
+              <FormGroup>
+                <div>
+                  <FormControl margin="dense">
+                    <MultilineText
+                      rows={10}
+                      control={control}
+                      name={"details"}
+                      label={"Description"}
+                    />
+                  </FormControl>
+                </div>
+                <div>
+                  <FormControl margin="dense">
+                    <FormGroup row>
+                      <StatusSelect control={control} name={"status"} label={"Status"} />
+                      <AutocompleteSelect
+                        control={control}
+                        name={"addToReport"}
+                        url={"unreleased-reports"}
+                        label={"Add to Report"}
+                      />
+                    </FormGroup>
+                  </FormControl>
+                </div>
               </FormGroup>
-            </FormControl>
-          </div>
-          <div>
-            <FormControl margin="dense">
-              <MultilineText control={control} name={"internalNotes"} label={"Internal notes"} />
-            </FormControl>
-          </div>
-          <div>
-            <FormControl margin="dense">
-              <Button type="submit" size="large" variant="outlined">
-                Add
-              </Button>
-            </FormControl>
-          </div>
-        </form>
-      </Paper>
+            </div>
+
+            <div>
+              <FormControl margin="dense">
+                <FormGroup row>
+                  <MaterialSelect
+                    control={control}
+                    name={"currentMaterial"}
+                    label={"Current material"}
+                  />
+
+                  <fieldset
+                    style={{
+                      display: "inline",
+                      borderColor: "rgba(255, 255, 255, 0.12)",
+                      borderWidth: "1.5px",
+                      borderRadius: "2px",
+                    }}
+                  >
+                    <legend style={{ color: "#676767" }}>Confidential</legend>
+                    <SwitchConfidential
+                      control={control}
+                      name={"confidential"}
+                      label={"Confidential"}
+                    />
+                  </fieldset>
+                </FormGroup>
+              </FormControl>
+            </div>
+            <div>
+              <FormControl margin="dense">
+                <MultilineText control={control} name={"internalNotes"} label={"Internal notes"} />
+              </FormControl>
+            </div>
+            <div>
+              <FormControl margin="dense">
+                <Button type="submit" size="large" variant="outlined">
+                  Add
+                </Button>
+              </FormControl>
+            </div>
+          </form>
+        </Paper>
+      </Container>
     </div>
   );
 }

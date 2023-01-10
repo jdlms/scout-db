@@ -1,6 +1,7 @@
+import { IconButton } from "@mui/material";
 import axios from "axios";
 import { useContext } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 
 export function Logout() {
@@ -23,9 +24,9 @@ export function Logout() {
 
   return (
     <>
-      <NavLink style={{ textDecoration: "none" }} onClick={logout}>
+      <IconButton size="small" onClick={logout}>
         Logout
-      </NavLink>
+      </IconButton>
     </>
   );
 }
