@@ -39,12 +39,7 @@ export function AutocompleteSelect({ control, url, name, label }) {
               variant="outlined"
               InputProps={{
                 ...params.InputProps,
-                endAdornment: (
-                  <>
-                    {options.length === 0 ? <CircularProgress color="inherit" size={20} /> : null}
-                    {params.InputProps.endAdornment}
-                  </>
-                ),
+       
               }}
             />
           )}
