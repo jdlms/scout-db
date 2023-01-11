@@ -13,8 +13,10 @@ router.use(edit);
 import remove from "./delete.routes.js";
 router.use(remove);
 
-
 import recent from "./recent.routes.js";
 router.use(recent);
+
+import reported from "./reported.routes.js";
+router.use(reported);
 
 export default router;
