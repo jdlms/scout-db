@@ -1,4 +1,5 @@
 import { Router } from "express";
+import { Book } from "../../models/Book.model.js";
 import { Report } from "../../models/Report.model.js";
 const router = Router();
 
@@ -32,9 +33,8 @@ router.post("/release-report", async (req, res) => {
     const report = await Report.findOneAndUpdate({ title: req.body.title }, { released: true });
     const books = report.books;
 
-    console.log(report);
     for (const book of books) {
-      console.log(book.title);
+      await Book.findOneAndUpdate({ _id: book.id }, { reported: true });
     }
     //#todo for each book in report, 'reported' must be set to 'true'
     //get the books array and then loop through changing reported to true

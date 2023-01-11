@@ -58,6 +58,7 @@ router.post("/add", async (req, res) => {
         currentMaterial: req.body.currentMaterial,
         details: req.body.details,
         internalNotes: req.body.internalNotes,
+        reported: false,
       },
       {},
       { upsert: true, new: true }
