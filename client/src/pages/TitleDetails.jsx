@@ -1,9 +1,11 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useQuery } from "react-query";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { UserContext } from "../contexts/UserContext";
 
 export function TitleDetails({ idFromTitle }) {
-  const { id } = useParams();
+  const { user } = useContext(UserContext);
 
   const { isLoading, error, data } = useQuery(
     ["titleDetails"],
@@ -38,9 +40,13 @@ export function TitleDetails({ idFromTitle }) {
           {data.title} by {data.author.map((author) => `${author.firstName} ${author.lastName}`)}
         </h3>
         <br />
-        <Link style={{ textDecoration: "none", color: "Red" }} to={`/edit-title/${data._id}`}>
-          Edit
-        </Link>
+        {user.role === "Scout" ? (
+          <Link style={{ textDecoration: "none", color: "Red" }} to={`/edit-title/${data._id}`}>
+            Edit
+          </Link>
+        ) : (
+          <div></div>
+        )}
       </div>
     </div>
   );
