@@ -1,9 +1,13 @@
 import { Box, Grid } from "@mui/material";
+import { useContext } from "react";
 import { useState } from "react";
 import { GetTitles } from "../components/GetTitles";
+import { UserContext } from "../contexts/UserContext";
 import { TitleDetails } from "./TitleDetails";
 
 export function RecentTitles() {
+  const { user } = useContext(UserContext);
+
   const [viewDetails, setViewDetails] = useState(false);
   const [divClicked, setDivClicked] = useState(null);
   const [idFromTitle, setIdFromTitle] = useState(null);
@@ -22,6 +26,8 @@ export function RecentTitles() {
     console.log(titleId);
   };
 
+  const url = user.role === "Scout" ? "titles/recent" : "titles/reported";
+
   return (
     <>
       <div style={{ width: "100%" }}>
@@ -37,11 +43,7 @@ export function RecentTitles() {
           <Grid container spacing={2}>
             <Grid item xs={4}>
               <Box style={{ maxHeight: "100vh", maxWidth: 450, overflow: "auto" }}>
-                <GetTitles
-                  title={"Recent Titles"}
-                  url={"titles/recent"}
-                  handleClick={handleClick}
-                />
+                <GetTitles title={"Recent Titles"} url={url} handleClick={handleClick} />
               </Box>
             </Grid>
             <Grid item xs={8}>

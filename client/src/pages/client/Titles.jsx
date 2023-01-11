@@ -1,3 +1,9 @@
+import { RecentTitles } from "../RecentTitles";
+
 export function Titles() {
-  return <div>Titles</div>;
+  return (
+    <>
+      <RecentTitles />
+    </>
+  );
 }

@@ -31,7 +31,7 @@ export function ClientNav() {
             </li>
             <li>
               <NavLink to="client/tracked">
-                <CustomButton size="small">Saved</CustomButton>
+                <CustomButton size="small">Tracked</CustomButton>
               </NavLink>
             </li>
             <li>
