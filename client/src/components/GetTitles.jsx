@@ -1,15 +1,14 @@
 import axios from "axios";
 import { useContext } from "react";
 import { useQuery } from "react-query";
-import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { addId } from "../utils/addId";
 
-export function GetTitles({ title, url }) {
+export function GetTitles({ title, url, handleClick }) {
   const { checkForUser } = useContext(UserContext);
 
   const { isLoading, error, data } = useQuery(
-    ["recentReports"],
+    ["getTitle"],
     async () =>
       await axios
         .get(BASE_URL + url, {
@@ -28,14 +27,12 @@ export function GetTitles({ title, url }) {
 
   return (
     <>
-      {data.map((title) => {
+      {data.map((title, index) => {
+        const titleId = title._id;
         return (
-          <Link
-            key={addId()}
-            style={{ textDecoration: "none", color: "black" }}
-            to={`/title-details/${title._id}`}
-          >
+          <div key={addId()}>
             <div
+              onClick={(event) => handleClick(event, index, titleId)}
               style={{
                 backgroundColor: "#f7e7ce",
                 height: "150px",
@@ -47,11 +44,11 @@ export function GetTitles({ title, url }) {
               }}
             >
               <h3>
-                {title.title} by{" "}
+                {title.title} by
                 {title.author.map((author) => `${author.firstName} ${author.lastName}`)}
               </h3>
             </div>
-          </Link>
+          </div>
         );
       })}
     </>

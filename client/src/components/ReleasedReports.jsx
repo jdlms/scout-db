@@ -26,8 +26,7 @@ export function ReleasedReports() {
         .get(BASE_URL + "scout/released-reports", {
           withCredentials: true,
         })
-        .then((res) => res.data),
-    { staleTime: 1000 * 10 }
+        .then((res) => res.data)
   );
 
   if (isLoading) return "Loading...";
@@ -59,7 +58,7 @@ export function ReleasedReports() {
       <br />
       {viewDetails ? (
         <ReportDetails data={data} divClicked={divClicked} refetch={refetch} />
-      ) : undefined} 
+      ) : undefined}
     </>
   );
 }
