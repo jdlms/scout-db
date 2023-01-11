@@ -25,7 +25,6 @@ export function UpdateTitleFields({ data, defaultValues, id }) {
         withCredentials: true,
       });
       //redirect back to last location via local storage?
-      reset(defaultValues);
     } catch (error) {
       console.error(error);
     }
