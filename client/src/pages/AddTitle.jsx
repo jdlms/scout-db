@@ -58,7 +58,7 @@ export function AddTitle() {
       </Typography> */}
       <Container>
         <Paper
-          elevation={6}
+          elevation={2}
           style={{
             padding: 20,
             width: "80%",

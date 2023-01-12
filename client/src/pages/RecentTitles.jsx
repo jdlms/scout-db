@@ -23,10 +23,10 @@ export function RecentTitles() {
       setDivClicked(null);
       setIdFromTitle(null);
     }
-    console.log(titleId);
   };
 
   const url = user.role === "Scout" ? "titles/recent" : "titles/reported";
+  console.log(user.role);
 
   return (
     <>

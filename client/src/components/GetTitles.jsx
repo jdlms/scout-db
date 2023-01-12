@@ -5,10 +5,10 @@ import { UserContext } from "../contexts/UserContext";
 import { addId } from "../utils/addId";
 
 export function GetTitles({ title, url, handleClick }) {
-  const { checkForUser } = useContext(UserContext);
+  // const { checkForUser } = useContext(UserContext);
 
   const { isLoading, error, data } = useQuery(
-    ["getTitle"],
+    ["getTitles"],
     async () =>
       await axios
         .get(BASE_URL + url, {
@@ -21,7 +21,7 @@ export function GetTitles({ title, url, handleClick }) {
 
   if (error) return "An error has occurred: " + error.message;
 
-  checkForUser;
+  // checkForUser;
 
   //#todo write util to make url id title-lastName-year
 

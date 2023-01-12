@@ -1,27 +1,11 @@
-import { useState } from "react";
-import { useQuery } from "react-query";
 import { addId } from "../utils/addId";
 import { DeleteReport } from "./DeleteReport";
 import { ReleaseReport } from "./ReleaseReport";
-import { ReportDetails } from "./ReportDetails";
-import axios from "axios";
 import { CreateReport } from "./CreateReport";
+import { useQuery } from "react-query";
+import axios from "axios";
 
-export function UnreleasedReports() {
-  const [viewDetails, setViewDetails] = useState(false);
-  const [divClicked, setDivClicked] = useState(null);
-
-  const handleClick = (event, index) => {
-    if (divClicked === null) {
-      setViewDetails(!viewDetails);
-      setDivClicked(index);
-    }
-    if (divClicked !== null && divClicked === index) {
-      setViewDetails(!viewDetails);
-      setDivClicked(null);
-    }
-  };
-
+export function UnreleasedReports({ handleClick }) {
   const { isLoading, error, data, refetch } = useQuery(
     ["recentTitles"],
     async () =>
@@ -29,8 +13,7 @@ export function UnreleasedReports() {
         .get(BASE_URL + "scout/unreleased-reports-obj", {
           withCredentials: true,
         })
-        .then((res) => res.data),
-    { staleTime: 1000 * 10 }
+        .then((res) => res.data)
   );
 
   if (isLoading) return "Loading...";
@@ -39,13 +22,14 @@ export function UnreleasedReports() {
 
   return (
     <>
+      <br />
       <CreateReport refetch={refetch} />
       {data.map((title, index) => {
         return (
           <div key={addId()}>
             <div
               className="Reports-Div"
-              onClick={(event) => handleClick(event, index)}
+              onClick={(event) => handleClick(event, index, data)}
               style={{
                 backgroundColor: "#f7e7ce",
                 height: "65px",
@@ -62,10 +46,6 @@ export function UnreleasedReports() {
           </div>
         );
       })}
-      <br />
-      {viewDetails ? (
-        <ReportDetails data={data} divClicked={divClicked} refetch={refetch} />
-      ) : undefined}
     </>
   );
 }

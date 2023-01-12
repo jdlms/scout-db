@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export function ReportRemoveTitle({ report, id, refetch }) {
+export function ReportRemoveTitle({ report, id }) {
   const handleClick = async () => {
     try {
       await axios.post(BASE_URL + `scout/remove-title/${id}`, report, { withCredentials: true });

@@ -4,9 +4,9 @@ import { ReportRemoveTitle } from "./ReportRemoveTitle";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 
-export function ReportDetails({ data, divClicked, refetch }) {
+export function ReportDetails({ reportData, divClicked }) {
   const { user } = useContext(UserContext);
-  const report = data[divClicked];
+  const report = reportData[divClicked];
 
   return (
     <div>
@@ -46,7 +46,7 @@ export function ReportDetails({ data, divClicked, refetch }) {
               </div>
             </Link>
             {user.role === "Scout" ? (
-              <ReportRemoveTitle report={report} id={book._id} refetch={refetch} />
+              <ReportRemoveTitle report={report} id={book._id} />
             ) : undefined}
           </div>
         );

@@ -1,24 +1,8 @@
 import axios from "axios";
-import { useState } from "react";
 import { useQuery } from "react-query";
 import { addId } from "../utils/addId";
-import { ReportDetails } from "./ReportDetails";
 
-export function ReleasedReports() {
-  const [viewDetails, setViewDetails] = useState(false);
-  const [divClicked, setDivClicked] = useState(null);
-
-  const handleClick = (event, index) => {
-    if (divClicked === null) {
-      setViewDetails(!viewDetails);
-      setDivClicked(index);
-    }
-    if (divClicked !== null && divClicked === index) {
-      setViewDetails(!viewDetails);
-      setDivClicked(null);
-    }
-  };
-
+export function ReleasedReports({ handleClick }) {
   const { isLoading, error, data, refetch } = useQuery(
     ["Released Reports"],
     async () =>
@@ -40,7 +24,7 @@ export function ReleasedReports() {
           <div key={addId()}>
             <div
               className="Reports-Div"
-              onClick={(event) => handleClick(event, index)}
+              onClick={(event) => handleClick(event, index, data)}
               style={{
                 backgroundColor: "#f7e7ce",
                 height: "65px",
@@ -55,10 +39,7 @@ export function ReleasedReports() {
           </div>
         );
       })}
-      <br />
-      {viewDetails ? (
-        <ReportDetails data={data} divClicked={divClicked} refetch={refetch} />
-      ) : undefined}
+    
     </>
   );
 }
