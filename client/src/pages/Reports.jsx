@@ -3,6 +3,8 @@ import { UnreleasedReports } from "../components/UnreleasedReports";
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { ReleasedReports } from "../components/ReleasedReports";
+import { useQuery } from "react-query";
+import axios from "axios";
 import { ReportDetails } from "../components/ReportDetails";
 
 export default function Reports() {
@@ -12,17 +14,20 @@ export default function Reports() {
   const [divClicked, setDivClicked] = useState(null);
   const [reportData, setReportData] = useState(undefined);
 
+
   const [releasedReports, setReleasedReports] = useState(false);
 
-  const handleClick = (event, index, data) => {
+  const handleClick = (event, index, data, refetch) => {
     if (divClicked === null) {
       setViewDetails(!viewDetails);
       setDivClicked(index);
       setReportData(data);
+      
     }
     if (divClicked !== null && divClicked === index) {
       setViewDetails(!viewDetails);
       setDivClicked(null);
+      setReportData(undefined);
     }
   };
 
@@ -72,7 +77,10 @@ export default function Reports() {
             <Grid item xs={8}>
               <Box style={{ maxHeight: "100vh", maxWidth: 450, overflow: "auto" }}>
                 {viewDetails ? (
-                  <ReportDetails reportData={reportData} divClicked={divClicked} />
+                  <ReportDetails
+                    reportData={reportData}
+                    divClicked={divClicked}
+                  />
                 ) : undefined}
               </Box>
             </Grid>

@@ -7,7 +7,7 @@ import axios from "axios";
 
 export function UnreleasedReports({ handleClick }) {
   const { isLoading, error, data, refetch } = useQuery(
-    ["recentTitles"],
+    ["UnreleasedReports"],
     async () =>
       await axios
         .get(BASE_URL + "scout/unreleased-reports-obj", {
