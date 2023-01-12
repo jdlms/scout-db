@@ -4,6 +4,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import axios from "axios";
 import { Controller } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { BASE_URL } from "../../utils/consts";
 
 export function AutocompleteSelect({ control, url, name, label }) {
   const [options, setOptions] = useState([]);

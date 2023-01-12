@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { BASE_URL } from "../../utils/consts";
 
 export function Signup() {
   const { user, addUserToContext } = useContext(UserContext);

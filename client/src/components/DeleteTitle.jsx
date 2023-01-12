@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/consts";
 
 export function DeleteTitle({ id }) {
   const navigate = useNavigate();

@@ -4,6 +4,7 @@ import { ReleaseReport } from "./ReleaseReport";
 import { CreateReport } from "./CreateReport";
 import { useQuery } from "react-query";
 import axios from "axios";
+import { BASE_URL } from "../utils/consts";
 
 export function UnreleasedReports({ handleClick }) {
   const { isLoading, error, data, refetch } = useQuery(

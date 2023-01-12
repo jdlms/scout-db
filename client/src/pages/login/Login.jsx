@@ -7,6 +7,7 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Text } from "../../components/forms/Text";
 import { TextField } from "@mui/material";
+import { BASE_URL } from "../../utils/consts";
 
 export function Login() {
   const { user, addUserToContext } = useContext(UserContext);

@@ -17,6 +17,7 @@ import {
   Typography,
 } from "@mui/material";
 import { Container } from "@mui/system";
+import { BASE_URL } from "../utils/consts";
 
 const defaultValues = {
   title: "",

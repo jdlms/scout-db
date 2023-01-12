@@ -1,7 +1,9 @@
 import { Button } from "@mui/material";
 import axios from "axios";
 import { useForm } from "react-hook-form";
+import { BASE_URL } from "../utils/consts";
 import { Text } from "./forms/Text";
+
 
 export function CreateReport({ refetch }) {
   const { handleSubmit, control, reset } = useForm({

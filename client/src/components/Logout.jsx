@@ -3,6 +3,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
+import { BASE_URL } from "../utils/consts";
 
 export function Logout() {
   const { user, addUserToContext } = useContext(UserContext);

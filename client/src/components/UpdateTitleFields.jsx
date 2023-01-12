@@ -9,6 +9,7 @@ import { AutocompleteSelect } from "./forms/AutocompleteSelect";
 import { useEffect } from "react";
 import axios from "axios";
 import { DeleteTitle } from "./DeleteTitle";
+import { BASE_URL } from "../utils/consts";
 
 export function UpdateTitleFields({ data, defaultValues, id }) {
   const { handleSubmit, control, reset } = useForm({

@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import axios from "axios";
+import { BASE_URL } from "../utils/consts";
 
 export function ReleaseReport({ title, refetch }) {
   const handleClick = async () => {

@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useQuery } from "react-query";
 import { addId } from "../utils/addId";
+import { BASE_URL } from "../utils/consts";
 
 export function ReleasedReports({ handleClick }) {
   const { isLoading, error, data, refetch } = useQuery(

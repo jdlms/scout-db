@@ -2,6 +2,7 @@ import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import { UpdateTitleFields } from "../components/UpdateTitleFields";
 import axios from "axios";
+import { BASE_URL } from "../utils/consts";
 
 export function EditTitle() {
   const { id } = useParams();

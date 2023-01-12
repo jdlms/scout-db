@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
+import { BASE_URL } from "../utils/consts";
 
 export function TitleDetails({ idFromTitle }) {
   const { user } = useContext(UserContext);
