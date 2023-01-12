@@ -23,6 +23,7 @@ const publicFolderLocation = path.join(__dirname, "public");
 await connectToMongoose();
 
 const store = new MongoStore({ uri: MONGO_URI, collection: "sessions" });
+console.log(CLIENT_ORIGIN);
 
 app.use(cors({ origin: CLIENT_ORIGIN, credentials: true }));
 
