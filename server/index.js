@@ -14,7 +14,7 @@ const MongoStore = pkg(session);
 
 const app = express();
 const PORT = 5000;
-const CLIENT_ORIGIN = "http://localhost:3000";
+const CLIENT_ORIGIN = process.env.CLIENT_ORIGIN || "http://localhost:3000";
 const router = Router();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
