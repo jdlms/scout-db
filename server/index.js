@@ -7,7 +7,6 @@ import { fileURLToPath } from "url";
 import { connectToMongoose } from "./db.js";
 import session from "express-session";
 import { MONGO_URI } from "./config.js";
-import { userPresent } from "./middleware/sessions.middleware.js";
 
 import pkg from "connect-mongodb-session";
 const MongoStore = pkg(session);

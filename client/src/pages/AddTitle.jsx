@@ -7,16 +7,7 @@ import { MultilineText } from "../components/forms/MultilineText";
 import { StatusSelect } from "../components/forms/StatusSelect";
 import { AutocompleteSelect } from "../components/forms/AutocompleteSelect";
 import { SwitchConfidential } from "../components/forms/SwitchConfidential";
-import {
-  Button,
-  Divider,
-  FormControl,
-  FormGroup,
-  FormLabel,
-  Paper,
-  Typography,
-} from "@mui/material";
-import { Container } from "@mui/system";
+import { Box, Button, FormControl, FormGroup } from "@mui/material";
 import { BASE_URL } from "../utils/consts";
 
 const defaultValues = {
@@ -54,16 +45,16 @@ export function AddTitle() {
 
   return (
     <div>
-      {/* <Typography variant="h6" component="h2">
-        Add title
-      </Typography> */}
-      <Container>
-        <Paper
-          elevation={2}
-          style={{
-            padding: 20,
-            width: "80%",
+      <div style={{ width: "80vw", height: "100%" }}>
+        <Box
+          sx={{
+            display: "flex",
+            p: 1,
+            m: 1,
+            bgcolor: "background.paper",
+            borderRadius: 1,
           }}
+          height="100%"
         >
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
@@ -186,8 +177,8 @@ export function AddTitle() {
               </FormControl>
             </div>
           </form>
-        </Paper>
-      </Container>
+        </Box>
+      </div>
     </div>
   );
 }

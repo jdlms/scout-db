@@ -3,7 +3,6 @@ import { useState } from "react";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
 
-
 export function Landing() {
   const [signupState, setSignupState] = useState(false);
   const [loginState, setLoginState] = useState(false);
@@ -16,7 +15,7 @@ export function Landing() {
       <h1>Scout DB</h1>
 
       {!loginState && !signupState && (
-        <ButtonGroup variant="contained" aria-label="text  button group">
+        <ButtonGroup variant="contained">
           <Button onClick={handleLoginClick}>Login</Button>
           <Button onClick={handleSignupClick}>Signup</Button>
         </ButtonGroup>

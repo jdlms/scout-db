@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { BASE_URL } from "../utils/consts";
 
-export function TitleDetails({ idFromTitle }) {
+export function TitleDetails({ idFromTitle, viewDetails }) {
   const { user } = useContext(UserContext);
 
   const { isLoading, error, data } = useQuery(
@@ -27,7 +27,6 @@ export function TitleDetails({ idFromTitle }) {
     <div>
       <div
         style={{
-          backgroundColor: "#f7e7ce",
           height: "150px",
           width: "400px",
           display: "flex",
@@ -35,10 +34,11 @@ export function TitleDetails({ idFromTitle }) {
           color: "#0e0e1d",
           margin: "4px",
           borderRadius: "2%",
+          borderColor: "#f7e7ce",
         }}
       >
         <h3>
-          {data.title} by {data.author.map((author) => `${author.firstName} ${author.lastName}`)}
+          {data.title} by {data.author.map((author) => ` ${author.firstName} ${author.lastName}`)}
         </h3>
         <br />
         {user.role === "Scout" ? (

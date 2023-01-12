@@ -34,20 +34,24 @@ export function GetTitles({ title, url, handleClick }) {
           <div key={addId()}>
             <div
               onClick={(event) => handleClick(event, index, titleId)}
+              className="listDiv"
               style={{
-                backgroundColor: "#f7e7ce",
                 height: "150px",
-                width: "400px",
-                display: "flex",
+                width: "350px",
+                borderRadius: "1%",
                 color: "#0e0e1d",
                 margin: "4px",
-                borderRadius: "2%",
+                borderRadius: "4%",
+                borderStyle: "solid",
+                borderColor: "#f5f5f5",
               }}
             >
-              <h3>
+              <h4>
                 {title.title} by
-                {title.author.map((author) => `${author.firstName} ${author.lastName}`)}
-              </h3>
+                {title.author.map((author) => ` ${author.firstName} ${author.lastName}`)}
+              </h4>
+
+              <span>{title.status}</span>
             </div>
           </div>
         );

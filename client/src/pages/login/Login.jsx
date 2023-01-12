@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Text } from "../../components/forms/Text";
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { BASE_URL } from "../../utils/consts";
 
 export function Login() {
@@ -97,14 +96,8 @@ export function Login() {
             />
           )}
         />
-        {/* <input
-          type="password"
-          {...register("password", { required: true, minLength: 1 })}
-          placeholder="password"
-        />
-        <div className="invalid-feedback">{errors.password?.message}</div> */}
-        {console.log(errors)}
-        <button type="submit">Send</button>
+
+        <Button variant="contained" type="submit">Send</Button>
       </form>
     </div>
   );

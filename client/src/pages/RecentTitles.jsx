@@ -30,7 +30,7 @@ export function RecentTitles() {
 
   return (
     <>
-      <div style={{ width: "100%" }}>
+      <div style={{ width: "80vw", height: "100%" }}>
         <Box
           sx={{
             display: "flex",
@@ -39,6 +39,7 @@ export function RecentTitles() {
             bgcolor: "background.paper",
             borderRadius: 1,
           }}
+          height="100%"
         >
           <Grid container spacing={2}>
             <Grid item xs={4}>
@@ -48,7 +49,11 @@ export function RecentTitles() {
             </Grid>
             <Grid item xs={8}>
               <Box style={{ maxHeight: "100vh", maxWidth: 450, overflow: "auto" }}>
-                {viewDetails ? <TitleDetails idFromTitle={idFromTitle} /> : <div></div>}
+                {viewDetails ? (
+                  <TitleDetails idFromTitle={idFromTitle} viewDetails={viewDetails} />
+                ) : (
+                  <div></div>
+                )}
               </Box>
             </Grid>
           </Grid>
