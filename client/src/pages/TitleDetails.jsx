@@ -2,18 +2,19 @@ import { Typography } from "@mui/material";
 import axios from "axios";
 import { useContext } from "react";
 import { useQuery } from "react-query";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import { BASE_URL } from "../utils/consts";
 
 export function TitleDetails({ idFromTitle, viewDetails }) {
   const { user } = useContext(UserContext);
+  const { id } = useParams();
 
   const { isLoading, error, data } = useQuery(
     ["titleDetails"],
     () =>
       axios
-        .get(BASE_URL + `titles/single/${idFromTitle}`, {
+        .get(BASE_URL + `titles/single/${idFromTitle || id}`, {
           withCredentials: true,
         })
         .then((res) => res.data),
