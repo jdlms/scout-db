@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { Typography } from "@mui/material";
 
-export function ReportDetails({ reportData, divClicked }) {
+export function ReportDetails({ reportData, divClicked, releasedReports }) {
   const { user } = useContext(UserContext);
   const report = reportData[divClicked];
 
@@ -54,9 +54,9 @@ export function ReportDetails({ reportData, divClicked }) {
                 </div>
               </div>
             </Link>
-            {user.role === "Scout" ? (
+            {releasedReports || user.role === "Client" ? undefined : (
               <ReportRemoveTitle report={report} id={book._id} />
-            ) : undefined}
+            )}
           </div>
         );
       })}

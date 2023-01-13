@@ -39,7 +39,6 @@ export function UnreleasedReports({ handleClick }) {
                 marginTop: "6px",
                 paddingLeft: "10px",
                 paddingTop: "10px",
-                borderRadius: "3%",
                 borderStyle: "solid",
                 borderColor: "#0e0e1d",
                 borderWidth: "1px",

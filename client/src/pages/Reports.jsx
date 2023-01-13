@@ -75,7 +75,11 @@ export default function Reports() {
             <Grid item xs={8}>
               <Box style={{ maxHeight: "100vh", maxWidth: 450, overflow: "auto" }}>
                 {viewDetails ? (
-                  <ReportDetails reportData={reportData} divClicked={divClicked} />
+                  <ReportDetails
+                    reportData={reportData}
+                    divClicked={divClicked}
+                    releasedReports={releasedReports}
+                  />
                 ) : undefined}
               </Box>
             </Grid>
