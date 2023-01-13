@@ -29,7 +29,7 @@ export function TitleDetails({ idFromTitle, viewDetails }) {
     <div>
       <div
         style={{
-          height: "150px",
+          height: "85%",
           width: "400px",
           display: "flex",
           flexDirection: "column",
@@ -45,13 +45,42 @@ export function TitleDetails({ idFromTitle, viewDetails }) {
           </Typography>
         </div>
         <br />
-        {user.role === "Scout" ? (
-          <Link style={{ textDecoration: "none", color: "Red" }} to={`/edit-title/${data._id}`}>
-            Edit
-          </Link>
-        ) : (
-          <div></div>
-        )}
+        <div style={{ paddingTop: "10px" }}>
+          <Typography variant="subtitle2" gutterBottom>
+            {data.agency[0].name}
+          </Typography>
+          <Typography variant="subtitle2" gutterBottom>
+            {data.publisher[0].name} - {data.editor[0].name}
+          </Typography>
+
+          <Typography variant="body1" gutterBottom>
+            {data.details}
+          </Typography>
+
+          <Typography variant="subtitle2" gutterBottom>
+            Material: {data.currentMaterial}
+          </Typography>
+
+          <Typography variant="subtitle2" gutterBottom>
+            Rights sold: {data.rightsSold.length < 1 ? "None" : data.rightsSold.length}
+          </Typography>
+
+          <Typography variant="subtitle2" gutterBottom>
+            Reported: {data.reported === true ? "Yes" : "No"}
+          </Typography>
+
+          <Typography variant="subtitle2" gutterBottom>
+            Confidential: {data.confidential === true ? "Yes" : "No"}
+          </Typography>
+
+          {user.role === "Scout" ? (
+            <Link style={{ textDecoration: "none", color: "Red" }} to={`/edit-title/${data._id}`}>
+              Edit
+            </Link>
+          ) : (
+            <div> </div>
+          )}
+        </div>
       </div>
     </div>
   );

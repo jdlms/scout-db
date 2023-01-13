@@ -26,7 +26,7 @@ export function GetTitles({ title, url, handleClick }) {
   // checkForUser;
 
   //#todo write util to make url id title-lastName-year
-
+  console.log(data);
   return (
     <>
       {data.map((title, index) => {
@@ -37,14 +37,13 @@ export function GetTitles({ title, url, handleClick }) {
               onClick={(event) => handleClick(event, index, titleId)}
               className="listDiv"
               style={{
-                height: "150px",
-                width: "300px",
+                height: "130px",
+                width: "355px",
                 color: "#0e0e1d",
                 margin: "4px",
-                borderRadius: "3%",
                 borderStyle: "solid",
                 borderColor: "#0e0e1d",
-                borderWidth: "1px",
+                borderWidth: "1.5px",
               }}
             >
               <div style={{ paddingLeft: "10px", paddingTop: "10px" }}>
@@ -52,7 +51,13 @@ export function GetTitles({ title, url, handleClick }) {
                   {title.title} by
                   {title.author.map((author) => ` ${author.firstName} ${author.lastName}`)}
                 </Typography>
-                <span>{title.status}</span>
+                <Typography variant="body2" gutterBottom>
+                  {title.agency[0].name} / {title.publisher[0].name}
+                </Typography>
+
+                <Typography variant="caption" gutterBottom>
+                  {title.status}
+                </Typography>
               </div>
             </div>
           </div>
