@@ -9,6 +9,8 @@ import { AutocompleteSelect } from "../components/forms/AutocompleteSelect";
 import { SwitchConfidential } from "../components/forms/SwitchConfidential";
 import { Box, Button, FormControl, FormGroup } from "@mui/material";
 import { BASE_URL } from "../utils/consts";
+import { useContext } from "react";
+import { UserContext } from "../contexts/UserContext";
 
 const defaultValues = {
   title: "",
@@ -28,6 +30,8 @@ const defaultValues = {
 };
 
 export function AddTitle() {
+  const { checkForUser} = useContext(UserContext);
+  checkForUser
   const { register, handleSubmit, control, reset } = useForm({
     defaultValues,
   });

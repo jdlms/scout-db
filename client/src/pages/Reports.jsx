@@ -3,13 +3,11 @@ import { UnreleasedReports } from "../components/UnreleasedReports";
 import { useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { ReleasedReports } from "../components/ReleasedReports";
-import { useQuery } from "react-query";
-import axios from "axios";
 import { ReportDetails } from "../components/ReportDetails";
 
 export default function Reports() {
   const { checkForUser, user } = useContext(UserContext);
-
+  checkForUser;
   const [viewDetails, setViewDetails] = useState(false);
   const [divClicked, setDivClicked] = useState(null);
   const [reportData, setReportData] = useState(undefined);
@@ -36,8 +34,6 @@ export default function Reports() {
   const releasedClick = () => {
     setReleasedReports(true);
   };
-
-  checkForUser;
   console.log(user);
 
   return (

@@ -6,7 +6,8 @@ import { UserContext } from "../contexts/UserContext";
 import { TitleDetails } from "./TitleDetails";
 
 export function RecentTitles() {
-  const { user } = useContext(UserContext);
+  const { checkForUser, user } = useContext(UserContext);
+  checkForUser;
 
   const [viewDetails, setViewDetails] = useState(false);
   const [divClicked, setDivClicked] = useState(null);

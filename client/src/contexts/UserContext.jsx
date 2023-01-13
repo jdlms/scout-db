@@ -23,7 +23,12 @@ export function UserContextProvider({ children }) {
 
         if (request.data.user) {
           setUser(request.data.user);
-          navigate(request.data.user.role === "Scout" ? "/scout-landing" : "/client/landing");
+          if (request.data.user.role === "Scout") {
+            navigate("/scout-landing");
+          }
+          if (request.data.user.role === "Client") {
+            navigate("client/landing");
+          }
         }
       } catch (error) {
         console.error("There was an error!");
