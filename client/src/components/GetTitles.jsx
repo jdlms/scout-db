@@ -37,13 +37,13 @@ export function GetTitles({ title, url, handleClick }) {
               className="listDiv"
               style={{
                 height: "150px",
-                width: "350px",
-                borderRadius: "1%",
+                width: "300px",
                 color: "#0e0e1d",
                 margin: "4px",
-                borderRadius: "4%",
+                borderRadius: "3%",
                 borderStyle: "solid",
-                borderColor: "#f5f5f5",
+                borderColor: "#0e0e1d",
+                borderWidth: "1px",
               }}
             >
               <h4>

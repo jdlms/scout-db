@@ -9,7 +9,7 @@ import { Button, TextField } from "@mui/material";
 import { BASE_URL } from "../../utils/consts";
 
 export function Login() {
-  const { user, addUserToContext } = useContext(UserContext);
+  const { addUserToContext } = useContext(UserContext);
   const navigate = useNavigate();
 
   const validationSchema = Yup.object().shape({

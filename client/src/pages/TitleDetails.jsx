@@ -24,7 +24,7 @@ export function TitleDetails({ idFromTitle, viewDetails }) {
   if (error) return "An error has occurred: " + error.message;
 
   return (
-    <div>
+    <div style={{ borderLeft: "1px solid #0e0e1d" }}>
       <div
         style={{
           height: "150px",

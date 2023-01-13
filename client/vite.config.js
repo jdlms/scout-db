@@ -7,8 +7,4 @@ export default defineConfig({
   server: {
     port: 3000,
   },
-  // define: {
-  //   BASE_URL: JSON.stringify("http://localhost:5000/"),
-  //   // JSON.stringify('my-custom-name')
-  // },
 });
