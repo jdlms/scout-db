@@ -5,6 +5,7 @@ import { CreateReport } from "./CreateReport";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { BASE_URL } from "../utils/consts";
+import { Typography } from "@mui/material";
 
 export function UnreleasedReports({ handleClick }) {
   const { isLoading, error, data, refetch } = useQuery(
@@ -35,14 +36,18 @@ export function UnreleasedReports({ handleClick }) {
                 height: "65px",
                 width: "300px",
                 color: "#0e0e1d",
-                margin: "4px",
+                marginTop: "6px",
+                paddingLeft: "10px",
+                paddingTop: "10px",
                 borderRadius: "3%",
                 borderStyle: "solid",
                 borderColor: "#0e0e1d",
                 borderWidth: "1px",
               }}
             >
-              <h3>{title.title}</h3>
+              <Typography variant="h6" gutterBottom>
+                {title.title}
+              </Typography>
             </div>
             <DeleteReport title={title} refetch={refetch} />
             <ReleaseReport title={title} refetch={refetch} />

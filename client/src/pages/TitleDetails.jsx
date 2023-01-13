@@ -39,8 +39,9 @@ export function TitleDetails({ idFromTitle, viewDetails }) {
         }}
       >
         <div style={{ borderBottom: "2px solid #0e0e1d" }}>
-           <Typography> {data.title} by {data.author.map((author) => ` ${author.firstName} ${author.lastName}`)}
-           </Typography>
+          <Typography variant="h5" gutterBottom>
+            {data.title} by {data.author.map((author) => ` ${author.firstName} ${author.lastName}`)}
+          </Typography>
         </div>
         <br />
         {user.role === "Scout" ? (

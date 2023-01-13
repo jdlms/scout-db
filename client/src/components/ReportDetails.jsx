@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ReportRemoveTitle } from "./ReportRemoveTitle";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { Typography } from "@mui/material";
 
 export function ReportDetails({ reportData, divClicked }) {
   const { user } = useContext(UserContext);
@@ -10,8 +11,10 @@ export function ReportDetails({ reportData, divClicked }) {
 
   return (
     <div>
-      <div style={{ borderBottom: "2px solid #0e0e1d" }}>
-        <h2>{report.title}</h2>
+      <div style={{ borderBottom: "2px solid #0e0e1d", paddingTop: "15px" }}>
+        <Typography variant="h5" gutterBottom>
+          {report.title}
+        </Typography>
       </div>
       {report.books.map((book) => {
         return (

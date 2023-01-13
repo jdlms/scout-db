@@ -5,7 +5,7 @@ import { Logout } from "./Logout";
 const CustomButton = styled(IconButton)(({ theme }) => ({
   color: "white",
   fontSize: 15.5,
-  fontFamily: "Chivo",
+  fontWeight: "bold",
 }));
 
 export function ClientNav() {

@@ -47,12 +47,13 @@ export function GetTitles({ title, url, handleClick }) {
                 borderWidth: "1px",
               }}
             >
-              <Typography variant="h6" gutterBottom>
-                {title.title} by
-                {title.author.map((author) => ` ${author.firstName} ${author.lastName}`)}
-              </Typography>
-
-              <span>{title.status}</span>
+              <div style={{ paddingLeft: "10px", paddingTop: "10px" }}>
+                <Typography variant="h6" gutterBottom>
+                  {title.title} by
+                  {title.author.map((author) => ` ${author.firstName} ${author.lastName}`)}
+                </Typography>
+                <span>{title.status}</span>
+              </div>
             </div>
           </div>
         );

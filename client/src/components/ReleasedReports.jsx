@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import axios from "axios";
 import { useQuery } from "react-query";
 import { addId } from "../utils/addId";
@@ -30,14 +31,18 @@ export function ReleasedReports({ handleClick }) {
                 height: "65px",
                 width: "300px",
                 color: "#0e0e1d",
-                margin: "4px",
+                marginTop: "6px",
+                paddingLeft: "10px",
+                paddingTop: "10px",
                 borderRadius: "3%",
                 borderStyle: "solid",
                 borderColor: "#0e0e1d",
                 borderWidth: "1px",
               }}
             >
-              <h3>{title.title}</h3>
+              <Typography variant="h6" gutterBottom>
+                {title.title}
+              </Typography>
             </div>
           </div>
         );
