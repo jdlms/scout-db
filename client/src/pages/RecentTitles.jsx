@@ -27,7 +27,6 @@ export function RecentTitles() {
   };
 
   const url = user.role === "Scout" ? "titles/recent" : "titles/reported";
-  console.log(user.role);
 
   return (
     <>

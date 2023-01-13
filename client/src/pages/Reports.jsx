@@ -34,7 +34,6 @@ export default function Reports() {
   const releasedClick = () => {
     setReleasedReports(true);
   };
-  console.log(user);
 
   return (
     <div>

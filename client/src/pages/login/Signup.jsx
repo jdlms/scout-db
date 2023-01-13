@@ -40,7 +40,6 @@ export function Signup() {
       });
       const response = await request.data;
       const userObjFromSession = response.user;
-      console.log(userObjFromSession);
       //do something with the response
       addUserToContext(userObjFromSession);
 

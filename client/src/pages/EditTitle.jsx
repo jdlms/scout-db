@@ -21,7 +21,6 @@ export function EditTitle() {
 
   if (error) return "An error has occurred: " + error.message;
 
-  console.log(data._id);
   const defaultValues = {
     title: data.title,
     authorFirstName: data.author[0].firstName,

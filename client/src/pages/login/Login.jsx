@@ -42,7 +42,6 @@ export function Login() {
       });
       const user = sendLoginDetails.data.user;
 
-      console.log(user);
 
       addUserToContext(user);
 

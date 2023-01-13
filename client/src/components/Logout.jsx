@@ -14,7 +14,7 @@ export function Logout() {
       const res = await axios.post(BASE_URL + "logout", {}, { withCredentials: true });
 
       const data = await res.data;
-      console.log(data);
+    
 
       addUserToContext({});
       navigate("/");
