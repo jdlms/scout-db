@@ -23,7 +23,7 @@ function App() {
       <Route element={<ScoutLayout />}>
         <Route path="scout-landing" element={<ScoutLanding />} />
         <Route path="add-title" element={<AddTitle />} />
-        <Route path="title-details/:id" element={<TitleDetails />} />
+        <Route path="scout/details/:id" element={<TitleDetails />} />
         <Route path="edit-title/:id" element={<EditTitle />} />
         <Route path="recent" element={<RecentTitles />} />
         <Route path="reports" element={<Reports />} />
@@ -33,6 +33,7 @@ function App() {
         <Route path="client/tracked" element={<Tracked />} />
         <Route path="client/titles" element={<Titles />} />
         <Route path="client/reports" element={<ClientReports />} />
+        <Route path="client/details/:id" element={<TitleDetails />} />
       </Route>
     </Routes>
   );

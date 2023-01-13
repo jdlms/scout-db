@@ -38,6 +38,7 @@ export default function Reports() {
   };
 
   checkForUser;
+  console.log(user);
 
   return (
     <div>
@@ -60,12 +61,16 @@ export default function Reports() {
                     borderBottomColor: "#f5f5f5",
                   }}
                 >
-                  <ButtonGroup variant="text" aria-label="text button group">
-                    <Button onClick={unreleasedClick}>Unreleased</Button>
-                    <Button onClick={releasedClick}>Released</Button>
-                  </ButtonGroup>
+                  {user.role !== "Client" ? (
+                    <ButtonGroup variant="text" aria-label="text button group">
+                      <Button onClick={unreleasedClick}>Unreleased</Button>
+                      <Button onClick={releasedClick}>Released</Button>
+                    </ButtonGroup>
+                  ) : (
+                    ""
+                  )}
                 </div>
-                {releasedReports ? (
+                {releasedReports || user.role !== "Scout" ? (
                   <ReleasedReports handleClick={handleClick} />
                 ) : (
                   <UnreleasedReports handleClick={handleClick} />

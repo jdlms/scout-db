@@ -21,7 +21,11 @@ export function ReportDetails({ reportData, divClicked }) {
           <div key={addId()}>
             <Link
               style={{ textDecoration: "none", color: "black" }}
-              to={`/title-details/${book._id}`}
+              to={
+                user.role !== "Client"
+                  ? `/scout/details/${book._id}`
+                  : `/client/details/${book._id}`
+              }
             >
               <div
                 style={{

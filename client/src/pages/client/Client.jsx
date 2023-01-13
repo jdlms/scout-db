@@ -1,7 +1,11 @@
+import { Typography } from "@mui/material";
+
 export const Client = () => {
   return (
     <div>
-      <h1>Client's page</h1>
+      <Typography variant="h5" gutterBottom>
+        Welcome to the client landing page...
+      </Typography>
     </div>
   );
 };

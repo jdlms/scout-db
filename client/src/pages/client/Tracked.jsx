@@ -1,3 +1,9 @@
+import { Typography } from "@mui/material";
+
 export function Tracked() {
-  return <div>Tracked</div>;
+  return (
+    <Typography variant="h5" gutterBottom>
+      Tracked
+    </Typography>
+  );
 }

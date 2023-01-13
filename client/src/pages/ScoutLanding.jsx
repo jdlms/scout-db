@@ -1,8 +1,11 @@
+import { Typography } from "@mui/material";
+
 export function ScoutLanding() {
   return (
     <div>
-
-      <h1>Welcome to the scout landing page...</h1>
+      <Typography variant="h5" gutterBottom>
+        Welcome to the scout landing page...
+      </Typography>
     </div>
   );
 }
