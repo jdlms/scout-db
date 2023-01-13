@@ -24,7 +24,7 @@ export function TitleDetails({ idFromTitle, viewDetails }) {
   if (error) return "An error has occurred: " + error.message;
 
   return (
-    <div style={{ borderLeft: "1px solid #0e0e1d" }}>
+    <div>
       <div
         style={{
           height: "150px",
@@ -37,9 +37,11 @@ export function TitleDetails({ idFromTitle, viewDetails }) {
           borderColor: "#f7e7ce",
         }}
       >
-        <h3>
-          {data.title} by {data.author.map((author) => ` ${author.firstName} ${author.lastName}`)}
-        </h3>
+        <div style={{ borderBottom: "2px solid #0e0e1d" }}>
+          <h3>
+            {data.title} by {data.author.map((author) => ` ${author.firstName} ${author.lastName}`)}
+          </h3>
+        </div>
         <br />
         {user.role === "Scout" ? (
           <Link style={{ textDecoration: "none", color: "Red" }} to={`/edit-title/${data._id}`}>

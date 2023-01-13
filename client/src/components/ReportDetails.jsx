@@ -10,7 +10,9 @@ export function ReportDetails({ reportData, divClicked }) {
 
   return (
     <div>
-      <h2>{report.title}</h2>
+      <div style={{ borderBottom: "2px solid #0e0e1d" }}>
+        <h2>{report.title}</h2>
+      </div>
       {report.books.map((book) => {
         return (
           <div key={addId()}>
@@ -20,7 +22,7 @@ export function ReportDetails({ reportData, divClicked }) {
             >
               <div
                 style={{
-                  backgroundColor: "#f7e7ce",
+                  backgroundColor: "#f5f5f5",
                   height: "50px",
                   width: "400px",
                   display: "flex",

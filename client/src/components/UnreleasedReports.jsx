@@ -32,12 +32,14 @@ export function UnreleasedReports({ handleClick }) {
               className="Reports-Div"
               onClick={(event) => handleClick(event, index, data)}
               style={{
-                backgroundColor: "#f7e7ce",
                 height: "65px",
-                width: "350px",
+                width: "300px",
                 color: "#0e0e1d",
                 margin: "4px",
-                borderRadius: "2%",
+                borderRadius: "3%",
+                borderStyle: "solid",
+                borderColor: "#0e0e1d",
+                borderWidth: "1px",
               }}
             >
               <h3>{title.title}</h3>

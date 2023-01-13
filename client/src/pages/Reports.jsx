@@ -14,7 +14,6 @@ export default function Reports() {
   const [divClicked, setDivClicked] = useState(null);
   const [reportData, setReportData] = useState(undefined);
 
-
   const [releasedReports, setReleasedReports] = useState(false);
 
   const handleClick = (event, index, data, refetch) => {
@@ -22,7 +21,6 @@ export default function Reports() {
       setViewDetails(!viewDetails);
       setDivClicked(index);
       setReportData(data);
-      
     }
     if (divClicked !== null && divClicked === index) {
       setViewDetails(!viewDetails);
@@ -43,7 +41,7 @@ export default function Reports() {
 
   return (
     <div>
-      <div style={{ width: "100%" }}>
+      <div style={{ width: "95%" }}>
         <Box
           sx={{
             display: "flex",
@@ -55,7 +53,7 @@ export default function Reports() {
         >
           <Grid container spacing={2}>
             <Grid item xs={4}>
-              <Box style={{ maxHeight: "100vh", maxWidth: 450, overflow: "auto" }}>
+              <Box style={{ maxHeight: "100vh", maxWidth: 320, overflow: "auto" }}>
                 <div
                   style={{
                     borderBottomStyle: "solid",
@@ -77,10 +75,7 @@ export default function Reports() {
             <Grid item xs={8}>
               <Box style={{ maxHeight: "100vh", maxWidth: 450, overflow: "auto" }}>
                 {viewDetails ? (
-                  <ReportDetails
-                    reportData={reportData}
-                    divClicked={divClicked}
-                  />
+                  <ReportDetails reportData={reportData} divClicked={divClicked} />
                 ) : undefined}
               </Box>
             </Grid>

@@ -45,7 +45,7 @@ export function AddTitle() {
 
   return (
     <div>
-      <div style={{ width: "80vw", height: "100%" }}>
+      <div style={{ width: "95%", height: "100%" }}>
         <Box
           sx={{
             display: "flex",
