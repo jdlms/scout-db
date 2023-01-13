@@ -20,6 +20,10 @@ const myTheme = createTheme({
   palette: {
     type: "dark",
   },
+  typography: {
+    fontFamily: `""Roboto"", "Helvetica", "Arial", sans-serif`,
+    fontSize: 14,
+  },
 });
 
 ReactDOM.createRoot(document.getElementById("root")).render(

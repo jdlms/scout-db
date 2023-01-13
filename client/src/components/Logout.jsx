@@ -27,6 +27,7 @@ export function Logout() {
     color: "white",
     fontSize: 15.5,
     fontFamily: "Chivo",
+    fontWeight: "bold",
   }));
 
   return (

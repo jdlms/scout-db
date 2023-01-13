@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import axios from "axios";
 import { useContext } from "react";
 import { useQuery } from "react-query";
@@ -46,10 +47,10 @@ export function GetTitles({ title, url, handleClick }) {
                 borderWidth: "1px",
               }}
             >
-              <h4>
+              <Typography variant="h6" gutterBottom>
                 {title.title} by
                 {title.author.map((author) => ` ${author.firstName} ${author.lastName}`)}
-              </h4>
+              </Typography>
 
               <span>{title.status}</span>
             </div>

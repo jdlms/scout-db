@@ -1,3 +1,4 @@
+import { Typography } from "@mui/material";
 import axios from "axios";
 import { useContext } from "react";
 import { useQuery } from "react-query";
@@ -38,9 +39,8 @@ export function TitleDetails({ idFromTitle, viewDetails }) {
         }}
       >
         <div style={{ borderBottom: "2px solid #0e0e1d" }}>
-          <h3>
-            {data.title} by {data.author.map((author) => ` ${author.firstName} ${author.lastName}`)}
-          </h3>
+           <Typography> {data.title} by {data.author.map((author) => ` ${author.firstName} ${author.lastName}`)}
+           </Typography>
         </div>
         <br />
         {user.role === "Scout" ? (
