@@ -18,10 +18,10 @@ export function TitleDetails({ idFromTitle, viewDetails }) {
           withCredentials: true,
         })
         .then((res) => res.data),
-    { cacheTime: 1000 }
+    { cacheTime: 0 }
   );
 
-  if (isLoading) return "Loading...";
+  if (isLoading) return "";
 
   if (error) return "An error has occurred: " + error.message;
 
