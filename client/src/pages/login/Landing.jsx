@@ -1,4 +1,4 @@
-import { Button, ButtonGroup } from "@mui/material";
+import { Button, ButtonGroup, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
@@ -11,19 +11,47 @@ export function Landing() {
   const handleSignupClick = () => setSignupState(!signupState);
 
   return (
-    <div>
-      <h1>Scout DB</h1>
+    <div
+      style={{
+        position: "fixed",
+        padding: 0,
+        margin: 0,
+        top: 0,
+        left: 0,
+        width: "100%",
+        height: "100%",
+        backgroundColor: "#0e0e1d",
+      }}
+    >
+      <Grid
+        container
+        spacing={0}
+        direction="column"
+        alignItems="center"
+        display="flex"
+        justifyContent="center"
+        style={{ minHeight: "100vh" }}
+      >
+        <Grid display="flex" direction="column" alignItems="center">
+          <Typography color="white" variant="h4" component="h1" gutterBottom>
+            Scout DB
+          </Typography>
+          <Typography variant="h3">🕵️📚</Typography>
 
-      {!loginState && !signupState && (
-        <ButtonGroup variant="contained">
-          <Button onClick={handleLoginClick}>Login</Button>
-          <Button onClick={handleSignupClick}>Signup</Button>
-        </ButtonGroup>
-      )}
+          <Grid>
+            {!loginState && !signupState && (
+              <ButtonGroup variant="contained">
+                <Button onClick={handleLoginClick}>Login</Button>
+                <Button onClick={handleSignupClick}>Signup</Button>
+              </ButtonGroup>
+            )}
 
-      {loginState && <Login />}
+            {loginState && <Login />}
 
-      {signupState && <Signup />}
+            {signupState && <Signup />}
+          </Grid>
+        </Grid>
+      </Grid>
     </div>
   );
 }
