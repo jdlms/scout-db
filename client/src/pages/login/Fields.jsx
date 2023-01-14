@@ -33,7 +33,10 @@ export function Fields({ onSubmit }) {
   });
   return (
     <div>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form
+        style={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+        onSubmit={handleSubmit(onSubmit)}
+      >
         {/* <input {...register("email", { required: true, minLength: 1 })} placeholder="email" />
             <div className="invalid-feedback">{errors.email?.message}</div> */}
         <Controller
@@ -52,6 +55,7 @@ export function Fields({ onSubmit }) {
             />
           )}
         />
+        <br />
         <Controller
           name={"password"}
           control={control}
@@ -69,8 +73,8 @@ export function Fields({ onSubmit }) {
             />
           )}
         />
-
-        <Button variant="contained" type="submit">
+        <br />
+        <Button variant="contained" type="submit" sx={{ margin: "15px" }}>
           Send
         </Button>
       </form>

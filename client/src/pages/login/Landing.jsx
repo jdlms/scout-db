@@ -20,7 +20,7 @@ export function Landing() {
         left: 0,
         width: "100%",
         height: "100%",
-        backgroundColor: "#0e0e1d",
+        backgroundColor: "#f5f5f5",
       }}
     >
       <Grid
@@ -33,7 +33,7 @@ export function Landing() {
         style={{ minHeight: "100vh" }}
       >
         <Grid display="flex" direction="column" alignItems="center">
-          <Typography color="white" variant="h4" component="h1" gutterBottom>
+          <Typography color="#0e0e1d" variant="h4" component="h1" gutterBottom>
             Scout DB
           </Typography>
           <Typography variant="h3">🕵️📚</Typography>

@@ -52,7 +52,6 @@ export function Signup() {
 
   return (
     <div>
-      <h4>Signup</h4>
       <Fields onSubmit={onSubmit} />
     </div>
   );
