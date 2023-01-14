@@ -6,6 +6,7 @@ import { UserContext } from "../../contexts/UserContext";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL } from "../../utils/consts";
+import { Fields } from "./Fields";
 
 export function Signup() {
   const { user, addUserToContext } = useContext(UserContext);
@@ -33,7 +34,7 @@ export function Signup() {
     resolver: yupResolver(validationSchema),
   });
 
-  const onSubmitSignup = async (data) => {
+  const onSubmit = async (data) => {
     try {
       const request = await axios.post(BASE_URL + "signup", data, {
         withCredentials: true,
@@ -52,13 +53,7 @@ export function Signup() {
   return (
     <div>
       <h4>Signup</h4>
-      <form key={1} onSubmit={handleSubmit(onSubmitSignup)}>
-        <input {...register("email")} placeholder="email" />
-        <div className="invalid-feedback">{errors.email?.message}</div>
-        <input type="password" {...register("password")} placeholder="password" />
-        <div className="invalid-feedback">{errors.password?.message}</div>
-        <button type="submit">Send</button>
-      </form>
+      <Fields onSubmit={onSubmit} />
     </div>
   );
 }
