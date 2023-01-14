@@ -62,7 +62,7 @@ export function TitleDetails({ idFromTitle, viewDetails }) {
           </Typography>
 
           <Typography variant="subtitle2" gutterBottom>
-            Rights sold: {data.rightsSold.length < 1 ? "None" : data.rightsSold.length}
+            Rights sold: {data.rightsSold.length < 1 ? "None" : data.rightsSold}
           </Typography>
 
           <Typography variant="subtitle2" gutterBottom>
