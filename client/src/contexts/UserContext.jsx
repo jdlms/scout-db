@@ -29,7 +29,11 @@ export function UserContextProvider({ children }) {
           if (request.data.user.role === "Client") {
             navigate("client/landing");
           }
+          if (request.data.user.role === undefined) {
+            navigate("/");
+          }
         }
+        console.log("Current role:", request.data.user.role);
       } catch (error) {
         console.error("There was an error!");
       }

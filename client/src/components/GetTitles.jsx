@@ -7,8 +7,6 @@ import { addId } from "../utils/addId";
 import { BASE_URL } from "../utils/consts";
 
 export function GetTitles({ title, url, handleClick }) {
-  // const { checkForUser } = useContext(UserContext);
-
   const { isLoading, error, data } = useQuery(
     ["getTitles"],
     async () =>
@@ -23,10 +21,7 @@ export function GetTitles({ title, url, handleClick }) {
 
   if (error) return "An error has occurred: " + error.message;
 
-  // checkForUser;
-
   //#todo write util to make url id title-lastName-year
-  console.log(data);
   return (
     <>
       {data.map((title, index) => {

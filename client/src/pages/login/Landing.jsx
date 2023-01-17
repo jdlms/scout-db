@@ -32,7 +32,7 @@ export function Landing() {
         justifyContent="center"
         style={{ minHeight: "100vh" }}
       >
-        <Grid display="flex" direction="column" alignItems="center">
+        <Grid container display="flex" direction="column" alignItems="center">
           <Typography color="#0e0e1d" variant="h4" component="h1" gutterBottom>
             Scout DB
           </Typography>

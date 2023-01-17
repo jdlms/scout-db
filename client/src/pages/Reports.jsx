@@ -74,7 +74,7 @@ export default function Reports() {
                 {releasedReports || user.role !== "Scout" ? (
                   <ReleasedReports handleClick={handleClick} />
                 ) : (
-                  <UnreleasedReports handleClick={handleClick} />
+                  <UnreleasedReports handleClick={handleClick} setViewDetails={setViewDetails} />
                 )}
               </Box>
             </Grid>

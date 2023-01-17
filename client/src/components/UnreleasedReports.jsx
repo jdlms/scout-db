@@ -7,7 +7,7 @@ import axios from "axios";
 import { BASE_URL } from "../utils/consts";
 import { Typography } from "@mui/material";
 
-export function UnreleasedReports({ handleClick }) {
+export function UnreleasedReports({ handleClick, setViewDetails }) {
   const { isLoading, error, data, refetch } = useQuery(
     ["UnreleasedReports"],
     async () =>
@@ -48,8 +48,8 @@ export function UnreleasedReports({ handleClick }) {
                 {title.title}
               </Typography>
             </div>
-            <DeleteReport title={title} refetch={refetch} />
-            <ReleaseReport title={title} refetch={refetch} />
+            <DeleteReport title={title} refetch={refetch} setViewDetails={setViewDetails} />
+            <ReleaseReport title={title} refetch={refetch} setViewDetails={setViewDetails} />
           </div>
         );
       })}

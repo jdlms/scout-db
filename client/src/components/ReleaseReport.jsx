@@ -2,9 +2,10 @@ import { Button } from "@mui/material";
 import axios from "axios";
 import { BASE_URL } from "../utils/consts";
 
-export function ReleaseReport({ title, refetch }) {
+export function ReleaseReport({ title, refetch, setViewDetails }) {
   const handleClick = async () => {
     try {
+      setViewDetails(false);
       await axios.post(BASE_URL + `scout/release-report/`, title, { withCredentials: true });
 
       await refetch();
