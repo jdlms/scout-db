@@ -28,18 +28,17 @@ export default function Reports() {
   };
 
   const unreleasedClick = () => {
-    setViewDetails(!viewDetails);
+    setViewDetails(false);
     setDivClicked(null);
-    console.log(viewDetails);
     setReleasedReports(false);
+    setReportData(undefined);
   };
 
   const releasedClick = () => {
-    setViewDetails(!viewDetails);
+    setViewDetails(false);
     setDivClicked(null);
-
-    console.log(viewDetails);
     setReleasedReports(true);
+    setReportData(undefined);
   };
 
   return (
@@ -83,7 +82,7 @@ export default function Reports() {
               <Box style={{ maxHeight: "100vh", maxWidth: 450, overflow: "auto" }}>
                 {viewDetails === true ? (
                   <ReportDetails
-                    reportData={reportData}
+                    reportData={reportData !== undefined ? reportData : { 1: "" }}
                     divClicked={divClicked}
                     releasedReports={releasedReports}
                   />

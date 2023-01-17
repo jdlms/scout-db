@@ -7,16 +7,15 @@ import { Typography } from "@mui/material";
 
 export function ReportDetails({ reportData, divClicked, releasedReports }) {
   const { user } = useContext(UserContext);
-  const report = reportData[divClicked];
 
   return (
     <div>
       <div style={{ borderBottom: "2px solid #0e0e1d", paddingTop: "15px" }}>
         <Typography variant="h5" gutterBottom>
-          {report.title}
+          {reportData.title}
         </Typography>
       </div>
-      {report.books.map((book) => {
+      {reportData.books.map((book) => {
         return (
           <div key={addId()}>
             <Link
@@ -55,7 +54,7 @@ export function ReportDetails({ reportData, divClicked, releasedReports }) {
               </div>
             </Link>
             {releasedReports || user.role === "Client" ? undefined : (
-              <ReportRemoveTitle report={report} id={book._id} />
+              <ReportRemoveTitle reportData={reportData} id={book._id} />
             )}
           </div>
         );
