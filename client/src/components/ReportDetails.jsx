@@ -8,6 +8,9 @@ import { Typography } from "@mui/material";
 export function ReportDetails({ reportData, divClicked, releasedReports }) {
   const { user } = useContext(UserContext);
 
+
+//#todo query data here instead of passing it, in order to useMutate when deleting titles
+
   return (
     <div>
       <div style={{ borderBottom: "2px solid #0e0e1d", paddingTop: "15px" }}>
@@ -53,6 +56,7 @@ export function ReportDetails({ reportData, divClicked, releasedReports }) {
                 </div>
               </div>
             </Link>
+            <br />
             {releasedReports || user.role === "Client" ? undefined : (
               <ReportRemoveTitle reportData={reportData} id={book._id} />
             )}

@@ -48,7 +48,7 @@ export function UnreleasedReports({ handleClick, setViewDetails }) {
                 {title.title}
               </Typography>
             </div>
-            <DeleteReport title={title} refetch={refetch} setViewDetails={setViewDetails} />
+            <DeleteReport title={title} />
             <ReleaseReport title={title} refetch={refetch} setViewDetails={setViewDetails} />
           </div>
         );
