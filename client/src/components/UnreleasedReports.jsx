@@ -1,5 +1,5 @@
 import { addId } from "../utils/addId";
-import { DeleteReport } from "./DeleteReport";
+import { ReportButton } from "./ReportButton";
 import { ReleaseReport } from "./ReleaseReport";
 import { CreateReport } from "./CreateReport";
 import { useQuery } from "react-query";
@@ -48,11 +48,13 @@ export function UnreleasedReports({ handleClick, setViewDetails }) {
                 {title.title}
               </Typography>
             </div>
-            <DeleteReport title={title} />
-            <ReleaseReport title={title} refetch={refetch} setViewDetails={setViewDetails} />
+            <ReportButton title={title} url={"scout/delete-report"} btnText={"Delete"} />
+            <ReportButton title={title} url={"scout/release-report"} btnText={"Release"} />
           </div>
         );
       })}
     </>
   );
+
+  //#todo save some code and refactor 👆 these buttons above, they're the same
 }

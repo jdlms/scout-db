@@ -11,7 +11,7 @@ import { BASE_URL } from "../utils/consts";
 export function ReportDetails({ reportId, releasedReports }) {
   const { user } = useContext(UserContext);
 
-  //#todo query data here instead of passing it, in order to useMutate when deleting titles
+//#todo you shouldn't be able to add a title multiple times to reports....
 
   const { isLoading, error, data, refetch } = useQuery(
     ["SingleReport"],
