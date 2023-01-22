@@ -73,7 +73,7 @@ router.post("/add", async (req, res) => {
     res.json({ message: "Title sucessfully added." });
     console.log("Title added!");
   } catch (error) {
-    console.log("There was an error", error);
+    console.log("There was an error", error); 
   }
 });
 

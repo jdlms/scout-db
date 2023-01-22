@@ -9,8 +9,10 @@ import { AutocompleteSelect } from "../components/forms/AutocompleteSelect";
 import { SwitchConfidential } from "../components/forms/SwitchConfidential";
 import { Box, Button, FormControl, FormGroup } from "@mui/material";
 import { BASE_URL } from "../utils/consts";
-import { useContext } from "react";
+import { forwardRef, useContext, useState } from "react";
 import { UserContext } from "../contexts/UserContext";
+import Snackbar from "@mui/material/Snackbar";
+import MuiAlert from "@mui/material/Alert";
 
 const defaultValues = {
   title: "",
@@ -29,9 +31,16 @@ const defaultValues = {
   reported: false,
 };
 
+const Alert = forwardRef(function Alert(props, ref) {
+  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
+});
+
 export function AddTitle() {
-  const { checkForUser} = useContext(UserContext);
-  checkForUser
+  const [open, setOpen] = useState(false);
+
+  const { checkForUser } = useContext(UserContext);
+  checkForUser;
+
   const { register, handleSubmit, control, reset } = useForm({
     defaultValues,
   });
@@ -41,10 +50,20 @@ export function AddTitle() {
       await axios.post(BASE_URL + "titles/add", data, {
         withCredentials: true,
       });
+
       reset(defaultValues);
+      setOpen(true);
     } catch (error) {
       console.error(error);
     }
+  };
+
+  const handleClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+
+    setOpen(false);
   };
 
   return (
@@ -181,6 +200,16 @@ export function AddTitle() {
               </FormControl>
             </div>
           </form>
+
+          {open === true ? (
+            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+              <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
+                This is a success message!
+              </Alert>
+            </Snackbar>
+          ) : (
+            ""
+          )}
         </Box>
       </div>
     </div>
