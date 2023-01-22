@@ -204,7 +204,7 @@ export function AddTitle() {
           {open === true ? (
             <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
               <Alert onClose={handleClose} severity="success" sx={{ width: "100%" }}>
-                This is a success message!
+                Title sucessfully added!
               </Alert>
             </Snackbar>
           ) : (
