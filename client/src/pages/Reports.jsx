@@ -11,8 +11,6 @@ export default function Reports() {
   const [viewDetails, setViewDetails] = useState(false);
   const [divClicked, setDivClicked] = useState(null);
   const [reportId, setReportId] = useState(undefined);
-  console.log(reportId);
-  console.log(divClicked);
 
   const [releasedReports, setReleasedReports] = useState(false);
 

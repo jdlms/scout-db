@@ -1,6 +1,6 @@
 import { addId } from "../utils/addId";
 import { ReportButton } from "./ReportButton";
-import { ReleaseReport } from "./ReleaseReport";
+
 import { CreateReport } from "./CreateReport";
 import { useQuery } from "react-query";
 import axios from "axios";
