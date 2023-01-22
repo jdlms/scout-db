@@ -4,21 +4,38 @@ import { ReportRemoveTitle } from "./ReportRemoveTitle";
 import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { Typography } from "@mui/material";
+import { useQuery } from "react-query";
+import axios from "axios";
+import { BASE_URL } from "../utils/consts";
 
-export function ReportDetails({ reportData, divClicked, releasedReports }) {
+export function ReportDetails({ reportId, releasedReports }) {
   const { user } = useContext(UserContext);
 
+  //#todo query data here instead of passing it, in order to useMutate when deleting titles
 
-//#todo query data here instead of passing it, in order to useMutate when deleting titles
+  const { isLoading, error, data, refetch } = useQuery(
+    ["SingleReport"],
+    async () =>
+      await axios
+        .get(BASE_URL + `scout/report-by-id/${reportId}`, {
+          withCredentials: true,
+        })
+        .then((res) => res.data),
+    { cacheTime: 0 }
+  );
+
+  if (isLoading) return "Loading...";
+
+  if (error) return "An error has occurred: " + error.message;
 
   return (
     <div>
       <div style={{ borderBottom: "2px solid #0e0e1d", paddingTop: "15px" }}>
         <Typography variant="h5" gutterBottom>
-          {reportData.title}
+          {data.title}
         </Typography>
       </div>
-      {reportData.books.map((book) => {
+      {data.books.map((book) => {
         return (
           <div key={addId()}>
             <Link
@@ -58,7 +75,7 @@ export function ReportDetails({ reportData, divClicked, releasedReports }) {
             </Link>
             <br />
             {releasedReports || user.role === "Client" ? undefined : (
-              <ReportRemoveTitle reportData={reportData} id={book._id} />
+              <ReportRemoveTitle reportId={reportId} bookId={book._id} />
             )}
           </div>
         );

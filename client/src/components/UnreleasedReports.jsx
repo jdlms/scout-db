@@ -31,7 +31,7 @@ export function UnreleasedReports({ handleClick, setViewDetails }) {
           <div key={addId()}>
             <div
               className="Reports-Div"
-              onClick={(event) => handleClick(event, index, data[index])}
+              onClick={(event) => handleClick(event, index, data[index]._id)}
               style={{
                 height: "65px",
                 width: "300px",

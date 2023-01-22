@@ -10,7 +10,9 @@ export default function Reports() {
   checkForUser;
   const [viewDetails, setViewDetails] = useState(false);
   const [divClicked, setDivClicked] = useState(null);
-  const [reportData, setReportData] = useState(undefined);
+  const [reportId, setReportId] = useState(undefined);
+  console.log(reportId);
+  console.log(divClicked);
 
   const [releasedReports, setReleasedReports] = useState(false);
 
@@ -18,12 +20,12 @@ export default function Reports() {
     if (divClicked === null) {
       setViewDetails(!viewDetails);
       setDivClicked(index);
-      setReportData(data);
+      setReportId(data);
     }
     if (divClicked !== null && divClicked === index) {
       setViewDetails(!viewDetails);
       setDivClicked(null);
-      setReportData(undefined);
+      setReportId(undefined);
     }
   };
 
@@ -31,14 +33,14 @@ export default function Reports() {
     setViewDetails(false);
     setDivClicked(null);
     setReleasedReports(false);
-    setReportData(undefined);
+    setReportId(undefined);
   };
 
   const releasedClick = () => {
     setViewDetails(false);
     setDivClicked(null);
     setReleasedReports(true);
-    setReportData(undefined);
+    setReportId(undefined);
   };
 
   return (
@@ -82,8 +84,7 @@ export default function Reports() {
               <Box style={{ maxHeight: "100vh", maxWidth: 450, overflow: "auto" }}>
                 {viewDetails === true ? (
                   <ReportDetails
-                    reportData={reportData !== undefined ? reportData : { 1: "" }}
-                    divClicked={divClicked}
+                    reportId={reportId !== undefined ? reportId : { 1: "" }}
                     releasedReports={releasedReports}
                   />
                 ) : (

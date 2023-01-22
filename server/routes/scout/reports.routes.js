@@ -61,7 +61,6 @@ router.get("/reports", async (req, res) => {
   try {
     const reports = await Report.find();
     res.json(reports);
-    console.log(reports);
   } catch (error) {
     console.log("There was an error", error);
   }
@@ -72,7 +71,15 @@ router.get("/unreleased-reports-obj", async (req, res) => {
     const unreleasedReports = await Report.find({ released: false });
     // .distinct("title");
     res.json(unreleasedReports);
-    console.log(unreleasedReports);
+  } catch (error) {
+    console.log("There was an error", error);
+  }
+});
+
+router.get("/report-by-id/:id", async (req, res) => {
+  try {
+    const report = await Report.findById({ _id: `${req.params.id}` });
+    res.json(report);
   } catch (error) {
     console.log("There was an error", error);
   }

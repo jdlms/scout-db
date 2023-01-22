@@ -2,19 +2,23 @@ import axios from "axios";
 import { useMutation, useQueryClient } from "react-query";
 import { BASE_URL } from "../utils/consts";
 
-export function ReportRemoveTitle({ reportData, id }) {
+export function ReportRemoveTitle({ reportId, bookId }) {
   const queryClient = useQueryClient();
 
   const removeTitleFromReport = useMutation({
-    mutationFn: async ({ reportData, id }) => {
+    mutationFn: async ({ reportId, bookId }) => {
       console.log("mutating...");
-      console.log(reportData, id);
-      return await axios.post(BASE_URL + `scout/remove-title/${id}`, reportData, {
-        withCredentials: true,
-      });
+      console.log(reportId, bookId);
+      await axios.post(
+        BASE_URL + `scout/remove-title/${bookId}`,
+        { report: reportId },
+        {
+          withCredentials: true,
+        }
+      );
     },
     onSuccess: () => {
-      queryClient.refetchQueries({ queryKey: ["UnreleasedReports"] }, { force: true });
+      queryClient.invalidateQueries({ queryKey: ["SingleReport"] });
     },
   });
 
@@ -34,7 +38,7 @@ export function ReportRemoveTitle({ reportData, id }) {
   return (
     <span
       style={{ cursor: "pointer" }}
-      onClick={() => removeTitleFromReport.mutate({ reportData: reportData, id: id })}
+      onClick={() => removeTitleFromReport.mutate({ reportId: reportId, bookId: bookId })}
     >
       ❌
     </span>
