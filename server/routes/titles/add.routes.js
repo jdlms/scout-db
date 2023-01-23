@@ -10,6 +10,7 @@ const router = Router();
 
 router.post("/add", async (req, res) => {
   try {
+    console.log(req.body);
     const addAuthor = await Author.findOneAndUpdate(
       {
         lastName: req.body.authorLastName,
@@ -73,8 +74,10 @@ router.post("/add", async (req, res) => {
     res.json({ message: "Title sucessfully added." });
     console.log("Title added!");
   } catch (error) {
-    console.log("There was an error", error); 
+    console.log("There was an error", error);
   }
 });
 
 export default router;
+
+//#todo proper error handling something like catch (e) { (response.status(500).send({message: e.message}))}

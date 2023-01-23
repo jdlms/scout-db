@@ -9,11 +9,14 @@ router.post("/create-report", async (req, res) => {
       title: req.body.title,
       released: false,
     });
+
     await newReport.save();
     res.json("Report created");
-    console.log(newReport);
   } catch (error) {
-    console.log("There was an error", error);
+    console.log(error);
+    return res
+      .status(400)
+      .json({ error: "There was an error creating this report: " + error.message });
   }
 });
 
@@ -21,6 +24,7 @@ router.post("/delete-report", async (req, res) => {
   try {
     console.log(req.body);
     await Report.deleteOne({ title: req.body.title });
+
     res.json("Report deleted");
     console.log("Report deleted");
   } catch (error) {

@@ -1,12 +1,8 @@
-import axios from "axios";
-import { useContext } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../../contexts/UserContext";
+
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, TextField } from "@mui/material";
-import { BASE_URL } from "../../utils/consts";
 
 export function Fields({ onSubmit }) {
   const validationSchema = Yup.object().shape({

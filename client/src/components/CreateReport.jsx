@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { BASE_URL } from "../utils/consts";
 import { Text } from "./forms/Text";
 
-
 export function CreateReport({ refetch }) {
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
@@ -20,7 +19,7 @@ export function CreateReport({ refetch }) {
       reset();
       await refetch();
     } catch (error) {
-      console.error(error);
+      console.log(error.response.data);
     }
   };
   return (
