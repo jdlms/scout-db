@@ -13,10 +13,14 @@ router.post("/create-report", async (req, res) => {
     await newReport.save();
     res.json("Report created");
   } catch (error) {
-    console.log(error);
-    return res
-      .status(400)
-      .json({ error: "There was an error creating this report: " + error.message });
+    if (error.code === 11000) {
+      console.log("Report title duplication error...");
+      return res.status(401).json({ error: "A report with this title already exists." });
+    } else {
+      return res
+        .status(400)
+        .json({ error: "There was an error creating this report. Error: " + error.code });
+    }
   }
 });
 

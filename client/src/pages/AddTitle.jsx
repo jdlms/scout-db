@@ -41,7 +41,7 @@ export function AddTitle() {
   const { checkForUser } = useContext(UserContext);
   checkForUser;
 
-  const { register, handleSubmit, control, reset } = useForm({
+  const {  handleSubmit, control, reset } = useForm({
     defaultValues,
   });
 

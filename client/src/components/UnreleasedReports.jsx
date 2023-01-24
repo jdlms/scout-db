@@ -1,13 +1,12 @@
 import { addId } from "../utils/addId";
 import { ReportButton } from "./ReportButton";
-
 import { CreateReport } from "./CreateReport";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { BASE_URL } from "../utils/consts";
 import { Typography } from "@mui/material";
 
-export function UnreleasedReports({ handleClick, setViewDetails }) {
+export function UnreleasedReports({ handleClick }) {
   const { isLoading, error, data, refetch } = useQuery(
     ["UnreleasedReports"],
     async () =>
