@@ -1,11 +1,17 @@
 import { Button, ButtonGroup, Grid, Typography } from "@mui/material";
 import { useState } from "react";
+import { LandingModal } from "../../components/LandingModal";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
 
 export function Landing() {
   const [signupState, setSignupState] = useState(false);
   const [loginState, setLoginState] = useState(false);
+
+  //modal state
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   const handleLoginClick = () => setLoginState(!loginState);
   const handleSignupClick = () => setSignupState(!signupState);
@@ -82,6 +88,7 @@ export function Landing() {
             )}
           </Grid>
         </div>
+        <LandingModal open={open} handleOpen={handleOpen} handleClose={handleClose} />
       </Grid>
     </div>
   );
