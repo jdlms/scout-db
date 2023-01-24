@@ -44,7 +44,7 @@ export function Login({ setSignupState, setLoginState }) {
       ></div>
       <Fields onSubmit={onSubmit} btnText={"Login"} />
       <p>
-        Don't have an account?
+        Don't have an account?{" "}
         <span style={{ color: "#1976d2", cursor: "pointer" }} onClick={spanClick}>
           Sign up
         </span>
