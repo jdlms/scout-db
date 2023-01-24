@@ -1,8 +1,6 @@
 import { Typography } from "@mui/material";
 import axios from "axios";
-import { useContext } from "react";
 import { useQuery } from "react-query";
-import { UserContext } from "../contexts/UserContext";
 import { addId } from "../utils/addId";
 import { BASE_URL } from "../utils/consts";
 

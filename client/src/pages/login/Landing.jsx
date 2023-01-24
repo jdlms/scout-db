@@ -33,23 +33,39 @@ export function Landing() {
         style={{ minHeight: "100vh" }}
       >
         <Grid container display="flex" direction="column" alignItems="center">
-          <Typography color="#0e0e1d" variant="h4" component="h1" gutterBottom>
+          <Typography color="#0e0e1d" variant="h4" component="h1">
             Scout DB
           </Typography>
-          <Typography variant="h3">🕵️📚</Typography>
-
+          {!signupState ? (
+            <Typography variant="h3">🕵️📚</Typography>
+          ) : (
+            <Typography variant="h3">📚🕵️</Typography>
+          )}
+          <div
+            style={{
+              height: "6px",
+            }}
+          ></div>
           <Grid>
             {!loginState && !signupState && (
               <ButtonGroup variant="contained">
                 <Button onClick={handleLoginClick}>Login</Button>
-                <Button onClick={handleSignupClick}>Signup</Button>
+                <Button onClick={handleSignupClick}>Sign up</Button>
               </ButtonGroup>
             )}
 
-            {loginState && <Login />}
-
-            {signupState && <Signup />}
+            {loginState && (
+              <Grid container display="flex" direction="column" alignItems="center">
+                <Login setLoginState={setLoginState} setSignupState={setSignupState} />
+              </Grid>
+            )}
           </Grid>
+
+          {signupState && (
+            <Grid container display="flex" direction="column" alignItems="center">
+              <Signup setLoginState={setLoginState} setSignupState={setSignupState} />
+            </Grid>
+          )}
         </Grid>
       </Grid>
     </div>

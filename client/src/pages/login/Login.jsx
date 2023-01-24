@@ -6,9 +6,14 @@ import { UserContext } from "../../contexts/UserContext";
 import { BASE_URL } from "../../utils/consts";
 import { Fields } from "./Fields";
 
-export function Login() {
+export function Login({ setSignupState, setLoginState }) {
   const { addUserToContext } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const spanClick = () => {
+    setSignupState(true);
+    setLoginState(false);
+  };
 
   const onSubmit = async (data) => {
     try {
@@ -31,8 +36,19 @@ export function Login() {
   };
 
   return (
-    <div>
-      <Fields onSubmit={onSubmit} />
-    </div>
+    <>
+      <div
+        style={{
+          height: "25px",
+        }}
+      ></div>
+      <Fields onSubmit={onSubmit} btnText={"Login"} />
+      <p>
+        Don't have an account?
+        <span style={{ color: "#1976d2", cursor: "pointer" }} onClick={spanClick}>
+          Sign up
+        </span>
+      </p>
+    </>
   );
 }

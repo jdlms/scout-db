@@ -8,9 +8,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL } from "../../utils/consts";
 import { Fields } from "./Fields";
 
-export function Signup() {
+export function Signup({ setSignupState, setLoginState }) {
   const { user, addUserToContext } = useContext(UserContext);
   const navigate = useNavigate();
+
+  const spanClick = () => {
+    setSignupState(false);
+    setLoginState(true);
+  };
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().required("Email is required").email("Email is invalid"),
@@ -51,8 +56,19 @@ export function Signup() {
   };
 
   return (
-    <div>
-      <Fields onSubmit={onSubmit} />
-    </div>
+    <>
+      <div
+        style={{
+          height: "25px",
+        }}
+      ></div>
+      <Fields onSubmit={onSubmit} btnText={"Sign up"} />
+      <p>
+        Already have an account?{" "}
+        <span style={{ color: "#1976d2", cursor: "pointer" }} onClick={spanClick}>
+          Login
+        </span>
+      </p>
+    </>
   );
 }

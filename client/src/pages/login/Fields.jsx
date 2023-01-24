@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Button, TextField } from "@mui/material";
 
-export function Fields({ onSubmit }) {
+export function Fields({ onSubmit, btnText }) {
   const validationSchema = Yup.object().shape({
     email: Yup.string().required("Email is required").email("Email is invalid"),
     password: Yup.string()
@@ -26,7 +26,7 @@ export function Fields({ onSubmit }) {
     },
     resolver: yupResolver(validationSchema),
   });
-  
+
   return (
     <div>
       <form
@@ -71,7 +71,7 @@ export function Fields({ onSubmit }) {
         />
         <br />
         <Button variant="contained" type="submit" sx={{ margin: "15px" }}>
-          Send
+          {btnText}
         </Button>
       </form>
     </div>
