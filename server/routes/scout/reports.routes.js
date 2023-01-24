@@ -44,8 +44,7 @@ router.post("/release-report", async (req, res) => {
     for (const book of books) {
       await Book.findOneAndUpdate({ _id: book.id }, { reported: true });
     }
-    //#todo for each book in report, 'reported' must be set to 'true'
-    //get the books array and then loop through changing reported to true
+   
     //#todo each book in report must have report name added to 'reports' array
 
     res.json("Report released");

@@ -5,6 +5,8 @@ import { useForm } from "react-hook-form";
 import { BASE_URL } from "../utils/consts";
 import { Text } from "./forms/Text";
 import MuiAlert from "@mui/material/Alert";
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 const Alert = forwardRef(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
@@ -14,10 +16,20 @@ export function CreateReport({ refetch }) {
   const [open, setOpen] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
-  const { handleSubmit, control, reset } = useForm({
+  const validationSchema = Yup.object().shape({
+    title: Yup.string().required("Reports must have titles."),
+  });
+
+  const {
+    handleSubmit,
+    control,
+    reset,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       title: "",
     },
+    resolver: yupResolver(validationSchema),
   });
 
   const handleClose = (event, reason) => {
@@ -43,7 +55,7 @@ export function CreateReport({ refetch }) {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Text control={control} name={"title"} label={"Report title"} />
+        <Text control={control} title={"title"} label={"Report title"} errors={errors} />
         <Button type="submit" size="small" variant="outlined">
           Create report
         </Button>

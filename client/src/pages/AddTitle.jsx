@@ -41,7 +41,7 @@ export function AddTitle() {
   const { checkForUser } = useContext(UserContext);
   checkForUser;
 
-  const {  handleSubmit, control, reset } = useForm({
+  const { handleSubmit, control, reset } = useForm({
     defaultValues,
   });
 
@@ -82,7 +82,7 @@ export function AddTitle() {
           <form onSubmit={handleSubmit(onSubmit)}>
             <div>
               <FormControl margin="dense">
-                <AutocompleteForm control={control} name={"title"} url={"title"} label={"Title"} />
+                <Text control={control} title={"title"} label={"Title"} errors={""} />
               </FormControl>
             </div>
 
@@ -116,7 +116,12 @@ export function AddTitle() {
                       url={"agency-name"}
                       label={"Agency"}
                     />
-                    <Text control={control} name={"rightsSold"} label={"Rights sold"} />
+                    <Text
+                      control={control}
+                      title={"rightsSold"}
+                      label={"Rights sold"}
+                      errors={""}
+                    />
                   </FormGroup>
                   <FormGroup>
                     <AutocompleteForm
