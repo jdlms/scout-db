@@ -66,7 +66,7 @@ export function Signup({ setSignupState, setLoginState }) {
         }}
       ></div>
 
-      {!roleState ? <Role /> : <Fields onSubmit={onSubmit} btnText={"Sign up"} />}
+      {roleState ? <Role /> : <Fields onSubmit={onSubmit} btnText={"Sign up"} />}
 
       <p>
         Already have an account?{" "}

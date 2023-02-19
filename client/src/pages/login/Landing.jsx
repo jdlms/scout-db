@@ -67,7 +67,7 @@ export function Landing() {
               }}
             ></div>
             <Grid>
-              {loginState && !signupState && (
+              {!loginState && !signupState && (
                 <ButtonGroup variant="contained">
                   <Button onClick={handleLoginClick}>Login</Button>
                   <Button onClick={handleSignupClick}>Sign up</Button>
