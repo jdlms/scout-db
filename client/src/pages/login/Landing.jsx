@@ -53,9 +53,9 @@ export function Landing() {
           }}
         >
           <Grid container display="flex" direction="column" alignItems="center">
-            <Typography color="#0e0e1d" variant="h4" component="h1">
+            <h1 color="#0e0e1d" variant="h4" component="h1">
               Scout DB
-            </Typography>
+            </h1>
             {!signupState ? (
               <Typography variant="h3">🕵️📚</Typography>
             ) : (
