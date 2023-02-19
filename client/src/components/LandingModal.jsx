@@ -37,33 +37,32 @@ export function LandingModal({ open, handleOpen, handleClose }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-          <Typography id="modal-modal-title" variant="h6">
-            What is this?
-          </Typography>
+        
+          <h3>What is this?</h3>
           <Typography id="modal-modal-description" variant="body2" gutterBottom sx={{ mt: 2 }}>
             Scout DB is a prototype of an internal database and reporting tool built for book scouts
             and their clients.
           </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h3">
+          <h3 id="modal-modal-title" variant="h6" component="h3">
             What is the problem?
-          </Typography>
+          </h3>
           <Typography id="modal-modal-description" variant="body2" gutterBottom sx={{ mt: 2 }}>
             Scouts gather large amounts of information and report it to clients. Often this
             reporting is done via private local databases, email, phone, and pdfs. This is
             inefficient and communication can be haphazard or sporadic.
           </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h3">
+          <h3 id="modal-modal-title" variant="h6" component="h3">
             What is the solution?
-          </Typography>
+          </h3>
           <Typography id="modal-modal-description" variant="body2" gutterBottom sx={{ mt: 2 }}>
             Scout DB offers a streamlined way for book scouts to interact with their database, input
             information, track titles, and report to clients. For clients, it provides an online
             portal where large swaths of information can be easily managed, referenced, and
             highlighted.
           </Typography>
-          <Typography id="modal-modal-title" variant="h6" component="h3">
+          <h3 id="modal-modal-title" variant="h6" component="h3">
             Ok, but what is a book scout?
-          </Typography>
+          </h3>
           <Typography id="modal-modal-description" variant="body2" gutterBottom sx={{ mt: 2 }}>
             A book scout helps international publishers, literary agents, and film production
             companies find new and worthwhile books to acquire for publication or adaptation. They
