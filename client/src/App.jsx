@@ -19,7 +19,6 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<Landing />} />
-      <Route path="role" element={<Role />} />
       <Route element={<ScoutLayout />}>
         <Route path="scout-landing" element={<ScoutLanding />} />
         <Route path="add-title" element={<AddTitle />} />

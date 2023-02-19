@@ -1,3 +1,4 @@
+import { Button, ButtonGroup } from "@mui/material";
 import axios from "axios";
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
@@ -26,13 +27,20 @@ export function Role() {
     }
   };
 
+  // #todo there are two calls happening here, on Signup and on Role. It should only be one. First choose the role, then signup, then send to server
+
   return (
     <div>
-      <h3>Please choose a role...</h3>
-      <button onClick={() => chooseRole("Scout")}>Scout</button>
-      <button onClick={() => chooseRole("Client")}>Client</button>
+      <p>Please choose a role...</p>
+      <ButtonGroup variant="contained">
+        <Button onClick={() => chooseRole("Scout")}>Scout</Button>
+        <Button onClick={() => chooseRole("Client")}>Client</Button>
+      </ButtonGroup>
+      <div
+        style={{
+          height: "25px",
+        }}
+      ></div>
     </div>
   );
 }
-
-//#todo create mouse over event to change image, one for scout and one for client...

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../../contexts/UserContext";
@@ -7,8 +7,12 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { BASE_URL } from "../../utils/consts";
 import { Fields } from "./Fields";
+import { Role } from "../Role";
 
 export function Signup({ setSignupState, setLoginState }) {
+  // state for role-choosing button
+  const [roleState, setRoleState] = useState(false);
+
   const { user, addUserToContext } = useContext(UserContext);
   const navigate = useNavigate();
 
@@ -46,10 +50,9 @@ export function Signup({ setSignupState, setLoginState }) {
       });
       const response = await request.data;
       const userObjFromSession = response.user;
-      //do something with the response
+      // #todo something with the response
       addUserToContext(userObjFromSession);
-
-      navigate("/role");
+      setRoleState(!roleState);
     } catch (error) {
       console.error("There was an error!", error);
     }
@@ -62,7 +65,9 @@ export function Signup({ setSignupState, setLoginState }) {
           height: "25px",
         }}
       ></div>
-      <Fields onSubmit={onSubmit} btnText={"Sign up"} />
+
+      {!roleState ? <Role /> : <Fields onSubmit={onSubmit} btnText={"Sign up"} />}
+
       <p>
         Already have an account?{" "}
         <span style={{ color: "#1976d2", cursor: "pointer" }} onClick={spanClick}>
