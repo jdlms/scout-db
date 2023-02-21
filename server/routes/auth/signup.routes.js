@@ -13,10 +13,11 @@ router.post("/signup", async (req, res) => {
     const newUser = new User({
       email: req.body.email,
       password: await generatePwHash(req.body.password),
+      role: req.body.role,
     });
     await newUser.save();
 
-    const user = { email: newUser.email, role: undefined };
+    const user = { email: newUser.email, role: newUser.role };
     req.session.currentUser = user;
     // console.log(user);
     return res.json({ message: "Signup/Login sucessful", user });

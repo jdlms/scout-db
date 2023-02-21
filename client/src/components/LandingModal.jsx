@@ -37,7 +37,6 @@ export function LandingModal({ open, handleOpen, handleClose }) {
         aria-describedby="modal-modal-description"
       >
         <Box sx={style}>
-        
           <h3>What is this?</h3>
           <Typography id="modal-modal-description" variant="body2" gutterBottom sx={{ mt: 2 }}>
             Scout DB is a prototype of an internal database and reporting tool built for book scouts
@@ -58,7 +57,8 @@ export function LandingModal({ open, handleOpen, handleClose }) {
             Scout DB offers a streamlined way for book scouts to interact with their database, input
             information, track titles, and report to clients. For clients, it provides an online
             portal where large swaths of information can be easily managed, referenced, and
-            highlighted.
+            highlighted. It also creates a link for asynchronous communication about what titles are
+            of pressing interest.
           </Typography>
           <h3 id="modal-modal-title" variant="h6" component="h3">
             Ok, but what is a book scout?

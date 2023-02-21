@@ -27,7 +27,7 @@ export function UserContextProvider({ children }) {
             navigate("/scout-landing");
           }
           if (request.data.user.role === "Client") {
-            navigate("client/landing");
+            navigate("/client/landing");
           }
           if (request.data.user.role === undefined) {
             navigate("/");

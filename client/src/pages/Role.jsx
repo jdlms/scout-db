@@ -1,46 +1,29 @@
-import { Button, ButtonGroup } from "@mui/material";
-import axios from "axios";
-import { useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { UserContext } from "../contexts/UserContext";
-import { BASE_URL } from "../utils/consts";
+import { Button, FormControlLabel, Radio, RadioGroup } from "@mui/material";
+import { Controller } from "react-hook-form";
 
-export function Role() {
-  const { user, addUserToContext } = useContext(UserContext);
-  const navigate = useNavigate();
-
-  const chooseRole = async (role) => {
-    try {
-      const userInfo = { email: user.email, role: role };
-      await axios.post(BASE_URL + "role", userInfo, {
-        withCredentials: true,
-      });
-      addUserToContext(userInfo);
-      if (role === "Scout") {
-        navigate("/scout-landing");
-      }
-      if (role === "Client") {
-        navigate("/client/landing");
-      }
-    } catch (error) {
-      console.error("There was an error:", error);
-    }
+export function Role({ control, setRoleState }) {
+  const handleClick = () => {
+    setRoleState(true);
   };
-
-  // #todo there are two calls happening here, on Signup and on Role. It should only be one. First choose the role, then signup, then send to server
 
   return (
     <div>
       <p>Please choose a role...</p>
-      <ButtonGroup variant="contained">
-        <Button onClick={() => chooseRole("Scout")}>Scout</Button>
-        <Button onClick={() => chooseRole("Client")}>Client</Button>
-      </ButtonGroup>
-      <div
-        style={{
-          height: "25px",
-        }}
-      ></div>
+      <Controller
+        name="role"
+        control={control}
+        render={({ field: { onChange, value, ref }, fieldState }) => (
+          <RadioGroup name="choose-role" value={value} onChange={onChange}>
+            <FormControlLabel value="Scout" control={<Radio />} label="Scout" />
+            <FormControlLabel value="Client" control={<Radio />} label="Client" />
+          </RadioGroup>
+        )}
+      />
+      <p>
+        <Button variant="contained" onClick={handleClick}>
+          Ok
+        </Button>
+      </p>
     </div>
   );
 }
