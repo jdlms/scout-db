@@ -14,7 +14,7 @@ router.post("/login", async (req, res) => {
       },
       { email: 1, role: 1, password: 1 }
     );
-    console.log(userFromDb);
+   
     const doPasswordsMatch = await bcrypt.compare(req.body.password, userFromDb.password);
     //add error handling here, 400 response if pws do not match
     if (!doPasswordsMatch) {

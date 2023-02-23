@@ -3,6 +3,7 @@ import axios from "axios";
 import { useContext } from "react";
 import { useQuery } from "react-query";
 import { Link, useParams } from "react-router-dom";
+import { AddToReportBar } from "../components/forms/AddToReportBar";
 import { UserContext } from "../contexts/UserContext";
 import { BASE_URL } from "../utils/consts";
 
@@ -74,12 +75,13 @@ export function TitleDetails({ idFromTitle, viewDetails }) {
           </Typography>
 
           {user.role === "Scout" ? (
-            <Link style={{ textDecoration: "none", color: "Red" }} to={`/edit-title/${data._id}`}>
-              Edit
-            </Link>
-          ) : (
-            <div> </div>
-          )}
+            <>
+              <Link style={{ textDecoration: "none", color: "Red" }} to={`/edit-title/${data._id}`}>
+                Edit
+              </Link>
+              <AddToReportBar titleId={data._id} />
+            </>
+          ) : null}
         </div>
       </div>
     </div>

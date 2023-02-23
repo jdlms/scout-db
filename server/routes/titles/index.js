@@ -19,4 +19,7 @@ router.use(recent);
 import reported from "./reported.routes.js";
 router.use(reported);
 
+import reports from "./reports.routes.js";
+router.use(reports);
+
 export default router;

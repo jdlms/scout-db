@@ -40,7 +40,6 @@ export function AutocompleteSelect({ control, url, name, label }) {
               variant="outlined"
               InputProps={{
                 ...params.InputProps,
-
               }}
             />
           )}
