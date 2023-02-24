@@ -12,7 +12,7 @@ export function TitleDetails({ idFromTitle }) {
   // const { id } = useParams();
 
   let { isLoading, error, data, refetch } = useQuery(
-    ["titleDetails"],
+    ["titleDetails", idFromTitle],
 
     () =>
       axios

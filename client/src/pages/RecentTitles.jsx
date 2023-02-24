@@ -10,14 +10,10 @@ export function RecentTitles() {
   const { checkForUser, user } = useContext(UserContext);
   checkForUser;
 
-  // const [viewDetails, setViewDetails] = useState(false);
-  // const [divClicked, setDivClicked] = useState(null);
   const [idFromTitle, setIdFromTitle] = useState(null);
-  const queryClient = useQueryClient();
 
   const handleClick = (event, index, titleId) => {
     setIdFromTitle(titleId);
-    queryClient.invalidateQueries({ queryKey: ["titleDetails"] });
   };
 
   const url = user.role === "Scout" ? "titles/recent" : "titles/reported";
