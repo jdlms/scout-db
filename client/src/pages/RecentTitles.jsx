@@ -1,7 +1,6 @@
 import { Box, Grid } from "@mui/material";
 import { useContext } from "react";
 import { useState } from "react";
-import { useQueryClient } from "react-query";
 import { GetTitles } from "../components/GetTitles";
 import { UserContext } from "../contexts/UserContext";
 import { TitleDetails } from "./TitleDetails";

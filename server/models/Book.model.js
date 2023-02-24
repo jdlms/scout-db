@@ -1,5 +1,6 @@
 import { model, Schema } from "mongoose";
 import mongooseAutoPopulate from "mongoose-autopopulate";
+import paginate from "mongoose-paginate-v2";
 
 const bookSchema = new Schema(
   {
@@ -47,8 +48,11 @@ const bookSchema = new Schema(
 );
 
 bookSchema.plugin(mongooseAutoPopulate);
+bookSchema.plugin(paginate);
 
 export const Book = model("Book", bookSchema);
+
+
 
 //#todo book model needs: times reported on, date added/updated (can replace), territories sold, publishers sold, rights contact, optional: film agent
 

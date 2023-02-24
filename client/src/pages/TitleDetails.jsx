@@ -9,14 +9,14 @@ import { BASE_URL } from "../utils/consts";
 
 export function TitleDetails({ idFromTitle }) {
   const { user } = useContext(UserContext);
-  // const { id } = useParams();
+  const { id } = useParams();
 
   let { isLoading, error, data, refetch } = useQuery(
     ["titleDetails", idFromTitle],
 
     () =>
       axios
-        .get(BASE_URL + `titles/single/${idFromTitle}`, {
+        .get(BASE_URL + `titles/single/${idFromTitle || id}`, {
           withCredentials: true,
         })
         .then((res) => res.data)
