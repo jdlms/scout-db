@@ -1,30 +1,32 @@
 import { Typography } from "@mui/material";
 import axios from "axios";
-import { useContext } from "react";
-import { useQuery } from "react-query";
+import { useContext, useEffect } from "react";
+import { useQuery, useQueryClient } from "react-query";
 import { Link, useParams } from "react-router-dom";
 import { AddToReportBar } from "../components/forms/AddToReportBar";
 import { UserContext } from "../contexts/UserContext";
 import { BASE_URL } from "../utils/consts";
 
-export function TitleDetails({ idFromTitle, viewDetails }) {
+export function TitleDetails({ idFromTitle }) {
   const { user } = useContext(UserContext);
-  const { id } = useParams();
+  // const { id } = useParams();
 
-  const { isLoading, error, data } = useQuery(
+  let { isLoading, error, data, refetch } = useQuery(
     ["titleDetails"],
+
     () =>
       axios
-        .get(BASE_URL + `titles/single/${idFromTitle || id}`, {
+        .get(BASE_URL + `titles/single/${idFromTitle}`, {
           withCredentials: true,
         })
-        .then((res) => res.data),
-    { cacheTime: 0 }
+        .then((res) => res.data)
   );
 
   if (isLoading) return "";
 
   if (error) return "An error has occurred: " + error.message;
+
+  console.log(data);
 
   return (
     <div>
