@@ -1,6 +1,7 @@
 import { Box, Grid } from "@mui/material";
 import { useContext } from "react";
 import { useState } from "react";
+import { useQueryClient } from "react-query";
 import { GetTitles } from "../components/GetTitles";
 import { UserContext } from "../contexts/UserContext";
 import { TitleDetails } from "./TitleDetails";
@@ -8,6 +9,7 @@ import { TitleDetails } from "./TitleDetails";
 export function RecentTitles() {
   const { checkForUser, user } = useContext(UserContext);
   checkForUser;
+
 
   const [idFromTitle, setIdFromTitle] = useState(null);
 
