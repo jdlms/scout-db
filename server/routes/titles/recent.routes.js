@@ -3,11 +3,9 @@ import { Book } from "../../models/Book.model.js";
 
 const router = Router();
 
-// #todo this search needs to be refinded and not simply get all books
-// we'll try paginating
-
+// paginate titles
 router.get("/all", async (req, res) => {
-  let pageNum = req.query.page <= 1 ? 1 : req.query.page;
+  let pageNum = Number(req.query.page) + 1;
 
   const options = {
     page: pageNum,
@@ -18,10 +16,8 @@ router.get("/all", async (req, res) => {
     sort: { createdAt: -1 },
   };
 
-  console.log(options.page);
   try {
     const paginatedTitles = await Book.paginate({}, options);
-    console.log(paginatedTitles);
     res.json(paginatedTitles);
   } catch (error) {
     console.log("There was an error", error);

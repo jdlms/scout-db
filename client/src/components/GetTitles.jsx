@@ -1,4 +1,4 @@
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 import { useQuery } from "react-query";
@@ -7,8 +7,6 @@ import { BASE_URL } from "../utils/consts";
 
 export function GetTitles({ url, handleClick }) {
   const [page, setPage] = useState(0);
-
-  console.log(page);
 
   const fetchTitles = (page = 0) =>
     axios
@@ -68,24 +66,24 @@ export function GetTitles({ url, handleClick }) {
           </div>
         );
       })}
-      <span>Current Page: {page + 1}</span>
-      <button onClick={() => setPage((old) => Math.max(old - 1, 0))} disabled={page === 0}>
-        Previous Page
-      </button>{" "}
-      <button
+      <span>Page {page + 1}</span>
+      <Button onClick={() => setPage((old) => Math.max(old - 1, 0))} disabled={page === 0}>
+        Previous
+      </Button>{" "}
+      <Button
         onClick={() => {
-          if (!isPreviousData) {
+          if (!isPreviousData && data.hasNextPage) {
             setPage((old) => old + 1);
           }
         }}
         // Disable the Next Page button until we know a next page is available
-        disabled={isPreviousData}
+        disabled={isPreviousData || !data.hasNextPage}
       >
-        Next Page
-      </button>
+        Next
+      </Button>
       {isFetching ? <span> Loading...</span> : null}{" "}
     </>
   );
 }
 
-//#todo add fiction/nonfiction
+// #todo add fiction/nonfiction
