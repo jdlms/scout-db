@@ -1,29 +1,32 @@
 import { Typography } from "@mui/material";
 import axios from "axios";
-import { useContext } from "react";
-import { useQuery } from "react-query";
+import { useContext, useEffect } from "react";
+import { useQuery, useQueryClient } from "react-query";
 import { Link, useParams } from "react-router-dom";
+import { AddToReportBar } from "../components/forms/AddToReportBar";
 import { UserContext } from "../contexts/UserContext";
 import { BASE_URL } from "../utils/consts";
 
-export function TitleDetails({ idFromTitle, viewDetails }) {
+export function TitleDetails({ idFromTitle }) {
   const { user } = useContext(UserContext);
   const { id } = useParams();
 
-  const { isLoading, error, data } = useQuery(
-    ["titleDetails"],
+  let { isLoading, error, data, refetch } = useQuery(
+    ["titleDetails", idFromTitle],
+
     () =>
       axios
         .get(BASE_URL + `titles/single/${idFromTitle || id}`, {
           withCredentials: true,
         })
-        .then((res) => res.data),
-    { cacheTime: 0 }
+        .then((res) => res.data)
   );
 
   if (isLoading) return "";
 
   if (error) return "An error has occurred: " + error.message;
+
+  console.log(data);
 
   return (
     <div>
@@ -74,12 +77,13 @@ export function TitleDetails({ idFromTitle, viewDetails }) {
           </Typography>
 
           {user.role === "Scout" ? (
-            <Link style={{ textDecoration: "none", color: "Red" }} to={`/edit-title/${data._id}`}>
-              Edit
-            </Link>
-          ) : (
-            <div> </div>
-          )}
+            <>
+              <Link style={{ textDecoration: "none", color: "Red" }} to={`/edit-title/${data._id}`}>
+                Edit
+              </Link>
+              <AddToReportBar titleId={data._id} />
+            </>
+          ) : null}
         </div>
       </div>
     </div>

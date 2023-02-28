@@ -1,28 +1,38 @@
-import { Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import axios from "axios";
+import { useState } from "react";
 import { useQuery } from "react-query";
 import { addId } from "../utils/addId";
 import { BASE_URL } from "../utils/consts";
 
-export function GetTitles({ title, url, handleClick }) {
-  const { isLoading, error, data } = useQuery(
-    ["getTitles"],
-    async () =>
-      await axios
-        .get(BASE_URL + url, {
-          withCredentials: true,
-        })
-        .then((res) => res.data)
-  );
+export function GetTitles({ url, handleClick }) {
+  const [page, setPage] = useState(0);
+
+  const fetchTitles = (page = 0) =>
+    axios
+      .get(BASE_URL + "titles/all?page=" + `${page}`, {
+        withCredentials: true,
+      })
+      .then((res) => res.data);
+
+  // const fetchProjects = (page = 0) => fetch('/api/projects?page=' + page).then((res) => res.json())
+
+  const { isLoading, error, data, isFetching, isPreviousData } = useQuery({
+    queryKey: ["getTitles", page],
+    queryFn: async () => await fetchTitles(page),
+    keepPreviousData: true,
+  });
 
   if (isLoading) return "Loading...";
 
   if (error) return "An error has occurred: " + error.message;
 
-  //#todo write util to make url id title-lastName-year
+  // #todo write util to make url id title-lastName-year
+
   return (
     <>
-      {data.map((title, index) => {
+      {console.log(data)}
+      {data.docs.map((title, index) => {
         const titleId = title._id;
         return (
           <div key={addId()}>
@@ -56,8 +66,24 @@ export function GetTitles({ title, url, handleClick }) {
           </div>
         );
       })}
+      <span>Page {page + 1}</span>
+      <Button onClick={() => setPage((old) => Math.max(old - 1, 0))} disabled={page === 0}>
+        Previous
+      </Button>{" "}
+      <Button
+        onClick={() => {
+          if (!isPreviousData && data.hasNextPage) {
+            setPage((old) => old + 1);
+          }
+        }}
+        // Disable the Next Page button until we know a next page is available
+        disabled={isPreviousData || !data.hasNextPage}
+      >
+        Next
+      </Button>
+      {isFetching ? <span> Loading...</span> : null}{" "}
     </>
   );
 }
 
-//#todo add fiction/nonfiction
+// #todo add fiction/nonfiction
