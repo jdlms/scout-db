@@ -15,8 +15,6 @@ export function GetTitles({ url, handleClick }) {
       })
       .then((res) => res.data);
 
-  // const fetchProjects = (page = 0) => fetch('/api/projects?page=' + page).then((res) => res.json())
-
   const { isLoading, error, data, isFetching, isPreviousData } = useQuery({
     queryKey: ["getTitles", page],
     queryFn: async () => await fetchTitles(page),
@@ -76,7 +74,6 @@ export function GetTitles({ url, handleClick }) {
             setPage((old) => old + 1);
           }
         }}
-        // Disable the Next Page button until we know a next page is available
         disabled={isPreviousData || !data.hasNextPage}
       >
         Next

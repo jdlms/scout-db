@@ -80,4 +80,4 @@ router.post("/add", async (req, res) => {
 
 export default router;
 
-//#todo proper error handling something like catch (e) { (response.status(500).send({message: e.message}))}
+// #todo proper error handling something like catch (e) { (response.status(500).send({message: e.message}))}

@@ -54,6 +54,7 @@ export const Book = model("Book", bookSchema);
 
 
 
-//#todo book model needs: times reported on, date added/updated (can replace), territories sold, publishers sold, rights contact, optional: film agent
+// #todo book model needs: times reported on, date added/updated (can replace), territories sold, publishers sold, rights contact, optional: film agent
 
-//todo chip field for rights sold
+// #todo chip field for rights sold
+
