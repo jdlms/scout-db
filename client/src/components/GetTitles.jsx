@@ -29,7 +29,6 @@ export function GetTitles({ url, handleClick }) {
 
   return (
     <>
-      {console.log(data)}
       {data.docs.map((title, index) => {
         const titleId = title._id;
         return (

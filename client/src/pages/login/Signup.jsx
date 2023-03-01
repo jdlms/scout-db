@@ -46,7 +46,6 @@ export function Signup({ setSignupState, setLoginState }) {
   });
 
   const onSubmit = async (data) => {
-    console.log(data);
     try {
       const request = await axios.post(BASE_URL + "signup", data, {
         withCredentials: true,

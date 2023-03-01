@@ -26,7 +26,6 @@ export function TitleDetails({ idFromTitle }) {
 
   if (error) return "An error has occurred: " + error.message;
 
-  console.log(data);
 
   return (
     <div>
