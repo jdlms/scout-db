@@ -21,6 +21,8 @@ export function EditTitle() {
 
   if (error) return "An error has occurred: " + error.message;
 
+  console.log(data);
+
   const defaultValues = {
     title: data.title,
     authorFirstName: data.author[0].firstName,
@@ -33,7 +35,7 @@ export function EditTitle() {
     currentMaterial: data.currentMaterial,
     internalNotes: data.currentMaterial,
     status: data.status,
-    confidential: data.confidential, 
+    confidential: data.confidential,
     addToReport: "",
   };
 
