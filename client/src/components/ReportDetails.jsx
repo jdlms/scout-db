@@ -50,7 +50,7 @@ export function ReportDetails({ reportId, releasedReports }) {
                 style={{
                   backgroundColor: "#f5f5f5",
                   height: "50px",
-                  width: "400px",
+                  width: "580px",
                   display: "flex",
                   flexDirection: "column",
                   color: "#0e0e1d",

@@ -79,7 +79,7 @@ export default function Reports() {
               </Box>
             </Grid>
             <Grid item xs={8}>
-              <Box style={{ maxHeight: "100vh", maxWidth: 450, overflow: "auto" }}>
+              <Box style={{ maxHeight: "100vh", maxWidth: 600, overflow: "auto" }}>
                 {viewDetails === true ? (
                   <ReportDetails
                     reportId={reportId !== undefined ? reportId : { 1: "" }}
