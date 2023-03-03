@@ -55,18 +55,19 @@ export function TitleDetails({ idFromTitle }) {
           <Typography variant="subtitle2" gutterBottom>
             {data.publisher[0].name} - {data.editor[0].name}
           </Typography>
-          <hr />
           <Typography variant="subtitle2" gutterBottom>
             Material: {data.currentMaterial}
           </Typography>
+          <hr style={{ borderColor: "#bbb7b7" }} />
           <Typography variant="body1" gutterBottom>
             Details: {data.details}
           </Typography>
-          <hr />
+          <hr style={{ borderColor: "#bbb7b7" }} />
+
           <Typography variant="body1" gutterBottom>
             Internal Notes: {data.internalNotes}
           </Typography>
-          <hr />
+          <hr style={{ borderColor: "#bbb7b7" }} />
           <Typography variant="subtitle2" gutterBottom>
             Rights sold: {data.rightsSold.length < 1 ? "None" : data.rightsSold}
           </Typography>

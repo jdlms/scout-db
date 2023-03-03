@@ -60,8 +60,9 @@ export function GetTitles({ url, handleClick }) {
                 color: "#0e0e1d",
                 margin: "4px",
                 borderStyle: "solid",
-                borderColor: "#0e0e1d",
                 borderWidth: "1.5px",
+                borderColor: "#bbb7b7",
+                borderRadius: "2%",
               }}
             >
               <div style={{ paddingLeft: "10px", paddingTop: "10px" }}>
