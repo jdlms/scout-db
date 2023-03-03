@@ -31,7 +31,22 @@ export function GetTitles({ url, handleClick }) {
 
   return (
     <>
-      {console.log(data)}
+      <span>Page {page + 1}</span>
+      <Button onClick={() => setPage((old) => Math.max(old - 1, 0))} disabled={page === 0}>
+        Previous
+      </Button>{" "}
+      <Button
+        onClick={() => {
+          if (!isPreviousData && data.hasNextPage) {
+            setPage((old) => old + 1);
+          }
+        }}
+        // Disable the Next Page button until we know a next page is available
+        disabled={isPreviousData || !data.hasNextPage}
+      >
+        Next
+      </Button>
+      {isFetching ? <span> Loading...</span> : null}{" "}
       {data.docs.map((title, index) => {
         const titleId = title._id;
         return (
