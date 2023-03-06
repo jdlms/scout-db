@@ -56,21 +56,21 @@ export default function Reports() {
           <Grid container spacing={2}>
             <Grid item xs={4}>
               <Box style={{ maxHeight: "100vh", maxWidth: 320, overflow: "auto" }}>
-                <div
-                  style={{
-                    borderBottomStyle: "solid",
-                    borderBottomColor: "#f5f5f5",
-                  }}
-                >
-                  {user.role !== "Client" ? (
+                {user.role !== "Client" ? (
+                  <div
+                    style={{
+                      borderBottomStyle: "solid",
+                      borderBottomColor: "#f5f5f5",
+                    }}
+                  >
                     <ButtonGroup variant="text" aria-label="text button group">
                       <Button onClick={unreleasedClick}>Unreleased</Button>
                       <Button onClick={releasedClick}>Released</Button>
                     </ButtonGroup>
-                  ) : (
-                    ""
-                  )}
-                </div>
+                  </div>
+                ) : (
+                  ""
+                )}
                 {releasedReports || user.role !== "Scout" ? (
                   <ReleasedReports handleClick={handleClick} />
                 ) : (
@@ -79,7 +79,7 @@ export default function Reports() {
               </Box>
             </Grid>
             <Grid item xs={8}>
-              <Box style={{ maxHeight: "100vh", maxWidth: 450, overflow: "auto" }}>
+              <Box style={{ maxHeight: "100vh", maxWidth: 600, overflow: "auto" }}>
                 {viewDetails === true ? (
                   <ReportDetails
                     reportId={reportId !== undefined ? reportId : { 1: "" }}

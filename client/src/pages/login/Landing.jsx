@@ -1,13 +1,13 @@
 import { Button, ButtonGroup, Grid, Typography } from "@mui/material";
 import { useState } from "react";
 import { LandingModal } from "../../components/LandingModal";
+import { UserContext } from "../../contexts/UserContext";
 import { Login } from "./Login";
 import { Signup } from "./Signup";
 
 export function Landing() {
   const [signupState, setSignupState] = useState(false);
   const [loginState, setLoginState] = useState(false);
-
   //modal state
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);

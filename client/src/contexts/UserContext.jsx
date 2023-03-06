@@ -33,7 +33,10 @@ export function UserContextProvider({ children }) {
             navigate("/");
           }
         }
-        console.log("Current role:", request.data.user.role);
+        console.log({
+          "Current role": request.data.user.role,
+          "Current user": request.data.user.email,
+        });
       } catch (error) {
         console.error("There was an error!");
       }

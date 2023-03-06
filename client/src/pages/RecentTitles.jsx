@@ -39,7 +39,7 @@ export function RecentTitles() {
               </Box>
             </Grid>
             <Grid item xs={8}>
-              <Box style={{ maxHeight: "100vh", maxWidth: 450, overflow: "auto" }}>
+              <Box style={{ maxHeight: "100vh", maxWidth: 620, overflow: "auto" }}>
                 {idFromTitle ? <TitleDetails idFromTitle={idFromTitle} /> : <div></div>}
               </Box>
             </Grid>

@@ -26,14 +26,13 @@ export function TitleDetails({ idFromTitle }) {
 
   if (error) return "An error has occurred: " + error.message;
 
-  console.log(data);
 
   return (
     <div>
       <div
         style={{
           height: "85%",
-          width: "400px",
+          width: "600px",
           display: "flex",
           flexDirection: "column",
           color: "#0e0e1d",
@@ -55,23 +54,25 @@ export function TitleDetails({ idFromTitle }) {
           <Typography variant="subtitle2" gutterBottom>
             {data.publisher[0].name} - {data.editor[0].name}
           </Typography>
-
-          <Typography variant="body1" gutterBottom>
-            {data.details}
-          </Typography>
-
           <Typography variant="subtitle2" gutterBottom>
             Material: {data.currentMaterial}
           </Typography>
+          <hr style={{ borderColor: "#bbb7b7" }} />
+          <Typography variant="body1" gutterBottom>
+            Details: {data.details}
+          </Typography>
+          <hr style={{ borderColor: "#bbb7b7" }} />
 
+          <Typography variant="body1" gutterBottom>
+            Internal Notes: {data.internalNotes}
+          </Typography>
+          <hr style={{ borderColor: "#bbb7b7" }} />
           <Typography variant="subtitle2" gutterBottom>
             Rights sold: {data.rightsSold.length < 1 ? "None" : data.rightsSold}
           </Typography>
-
           <Typography variant="subtitle2" gutterBottom>
             Reported: {data.reported === true ? "Yes" : "No"}
           </Typography>
-
           <Typography variant="subtitle2" gutterBottom>
             Confidential: {data.confidential === true ? "Yes" : "No"}
           </Typography>
