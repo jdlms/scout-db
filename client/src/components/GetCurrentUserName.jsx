@@ -1,7 +1,6 @@
 import { Typography } from "@mui/material";
 
 export function GetCurrentUserName({ userEmail }) {
-  console.log(userEmail);
   let currentUserNoEmail = userEmail.replace(/@.*$/, "");
   let currentUser = currentUserNoEmail.charAt(0).toUpperCase() + currentUserNoEmail.slice(1);
   return (
