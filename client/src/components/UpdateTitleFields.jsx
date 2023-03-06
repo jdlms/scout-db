@@ -25,6 +25,7 @@ export function UpdateTitleFields({ data, defaultValues, id }) {
       await axios.post(BASE_URL + `titles/edit/${id}`, data, {
         withCredentials: true,
       });
+
       //redirect back to last location via local storage?
     } catch (error) {
       console.error(error);
@@ -36,20 +37,20 @@ export function UpdateTitleFields({ data, defaultValues, id }) {
       <form onSubmit={handleSubmit(onSubmit)}>
         <br />
 
-        <Text control={control} name="title" label={"Title"} />
+        <Text control={control} title={"title"} label={"Title"} errors={""} />
 
-        <Text control={control} name={"authorFirstName"} label={"First name"} />
+        <Text control={control} title={"authorFirstName"} label={"First name"} errors={""} />
 
-        <Text control={control} name={"authorLastName"} label={"Last name"} />
-        <Text control={control} name={"agency"} label={"Agency"} />
+        <Text control={control} title={"authorLastName"} label={"Last name"} errors={""} />
+        <Text control={control} title={"agency"} label={"Agency"} errors={""} />
 
-        <Text control={control} name={"publisher"} label={"Publisher"} />
+        <Text control={control} title={"publisher"} label={"Publisher"} errors={""} />
 
-        <Text control={control} name={"editor"} label={"Editor"} />
+        <Text control={control} title={"editor"} label={"Editor"} errors={""} />
 
         <MultilineText control={control} name={"details"} label={"Details"} />
 
-        <Text control={control} name={"rightsSold"} label={"Rights sold"} />
+        <Text control={control} title={"rightsSold"} label={"Rights sold"} errors={""} />
 
         <MaterialSelect control={control} name={"currentMaterial"} label={"Current material"} />
 
